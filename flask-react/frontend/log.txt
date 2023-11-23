@@ -1,0 +1,2397 @@
+
+> frontend@0.1.0 start /content/traffic-incident-detection/flask-react/frontend
+> react-scripts start
+
+(node:21226) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:21226) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+[0;33mOne of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+
+babel-preset-react-app is part of the create-react-app project, [1mwhich
+is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.[0m
+  
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Expression expected (23:14)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (23:14)
+
+  21 |           <div className="flex-initial self-center">
+  22 |             {
+> 23 |               for (var i=0; i < 2; i++) {
+     |               ^
+  24 |                 <p className="text-2xl">Annotator</p>
+  25 |               }
+  26 |             }
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11257:16)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.jsxParseExpressionContainer (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6792:31)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6871:36)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 23:14:  Parsing error: Expression expected
+
+webpack compiled with 2 errors and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:23:15
+TS1109: Expression expected.
+    21 |           <div className="flex-initial self-center">
+    22 |             {
+  > 23 |               for (var i=0; i < 2; i++) {
+       |               ^^^
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+    26 |             }
+
+ERROR in src/pages/homepage.tsx:23:33
+TS1003: Identifier expected.
+    21 |           <div className="flex-initial self-center">
+    22 |             {
+  > 23 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+    26 |             }
+
+ERROR in src/pages/homepage.tsx:26:13
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+  > 26 |             }
+       |             ^
+    27 |           </div>
+    28 |         </div>
+    29 |         <p>count: {this.state.count} times</p>
+
+ERROR in src/pages/homepage.tsx:29:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    27 |           </div>
+    28 |         </div>
+  > 29 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    31 |           Click
+    32 |         </button>
+
+ERROR in src/pages/homepage.tsx:30:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |         </div>
+    29 |         <p>count: {this.state.count} times</p>
+  > 30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    31 |           Click
+    32 |         </button>
+    33 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (23:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (23:32)
+
+  21 |           <div className="flex-initial self-center">
+  22 |             
+> 23 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  24 |                 <p className="text-2xl">Annotator</p>
+  25 |               }
+  26 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 23:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:23:33
+TS1003: Identifier expected.
+    21 |           <div className="flex-initial self-center">
+    22 |             
+  > 23 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+    26 |             
+
+ERROR in src/pages/homepage.tsx:29:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    27 |           </div>
+    28 |         </div>
+  > 29 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    31 |           Click
+    32 |         </button>
+
+ERROR in src/pages/homepage.tsx:30:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |         </div>
+    29 |         <p>count: {this.state.count} times</p>
+  > 30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    31 |           Click
+    32 |         </button>
+    33 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (23:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (23:32)
+
+  21 |           <div className="flex-initial self-center">
+  22 |             
+> 23 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  24 |                 <p className="text-2xl">Annotator</p>
+  25 |               }
+  26 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 23:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:23:33
+TS1003: Identifier expected.
+    21 |           <div className="flex-initial self-center">
+    22 |             
+  > 23 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+    26 |             
+
+ERROR in src/pages/homepage.tsx:29:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    27 |           </div>
+    28 |         </div>
+  > 29 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    31 |           Click
+    32 |         </button>
+
+ERROR in src/pages/homepage.tsx:30:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |         </div>
+    29 |         <p>count: {this.state.count} times</p>
+  > 30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    31 |           Click
+    32 |         </button>
+    33 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (23:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (23:32)
+
+  21 |           <div className="flex-initial self-center">
+  22 |             
+> 23 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  24 |                 <p className="text-2xl">Annotator</p>
+  25 |               }
+  26 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 23:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:23:33
+TS1003: Identifier expected.
+    21 |           <div className="flex-initial self-center">
+    22 |             
+  > 23 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    24 |                 <p className="text-2xl">Annotator</p>
+    25 |               }
+    26 |             
+
+ERROR in src/pages/homepage.tsx:29:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    27 |           </div>
+    28 |         </div>
+  > 29 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    31 |           Click
+    32 |         </button>
+
+ERROR in src/pages/homepage.tsx:30:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |         </div>
+    29 |         <p>count: {this.state.count} times</p>
+  > 30 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    31 |           Click
+    32 |         </button>
+    33 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (25:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (25:32)
+
+  23 |           <div className="flex-initial self-center">
+  24 |             
+> 25 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  26 |                 <p className="text-2xl">Annotator</p>
+  27 |               }
+  28 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 25:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:25:33
+TS1003: Identifier expected.
+    23 |           <div className="flex-initial self-center">
+    24 |             
+  > 25 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    26 |                 <p className="text-2xl">Annotator</p>
+    27 |               }
+    28 |             
+
+ERROR in src/pages/homepage.tsx:31:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |           </div>
+    30 |         </div>
+  > 31 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    33 |           Click
+    34 |         </button>
+
+ERROR in src/pages/homepage.tsx:32:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |         </div>
+    31 |         <p>count: {this.state.count} times</p>
+  > 32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    33 |           Click
+    34 |         </button>
+    35 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (25:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (25:32)
+
+  23 |           <div className="flex-initial self-center">
+  24 |             
+> 25 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  26 |                 <p className="text-2xl">Annotator</p>
+  27 |               }
+  28 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 25:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:25:33
+TS1003: Identifier expected.
+    23 |           <div className="flex-initial self-center">
+    24 |             
+  > 25 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    26 |                 <p className="text-2xl">Annotator</p>
+    27 |               }
+    28 |             
+
+ERROR in src/pages/homepage.tsx:31:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |           </div>
+    30 |         </div>
+  > 31 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    33 |           Click
+    34 |         </button>
+
+ERROR in src/pages/homepage.tsx:32:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |         </div>
+    31 |         <p>count: {this.state.count} times</p>
+  > 32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    33 |           Click
+    34 |         </button>
+    35 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (25:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (25:32)
+
+  23 |           <div className="flex-initial self-center">
+  24 |             
+> 25 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  26 |                 <p className="text-2xl">Annotator</p>
+  27 |               }
+  28 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 25:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:17:3
+TS2304: Cannot find name 'videoTi'.
+    15 |
+    16 |  render() {
+  > 17 |   videoTi
+       |   ^^^^^^^
+    18 |
+    19 |   return (
+    20 |     <>
+
+ERROR in src/pages/homepage.tsx:25:33
+TS1003: Identifier expected.
+    23 |           <div className="flex-initial self-center">
+    24 |             
+  > 25 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    26 |                 <p className="text-2xl">Annotator</p>
+    27 |               }
+    28 |             
+
+ERROR in src/pages/homepage.tsx:31:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |           </div>
+    30 |         </div>
+  > 31 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    33 |           Click
+    34 |         </button>
+
+ERROR in src/pages/homepage.tsx:32:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |         </div>
+    31 |         <p>count: {this.state.count} times</p>
+  > 32 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    33 |           Click
+    34 |         </button>
+    35 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (26:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (26:32)
+
+  24 |           <div className="flex-initial self-center">
+  25 |             
+> 26 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  27 |                 <p className="text-2xl">Annotator</p>
+  28 |               }
+  29 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 26:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:17:3
+TS2304: Cannot find name 'videoTitles'.
+    15 |
+    16 |  render() {
+  > 17 |   videoTitles = []
+       |   ^^^^^^^^^^^
+    18 |   
+    19 |
+    20 |   return (
+
+ERROR in src/pages/homepage.tsx:26:33
+TS1003: Identifier expected.
+    24 |           <div className="flex-initial self-center">
+    25 |             
+  > 26 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    27 |                 <p className="text-2xl">Annotator</p>
+    28 |               }
+    29 |             
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |           </div>
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (28:32)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unexpected token (28:32)
+
+  26 |           <div className="flex-initial self-center">
+  27 |             
+> 28 |               for (var i=0; i < 2; i++) {
+     |                                 ^
+  29 |                 <p className="text-2xl">Annotator</p>
+  30 |               }
+  31 |             
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.unexpected (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3253:16)
+    at TypeScriptParserMixin.jsxParseIdentifier (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6725:12)
+    at TypeScriptParserMixin.jsxParseNamespacedName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6732:23)
+    at TypeScriptParserMixin.jsxParseElementName (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6741:21)
+    at TypeScriptParserMixin.jsxParseOpeningElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6821:22)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6846:33)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 28:32:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:17:3
+TS2304: Cannot find name 'videoTitles'.
+    15 |
+    16 |  render() {
+  > 17 |   videoTitles = []
+       |   ^^^^^^^^^^^
+    18 |   for (var i=0; i < 2; i++) {
+    19 |     videoT
+    20 |   }
+
+ERROR in src/pages/homepage.tsx:19:5
+TS2304: Cannot find name 'videoT'.
+    17 |   videoTitles = []
+    18 |   for (var i=0; i < 2; i++) {
+  > 19 |     videoT
+       |     ^^^^^^
+    20 |   }
+    21 |
+    22 |   return (
+
+ERROR in src/pages/homepage.tsx:28:33
+TS1003: Identifier expected.
+    26 |           <div className="flex-initial self-center">
+    27 |             
+  > 28 |               for (var i=0; i < 2; i++) {
+       |                                 ^
+    29 |                 <p className="text-2xl">Annotator</p>
+    30 |               }
+    31 |             
+
+ERROR in src/pages/homepage.tsx:34:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    32 |           </div>
+    33 |         </div>
+  > 34 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    35 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    36 |           Click
+    37 |         </button>
+
+ERROR in src/pages/homepage.tsx:35:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    33 |         </div>
+    34 |         <p>count: {this.state.count} times</p>
+  > 35 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    36 |           Click
+    37 |         </button>
+    38 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:17:3
+TS2304: Cannot find name 'videoTitles'.
+    15 |
+    16 |  render() {
+  > 17 |   videoTitles = []
+       |   ^^^^^^^^^^^
+    18 |   for (var i=0; i < 2; i++) {
+    19 |     videoTitles.push(<p className="text-2xl">Annotator</p>)
+    20 |   }
+
+ERROR in src/pages/homepage.tsx:19:5
+TS2304: Cannot find name 'videoTitles'.
+    17 |   videoTitles = []
+    18 |   for (var i=0; i < 2; i++) {
+  > 19 |     videoTitles.push(<p className="text-2xl">Annotator</p>)
+       |     ^^^^^^^^^^^
+    20 |   }
+    21 |
+    22 |   return (
+
+ERROR in src/pages/homepage.tsx:27:14
+TS2304: Cannot find name 'videoTitles'.
+    25 |         <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
+    26 |           <div className="flex-initial self-center">
+  > 27 |             {videoTitles}
+       |              ^^^^^^^^^^^
+    28 |           </div>
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+
+ERROR in src/pages/homepage.tsx:30:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |           </div>
+    29 |         </div>
+  > 30 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    32 |           Click
+    33 |         </button>
+
+ERROR in src/pages/homepage.tsx:31:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+  > 31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    32 |           Click
+    33 |         </button>
+    34 |       </div>
+
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:17:3
+TS2304: Cannot find name 'videoTitles'.
+    15 |
+    16 |  render() {
+  > 17 |   videoTitles = []
+       |   ^^^^^^^^^^^
+    18 |   for (var i=0; i < 2; i++) {
+    19 |     videoTitles.push(<p className="text-2xl">Annotator</p>)
+    20 |   }
+
+ERROR in src/pages/homepage.tsx:19:5
+TS2304: Cannot find name 'videoTitles'.
+    17 |   videoTitles = []
+    18 |   for (var i=0; i < 2; i++) {
+  > 19 |     videoTitles.push(<p className="text-2xl">Annotator</p>)
+       |     ^^^^^^^^^^^
+    20 |   }
+    21 |
+    22 |   return (
+
+ERROR in src/pages/homepage.tsx:27:14
+TS2304: Cannot find name 'videoTitles'.
+    25 |         <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
+    26 |           <div className="flex-initial self-center">
+  > 27 |             {videoTitles}
+       |              ^^^^^^^^^^^
+    28 |           </div>
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+
+ERROR in src/pages/homepage.tsx:30:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |           </div>
+    29 |         </div>
+  > 30 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    32 |           Click
+    33 |         </button>
+
+ERROR in src/pages/homepage.tsx:31:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+  > 31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    32 |           Click
+    33 |         </button>
+    34 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:30:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |           </div>
+    29 |         </div>
+  > 30 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    32 |           Click
+    33 |         </button>
+
+ERROR in src/pages/homepage.tsx:31:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+  > 31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    32 |           Click
+    33 |         </button>
+    34 |       </div>
+
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:30:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    28 |           </div>
+    29 |         </div>
+  > 30 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    32 |           Click
+    33 |         </button>
+
+ERROR in src/pages/homepage.tsx:31:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    29 |         </div>
+    30 |         <p>count: {this.state.count} times</p>
+  > 31 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    32 |           Click
+    33 |         </button>
+    34 |       </div>
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Unexpected token. Did you mean `{'>'}` or `&gt;`? (22:12)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unterminated JSX contents. (40:8)
+
+  38 |         </button>
+  39 |       </div>
+> 40 |      </>
+     |         ^
+  41 |    );
+  42 |  }
+  43 | }
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.jsxReadToken (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6600:20)
+    at TypeScriptParserMixin.getTokenFromCode (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6942:12)
+    at TypeScriptParserMixin.getTokenFromCode (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9847:11)
+    at TypeScriptParserMixin.nextToken (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2347:10)
+    at TypeScriptParserMixin.next (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2258:10)
+    at TypeScriptParserMixin.eat (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2262:12)
+    at TypeScriptParserMixin.jsxParseClosingElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6836:14)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6855:37)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseExprListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12020:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11054:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10964:29)
+    at TypeScriptParserMixin.parseSubscript (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10899:19)
+    at TypeScriptParserMixin.parseSubscript (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9167:18)
+    at TypeScriptParserMixin.parseSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10870:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10861:17)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12737:23)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 22:12:  Parsing error: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+webpack compiled with 2 errors and 1 warning
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx
+TS1005: '</' expected.
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:16:2
+TS2416: Property 'render' in type 'Homepage' is not assignable to the same property in base type 'Component<{}, {}, any>'.
+  Type '() => void' is not assignable to type '() => ReactNode'.
+    Type 'void' is not assignable to type 'ReactNode'.
+    14 |  }
+    15 |
+  > 16 |  render() {
+       |  ^^^^^^
+    17 |   let videoTitles = []
+    18 |   for (var i=0; i < 2; i++) {
+    19 |     videoTitles.push(
+
+ERROR in src/pages/homepage.tsx:20:8
+TS17008: JSX element 'div' has no corresponding closing tag.
+    18 |   for (var i=0; i < 2; i++) {
+    19 |     videoTitles.push(
+  > 20 |       <div className="flex-initial self-center">
+       |        ^^^
+    21 |         <p className="text-2xl">Annotator</p>
+    22 |         /div>
+    23 |     
+
+ERROR in src/pages/homepage.tsx:22:13
+TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+    20 |       <div className="flex-initial self-center">
+    21 |         <p className="text-2xl">Annotator</p>
+  > 22 |         /div>
+       |             ^
+    23 |     
+    24 |     )
+    25 |   }
+
+ERROR in src/pages/homepage.tsx:25:3
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    23 |     
+    24 |     )
+  > 25 |   }
+       |   ^
+    26 |
+    27 |   return (
+    28 |     <>
+
+ERROR in src/pages/homepage.tsx:35:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    33 |           </div>
+    34 |         </div>
+  > 35 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    36 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    37 |           Click
+    38 |         </button>
+
+ERROR in src/pages/homepage.tsx:36:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    34 |         </div>
+    35 |         <p>count: {this.state.count} times</p>
+  > 36 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    37 |           Click
+    38 |         </button>
+    39 |       </div>
+
+ERROR in src/pages/homepage.tsx:42:2
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    40 |      </>
+    41 |    );
+  > 42 |  }
+       |  ^
+    43 | }
+    44 |
+    45 | export default Homepage;
+
+ERROR in src/pages/homepage.tsx:43:1
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    41 |    );
+    42 |  }
+  > 43 | }
+       | ^
+    44 |
+    45 | export default Homepage;
+
+ERROR in src/pages/index.ts:1:10
+TS2305: Module '"./homepage"' has no exported member 'default'.
+  > 1 | export { default as Homepage } from './homepage';
+      |          ^^^^^^^
+
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/homepage.tsx
+Syntax error: Identifier expected (38:7)
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+ERROR in ./src/pages/homepage.tsx
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /content/traffic-incident-detection/flask-react/frontend/src/pages/homepage.tsx: Unterminated JSX contents. (38:8)
+
+  36 |         </button>
+  37 |       </div>
+> 38 |      </>
+     |         ^
+  39 |    );
+  40 |  }
+  41 | }
+    at constructor (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:356:19)
+    at TypeScriptParserMixin.raise (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3223:19)
+    at TypeScriptParserMixin.jsxReadToken (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6600:20)
+    at TypeScriptParserMixin.getTokenFromCode (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6942:12)
+    at TypeScriptParserMixin.getTokenFromCode (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9847:11)
+    at TypeScriptParserMixin.nextToken (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2347:10)
+    at TypeScriptParserMixin.next (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2258:10)
+    at TypeScriptParserMixin.eat (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:2262:12)
+    at TypeScriptParserMixin.jsxParseClosingElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6836:14)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6855:37)
+    at TypeScriptParserMixin.jsxParseElementAt (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6858:32)
+    at TypeScriptParserMixin.jsxParseElement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6915:17)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6927:19)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:39
+    at TypeScriptParserMixin.tryParse (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:3592:20)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9632:18)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12284:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10567:17)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11499:28)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:11137:23)
+    at TypeScriptParserMixin.parseExprAtom (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:6932:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10857:23)
+    at TypeScriptParserMixin.parseUpdate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10840:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10816:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9696:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10654:61)
+    at TypeScriptParserMixin.parseExprOps (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10659:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10636:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10597:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9643:20)
+    at TypeScriptParserMixin.parseExpressionBase (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10551:23)
+    at /content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:39
+    at TypeScriptParserMixin.allowInAnd (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12279:16)
+    at TypeScriptParserMixin.parseExpression (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:10547:17)
+    at TypeScriptParserMixin.parseReturnStatement (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13003:28)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12621:21)
+    at TypeScriptParserMixin.parseStatementContent (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:9340:18)
+    at TypeScriptParserMixin.parseStatementLike (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12588:17)
+    at TypeScriptParserMixin.parseStatementListItem (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:12568:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13189:61)
+    at TypeScriptParserMixin.parseBlockBody (/content/traffic-incident-detection/flask-react/frontend/node_modules/@babel/parser/lib/index.js:13182:10)
+
+ERROR in [eslint] 
+src/pages/homepage.tsx
+  Line 38:7:  Parsing error: Identifier expected
+
+webpack compiled with 2 errors and 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx
+TS1005: '</' expected.
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:26:11
+TS17014: JSX fragment has no corresponding closing tag.
+    24 |   }
+    25 |
+  > 26 |   return (
+       |           ^
+  > 27 |     <>
+       | ^^^^^^^
+    28 |       <div>
+    29 |         <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
+    30 |           <div className="flex-initial self-center">
+
+ERROR in src/pages/homepage.tsx:33:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |             {videoTitles}
+    32 |         </div>
+  > 33 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    34 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    35 |           Click
+    36 |         </button>
+
+ERROR in src/pages/homepage.tsx:34:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    32 |         </div>
+    33 |         <p>count: {this.state.count} times</p>
+  > 34 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    35 |           Click
+    36 |         </button>
+    37 |       </div>
+
+ERROR in src/pages/homepage.tsx:38:8
+TS1003: Identifier expected.
+    36 |         </button>
+    37 |       </div>
+  > 38 |      </>
+       |        ^
+    39 |    );
+    40 |  }
+    41 | }
+
+ERROR in src/pages/homepage.tsx:40:2
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    38 |      </>
+    39 |    );
+  > 40 |  }
+       |  ^
+    41 | }
+    42 |
+    43 | export default Homepage;
+
+ERROR in src/pages/homepage.tsx:41:1
+TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+    39 |    );
+    40 |  }
+  > 41 | }
+       | ^
+    42 |
+    43 | export default Homepage;
+
+ERROR in src/pages/index.ts:1:10
+TS2305: Module '"./homepage"' has no exported member 'default'.
+  > 1 | export { default as Homepage } from './homepage';
+      |          ^^^^^^^
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/navbar.tsx
+  Line 3:8:  'github_logo_dark' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/pages/homepage.tsx
+  Line 2:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 3:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+
+webpack compiled with 1 warning
+ERROR in src/components/navbar.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class NavBar extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |    };
+
+ERROR in src/pages/homepage.tsx:6:14
+TS7006: Parameter 'props' implicitly has an 'any' type.
+    4 |
+    5 | class Homepage extends React.Component {
+  > 6 |  constructor(props) {
+      |              ^^^^^
+    7 |    super(props);
+    8 |    this.state = {
+    9 |     count: 0,
+
+ERROR in src/pages/homepage.tsx:32:31
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    30 |             {videoTitles}
+    31 |         </div>
+  > 32 |         <p>count: {this.state.count} times</p>
+       |                               ^^^^^
+    33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    34 |           Click
+    35 |         </button>
+
+ERROR in src/pages/homepage.tsx:33:66
+TS2339: Property 'count' does not exist on type 'Readonly<{}>'.
+    31 |         </div>
+    32 |         <p>count: {this.state.count} times</p>
+  > 33 |         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+       |                                                                  ^^^^^
+    34 |           Click
+    35 |         </button>
+    36 |       </div>
+

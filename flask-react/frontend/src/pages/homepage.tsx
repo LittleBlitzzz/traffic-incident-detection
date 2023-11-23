@@ -14,9 +14,21 @@ class Homepage extends React.Component {
  }
 
  render() {
-   return (
-     <>
+  let videoTitles = []
+  for (var i=0; i < 2; i++) {
+    videoTitles.push(
+      <div className="flex-initial self-center mx-2">
+        <p className="text-xl">Annotator</p>
+      </div>
+    )
+  }
+
+  return (
+    <>
       <div>
+        <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
+            {videoTitles}
+        </div>
         <p>count: {this.state.count} times</p>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
           Click
