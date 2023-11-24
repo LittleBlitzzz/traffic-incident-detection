@@ -7,7 +7,11 @@ function App() {
   return (
     <>
       <NavBar />
-      <Homepage />
+      <Homepage 
+        datasetName="extracted_frames"
+        currVideoName="000000"
+        currFilename="6.jpg"
+      />
     </>
   );
 }
