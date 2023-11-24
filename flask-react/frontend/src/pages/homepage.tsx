@@ -11,6 +11,9 @@ interface HomepageProps {
 
 const Homepage: React.FC<HomepageProps> = ({ datasetName, currVideoName, currFilename }) => {
   const [count, setCount] = useState(0);
+  console.log(datasetName);
+  console.log(currVideoName);
+  console.log(currFilename);
 
   let videoTitles = []
   for (var i=0; i < 2; i++) {
@@ -21,15 +24,26 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName, currVideoName, currFil
     )
   }
 
-  const options = ['option 1', 'option 2']
+  const apiUrl = '/videos-in-dataset/extracted_frames';
+  let options = ['option 1', 'option 2']
+  fetch(apiUrl)
+    .then(response => {
+      response.json().then(data => {
+        console.log("Hi");
+        console.log(data);
+        options = data;
+      });
+    })
+    .catch(error => console.error('Error:', error));
+
   return (
     <>
       <div>
-        <div className="flex-initial self-center mr-2">
-          <Dropdown options={options} />
-        </div>
         <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
-            {videoTitles}
+          <div className="flex-initial self-center mr-2">
+            <Dropdown options={options} />
+          </div>
+          {videoTitles}
         </div>
         <p>count: {count} times</p>
         <button onClick={ () => setCount(count + 1) }>
