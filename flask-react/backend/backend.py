@@ -2,10 +2,8 @@ from flask import Flask, jsonify
 from natsort import natsorted
 import os
 from flask import Flask
-from flask_cors import CORS
 
 api = Flask("api")
-CORS(api, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Route for seeing a data
 @api.route('/videos-in-dataset/<dataset_name>', methods=['GET'])

@@ -2,43 +2,78 @@
 > frontend@0.1.0 dev /content/traffic-incident-detection/flask-react/frontend
 > concurrently "npm run start" "npm run start-backend"
 
-[0] 
-[0] > frontend@0.1.0 start /content/traffic-incident-detection/flask-react/frontend
-[0] > react-scripts start
-[0] 
 [1] 
 [1] > frontend@0.1.0 start-backend /content/traffic-incident-detection/flask-react/frontend
 [1] > cd ../backend && env/bin/flask run
 [1] 
+[0] 
+[0] > frontend@0.1.0 start /content/traffic-incident-detection/flask-react/frontend
+[0] > react-scripts start
+[0] 
 [1]  * Serving Flask app 'backend.py'
 [1]  * Debug mode: off
 [1] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
 [1]  * Running on http://127.0.0.1:5000
 [1] [33mPress CTRL+C to quit[0m
-[0] [HPM] Proxy created: /  -> http://localhost:5000
-[0] (node:5492) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+[0] https://b4cb-34-125-80-52.ngrok-free.app
+[0] [HPM] Proxy created: /  -> https://b4cb-34-125-80-52.ngrok-free.app
+[0] (node:21593) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 [0] (Use `node --trace-deprecation ...` to show where the warning was created)
-[0] (node:5492) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+[0] (node:21593) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 [0] Starting the development server...
 [0] 
-[0] Compiled with warnings.
+[0] Compiled successfully!
 [0] 
-[0] [eslint] 
-[0] src/pages/homepage.tsx
-[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
-[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] You can now view frontend in the browser.
 [0] 
-[0] Search for the keywords to learn more about each warning.
-[0] To ignore, add // eslint-disable-next-line to the line before.
+[0]   Local:            http://localhost:3000
+[0]   On Your Network:  http://172.28.0.12:3000
 [0] 
-[0] WARNING in [eslint] 
-[0] src/pages/homepage.tsx
-[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
-[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] Note that the development build is not optimized.
+[0] To create a production build, use npm run build.
 [0] 
-[0] webpack compiled with 1 warning
+[0] webpack compiled successfully
 [0] Files successfully emitted, waiting for typecheck results...
 [0] Issues checking in progress...
+[0] ERROR in src/components/navbar.tsx:6:14
+[0] TS7006: Parameter 'props' implicitly has an 'any' type.
+[0]     4 |
+[0]     5 | class NavBar extends React.Component {
+[0]   > 6 |  constructor(props) {
+[0]       |              ^^^^^
+[0]     7 |    super(props);
+[0]     8 |    this.state = {
+[0]     9 |    };
+[0] 
+[0] Compiling...
+[0] Compiled successfully!
+[0] webpack compiled successfully
+[0] Compiling...
+[0] ERROR in src/components/navbar.tsx:6:14
+[0] TS7006: Parameter 'props' implicitly has an 'any' type.
+[0]     4 |
+[0]     5 | class NavBar extends React.Component {
+[0]   > 6 |  constructor(props) {
+[0]       |              ^^^^^
+[0]     7 |    super(props);
+[0]     8 |    this.state = {
+[0]     9 |    };
+[0] 
+[0] Compiled successfully!
+[0] webpack compiled successfully
+[0] ERROR in src/components/navbar.tsx:6:14
+[0] TS7006: Parameter 'props' implicitly has an 'any' type.
+[0]     4 |
+[0]     5 | class NavBar extends React.Component {
+[0]   > 6 |  constructor(props) {
+[0]       |              ^^^^^
+[0]     7 |    super(props);
+[0]     8 |    this.state = {
+[0]     9 |    };
+[0] 
+[0] Compiling...
+[0] Compiled successfully!
+[0] webpack compiled successfully
 [0] ERROR in src/components/navbar.tsx:6:14
 [0] TS7006: Parameter 'props' implicitly has an 'any' type.
 [0]     4 |
@@ -66,6 +101,7 @@
 [0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
 [0] 
 [0] webpack compiled with 1 warning
+[0] Compiling...
 [0] ERROR in src/components/navbar.tsx:6:14
 [0] TS7006: Parameter 'props' implicitly has an 'any' type.
 [0]     4 |
@@ -76,5 +112,73 @@
 [0]     8 |    this.state = {
 [0]     9 |    };
 [0] 
+[0] Compiled with warnings.
+[0] 
+[0] [eslint] 
+[0] src/pages/homepage.tsx
+[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] 
+[0] Search for the keywords to learn more about each warning.
+[0] To ignore, add // eslint-disable-next-line to the line before.
+[0] 
+[0] WARNING in [eslint] 
+[0] src/pages/homepage.tsx
+[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] 
+[0] webpack compiled with 1 warning
+[0] ERROR in src/components/navbar.tsx:6:14
+[0] TS7006: Parameter 'props' implicitly has an 'any' type.
+[0]     4 |
+[0]     5 | class NavBar extends React.Component {
+[0]   > 6 |  constructor(props) {
+[0]       |              ^^^^^
+[0]     7 |    super(props);
+[0]     8 |    this.state = {
+[0]     9 |    };
+[0] 
+[0] [0;33mOne of your dependencies, babel-preset-react-app, is importing the
+[0] "@babel/plugin-proposal-private-property-in-object" package without
+[0] declaring it in its dependencies. This is currently working because
+[0] "@babel/plugin-proposal-private-property-in-object" is already in your
+[0] node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+[0] 
+[0] babel-preset-react-app is part of the create-react-app project, [1mwhich
+[0] is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+[0] ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+[0] your devDependencies to work around this error. This will make this message
+[0] go away.[0m
+[0]   
+[0] Compiling...
+[0] Compiled with warnings.
+[0] 
+[0] [eslint] 
+[0] src/pages/homepage.tsx
+[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] 
+[0] Search for the keywords to learn more about each warning.
+[0] To ignore, add // eslint-disable-next-line to the line before.
+[0] 
+[0] WARNING in [eslint] 
+[0] src/pages/homepage.tsx
+[0]   Line 1:8:  'github_logo_light' is defined but never used  @typescript-eslint/no-unused-vars
+[0]   Line 2:8:  'github_logo_dark' is defined but never used   @typescript-eslint/no-unused-vars
+[0] 
+[0] webpack compiled with 1 warning
+[0] ERROR in src/components/navbar.tsx:6:14
+[0] TS7006: Parameter 'props' implicitly has an 'any' type.
+[0]     4 |
+[0]     5 | class NavBar extends React.Component {
+[0]   > 6 |  constructor(props) {
+[0]       |              ^^^^^
+[0]     7 |    super(props);
+[0]     8 |    this.state = {
+[0]     9 |    };
+[0] 
+[1] 127.0.0.1 - - [25/Nov/2023 00:29:42] "[33mGET / HTTP/1.1[0m" 404 -
+[1] 127.0.0.1 - - [25/Nov/2023 00:29:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[1] 127.0.0.1 - - [25/Nov/2023 00:30:08] "[33mGET / HTTP/1.1[0m" 404 -
 [0] npm run start exited with code SIGINT
 [1] npm run start-backend exited with code SIGINT
