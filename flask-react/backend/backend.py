@@ -1,17 +1,12 @@
-from flask import Flask, jsonify
+from flask import Flask
 from natsort import natsorted
 import os
-from flask import Flask
 
-api = Flask("api")
+from annotator_api import annotator_api
 
-# Route for seeing a data
-@api.route('/api/videos-in-dataset/<dataset_name>', methods=['GET'])
-def videos_in_dataset(dataset_name):
-  dataset_path = os.path.join(os.environ["project_path"], "Datasets", dataset_name)
-  if os.path.exists(dataset_path):
-    video_titles = natsorted(os.listdir(dataset_path))
-    
-  return {
-    "video_titles": video_titles
-  }
+app = Flask(__name__)
+app.register_blueprint(annotator_api)
+
+@app.route('/', methods=['GET'])
+def welcome():
+  return "Welcome to the annotator backend!"
