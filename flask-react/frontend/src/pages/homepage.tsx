@@ -26,15 +26,15 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName, currVideoName, currFil
 
   const apiUrl = '/api/videos-in-dataset/extracted_frames';
   let options = ['option 1', 'option 2']
-  fetch(apiUrl)
+  fetch(apiUrl, {
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+      }),
+  })
     .then(response => {
       response.text().then(body => {
         console.log(body);
-      });
-      response.json().then(data => {
-        console.log("Hi");
-        console.log(data);
-        options = data;
       });
     })
     .catch(error => console.error('Error:', error));
