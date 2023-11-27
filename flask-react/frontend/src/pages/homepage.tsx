@@ -53,7 +53,7 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
   )
 
   let imageFileNameList = (
-    <div className="flex overflow-x-auto self-center">
+    <div className="flex overflow-x-auto self-center grow">
       {
         imageFileNames.map((filename) => {
           let styleClass = "p-2 mx-2 h-full rounded-lg hover:cursor-pointer "
@@ -74,39 +74,45 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
     </div>
   )
 
-  console.log(currImageFileName);
-  let annotatorPanel = (currVideoName !== "" && currImageFileName !== "") ? (
-    <div className="px-36 pt-8 flex">
-        <ImageFromBackend
-         datasetName={datasetName}
-         videoName={currVideoName}
-         imageFileName={currImageFileName}
-         altText="Video footage"
-         className="rounded-lg w-[400px] border-2 border-slate-400"
-        />
-        <div className="w-10"></div>
-        <div className="flex flex-col">
-          <p>Environment details:</p>
-            <p className="ml-2">Road details:</p>
-              <p className="ml-4">Location:</p>
-              <p className="ml-4">Type of Road:</p>
-              <p className="ml-4">Road layout:</p>
-              <p className="ml-4">Surroundings:</p>
-            <p className="ml-2">Time of Day:</p>
-            <p className="ml-2">Weather:</p>
-            <p className="ml-2">Lighting Conditions:</p>
-            <p className="ml-2">Traffic density:</p>
-          <p>Traffic Participants:</p>
-            <p className="ml-2">Motor Vehicles:</p>
-              <p className="ml-4">Cars:</p>
-              <p className="ml-4">Trucks/Large Vehicles:</p>
-              <p className="ml-4">Motorcycles/Rickshaws:</p>
-            <p className="ml-2">Cyclists:</p>
-            <p className="ml-2">Pedestrians:</p>
-        </div>
+  let ssimFilterToggle = (
+    <div className="flex-none p-2 mx-2 h-full rounded-lg bg-slate-300 hover:cursor-pointer ">
+      <p>SSIM Filter</p>
     </div>
-  ) : (
-    <div>
+  )
+
+  let annotatorPanel = (
+    <div className="px-36 pt-8 flex">
+      { (currVideoName !== "" && currImageFileName !== "") &&
+        <>
+          <ImageFromBackend
+            datasetName={datasetName}
+            videoName={currVideoName}
+            imageFileName={currImageFileName}
+            altText="Video footage"
+            className="rounded-lg w-[400px] h-fit border-2 border-slate-400"
+          />
+          <div className="w-10"></div>
+          <div className="flex flex-col">
+            <p>Environment details:</p>
+              <p className="ml-2">Road details:</p>
+                <p className="ml-4">Location:</p>
+                <p className="ml-4">Type of Road:</p>
+                <p className="ml-4">Road layout:</p>
+                <p className="ml-4">Surroundings:</p>
+              <p className="ml-2">Time of Day:</p>
+              <p className="ml-2">Weather:</p>
+              <p className="ml-2">Lighting Conditions:</p>
+              <p className="ml-2">Traffic density:</p>
+            <p>Traffic Participants:</p>
+              <p className="ml-2">Motor Vehicles:</p>
+                <p className="ml-4">Cars:</p>
+                <p className="ml-4">Trucks/Large Vehicles:</p>
+                <p className="ml-4">Motorcycles/Rickshaws:</p>
+              <p className="ml-2">Cyclists:</p>
+              <p className="ml-2">Pedestrians:</p>
+          </div>
+        </>
+      }
     </div>
   )
   
@@ -116,6 +122,7 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
         <div id="nav-bar" className="flex py-4 px-36 bg-slate-200">
           {videoDropdown}
           {imageFileNameList}
+          {ssimFilterToggle}
         </div>
         {annotatorPanel}
       </div>

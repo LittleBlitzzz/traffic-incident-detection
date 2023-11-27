@@ -40,7 +40,6 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
         console.error(error);
       });
   };
-
   useEffect(() => {
     fetchImage();
   }, [apiUrl]);
