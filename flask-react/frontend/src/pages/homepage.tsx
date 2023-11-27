@@ -74,17 +74,36 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
     </div>
   )
 
+  console.log(currImageFileName);
   let annotatorPanel = (currVideoName !== "" && currImageFileName !== "") ? (
     <div className="px-36 pt-8 flex">
-      <div className="w-[400px] bg-cyan-100 border-cyan-300 border-2">
         <ImageFromBackend
          datasetName={datasetName}
          videoName={currVideoName}
          imageFileName={currImageFileName}
          altText="Video footage"
-         className="rounded-lg"
+         className="rounded-lg w-[400px] border-2 border-slate-400"
         />
-      </div>
+        <div className="w-10"></div>
+        <div className="flex flex-col">
+          <p>Environment details:</p>
+            <p className="ml-2">Road details:</p>
+              <p className="ml-4">Location:</p>
+              <p className="ml-4">Type of Road:</p>
+              <p className="ml-4">Road layout:</p>
+              <p className="ml-4">Surroundings:</p>
+            <p className="ml-2">Time of Day:</p>
+            <p className="ml-2">Weather:</p>
+            <p className="ml-2">Lighting Conditions:</p>
+            <p className="ml-2">Traffic density:</p>
+          <p>Traffic Participants:</p>
+            <p className="ml-2">Motor Vehicles:</p>
+              <p className="ml-4">Cars:</p>
+              <p className="ml-4">Trucks/Large Vehicles:</p>
+              <p className="ml-4">Motorcycles/Rickshaws:</p>
+            <p className="ml-2">Cyclists:</p>
+            <p className="ml-2">Pedestrians:</p>
+        </div>
     </div>
   ) : (
     <div>
