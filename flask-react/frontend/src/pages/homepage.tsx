@@ -11,9 +11,14 @@ interface HomepageProps {
 
 const Homepage: React.FC<HomepageProps> = ({ datasetName, currVideoName, currFilename }) => {
   const [count, setCount] = useState(0);
+  const [options, setOptions] = useState(['option 1', 'option 2'])
+  const [isLoading, setIsLoading] = useState(true);
+
   console.log(datasetName);
   console.log(currVideoName);
   console.log(currFilename);
+
+  let isLoading = true;
 
   let videoTitles = []
   for (var i=0; i < 2; i++) {
@@ -25,19 +30,22 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName, currVideoName, currFil
   }
 
   const apiUrl = '/api/videos-in-dataset/extracted_frames';
-  let options = ['option 1', 'option 2']
-  fetch(apiUrl, {
-      method: "get",
-      headers: new Headers({
-        "ngrok-skip-browser-warning": "1",
-      }),
-  })
-    .then(response => {
-      response.text().then(body => {
-        console.log(body);
-      });
+  
+  if (isLoading) {
+    fetch(apiUrl, {
+        method: "get",
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "1",
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(typeof data)
+      isLoading = false;
+      setOptions(data);
     })
     .catch(error => console.error('Error:', error));
+  }
 
   return (
     <>

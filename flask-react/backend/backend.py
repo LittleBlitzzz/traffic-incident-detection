@@ -9,4 +9,10 @@ app.register_blueprint(annotator_api)
 
 @app.route('/', methods=['GET'])
 def welcome():
-  return "Welcome to the annotator backend!"
+  return """
+  <h1>Welcome to the annotator backend!<h1>
+  <div style='width: 10px'></div>
+  <p>This page is intended for testing the API.<p>
+  <div style='width: 10px'></div>
+  """
+  # var obj = JSON.parse(string);

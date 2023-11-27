@@ -1,7 +1,9 @@
 from flask import Flask, Blueprint, request
 from natsort import natsorted
 import os
-import json
+import yaml
+
+from traffic_annotation import TrafficAnnotation
 
 annotator_api = Blueprint('api', __name__, url_prefix='/api')
 
@@ -23,25 +25,25 @@ def save_annotations(dataset_name, video_name, image_filename):
   if request.method == "POST":
     request_json = request.get_json()
 
-    annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.json")
+    annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
 
-    content = {
-      "annotations" : {}
-    }
-
-    if (os.path.exists(annotations_filepath)):
-      with open(annotations_filepath, "r") as existing_annotations_file:
-        file_content = existing_annotations_file.read()
-        if file_content:
-          content = json.loads(existing_annotations_file)
-
-      output_logs["existing_annotations"] = True
-    else :
-      output_logs["existing_annotations"] = False
+    annotations = TrafficAnnotation()
+    output_logs["existing_annotations"] = annotations.read_from_file(annotations_filepath)
     
-    content["annotations"][image_filename] = request_json["annotated_labels"]
-
-    with open(annotations_filepath, "w") as existing_annotations_file:
-      existing_annotations_file.write(json.dumps(content, indent=2))
+    # check inputs
+    request_annotations = request_json["annotations"]
+    print(request_annotations)
+    apply_dictionary_values(annotations.annotations, request_annotations)
+ 
+    annotations.save_to_file(annotations_filepath)
 
   return output_logs
+
+def apply_dictionary_values(attrDict, targetDict):
+  for k, v in targetDict.items():
+    if v is not None:
+      if attrDict.get(k, None) is not None:
+        if isinstance(k, dict):
+          apply_dictionary_values(attrDict[k], v)
+        else:
+          attrDict[k] = v
