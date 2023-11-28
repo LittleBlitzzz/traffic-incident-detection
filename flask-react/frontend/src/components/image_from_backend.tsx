@@ -28,11 +28,9 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
         console.log(blob)
         if (imageSrc) {
           URL.revokeObjectURL(imageSrc);
-          console.log("revoked : " + imageSrc)
         }
         const imageUrl = URL.createObjectURL(blob);
         setImageSrc(imageUrl);
-        console.log("Created : " + imageUrl)
       })
       .catch(error => {
         console.error(error);

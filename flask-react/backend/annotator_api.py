@@ -46,18 +46,19 @@ def save_annotations(dataset_name, video_name, image_filename):
   
   if request.method == "POST":
     request_json = request.get_json()
+    print(request_json)
 
-    annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
+    # annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
 
-    annotations = TrafficAnnotation()
-    output_logs["existing_annotations"] = annotations.read_from_file(annotations_filepath)
+    # annotations = TrafficAnnotation()
+    # output_logs["existing_annotations"] = annotations.read_from_file(annotations_filepath)
     
-    # check inputs
-    request_annotations = request_json["annotations"]
-    print(request_annotations)
-    apply_dictionary_values(annotations.annotations, request_annotations)
+    # # check inputs
+    # request_annotations = request_json["annotations"]
+    # print(request_annotations)
+    # apply_dictionary_values(annotations.annotations, request_annotations)
  
-    annotations.save_to_file(annotations_filepath)
+    # annotations.save_to_file(annotations_filepath)
 
   return output_logs
 

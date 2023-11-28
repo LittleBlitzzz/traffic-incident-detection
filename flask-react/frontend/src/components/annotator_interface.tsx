@@ -17,6 +17,11 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const unableToIdentifyOption = "Unknown/Indistinguishable";
   const objectVolumeOptions = [ 'At least one', 'A few', 'Multiple' ];
   
+  const handleFormSubmission = () => {
+    console.log("Form");
+
+  };
+
   return (
     <>
       <ImageFromBackend
@@ -28,7 +33,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       />
       <div className="w-10"></div>
       <div className="flex flex-col">
-        <form>
+        <form action={handleFormSubmission}>
           <p>Environment details:</p>
             <p className="ml-2">Road details:</p>
               <div className='flex items-center'>
@@ -96,6 +101,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                 options={objectVolumeOptions}
                 title='Pedestrians'
               />
+          <button formaction="/api/save-annotations/{datasetName}/{videoName}/{imageFileName}">Click Me!</button>
         </form>
       </div>
     </>
