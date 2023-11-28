@@ -7,12 +7,19 @@ interface DropdownProps {
   options: string[];
   title: string;
   inputValueName; string;
+  initialValue: string;
   onOptionSelected: (option: string) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an option', inputValueName = "_dropdown", onOptionSelected = null }) => {
+const Dropdown: React.FC<DropdownProps> = ({ 
+    options = [], 
+    title = 'Select an option', 
+    inputValueName = "_dropdown", 
+    initialValue = null,
+    onOptionSelected = null,
+  }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string | null>(initialValue || null);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);

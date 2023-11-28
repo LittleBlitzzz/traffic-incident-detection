@@ -51,38 +51,42 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   };
 
   const unableToIdentifyOption = "Unknown/Indistinguishable";
-  const objectVolumeOptions = [ "At least one", "A few", "Multiple" ];
+  const objectVolumeOptions = [ "None", "At least one", "A few", "Multiple" ];
   
   const handleFormSubmission = (e) => {
-    console.log(document.forms.Testing)
+    e.preventDefault();
+    console.log(document.forms.Testing);
+    console.log(e.target.road_location.value);
   };
 
   return (
     <>
-      <ImageFromBackend
-        datasetName={datasetName}
-        videoName={videoName}
-        imageFileName={imageFileName}
-        altText="Video footage"
-        className="rounded-lg w-[400px] h-fit border-2 border-slate-400"
-      />
       <div className="w-10"></div>
       <div className="flex flex-col">
         <form onSubmit={handleFormSubmission} id="Testing">
           <p>Environment details:</p>
             <p className="ml-2">Road details:</p>
-              <div className="flex items-center">
-                <p className="ml-4">Road Location:</p>
-                <Dropdown
-                  options={[ "Urban", "Suburban", "Rural", unableToIdentifyOption ]}
-                  title="Road Location"
-                />
-              </div>
-              <p className="ml-4">Type of Road:</p>
-              <Dropdown
-                options={[ "Highway", "Street", "Alley", unableToIdentifyOption ]}
-                title="Type of Road"
+              <DropdownWithLabel 
+                dropdown={{
+                  options:[ "Urban", "Suburban", "Rural", unableToIdentifyOption ],
+                  title:"Road Location",
+                  inputValueName:"road_location",
+                  initialValue:"Urban"
+                }}
+                label="Road Location"
               />
+
+              <DropdownWithLabel 
+                dropdown={{
+                  options:[ "Highway", "Street", "Alley", unableToIdentifyOption ],
+                  title:"Type of Road",
+                  inputValueName:"road_type",
+                  initialValue:"Highway"
+                }}
+                label="Type of Road"
+              />
+
+
               <p className="ml-4">Road layout:</p>
               <Dropdown
                 options={[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ]}
@@ -136,7 +140,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                 options={objectVolumeOptions}
                 title='Pedestrians'
               />
-          <button formaction="/api/save-annotations/{datasetName}/{videoName}/{imageFileName}">Click Me!</button>
+          <input type="submit" value="Hello "/>
         </form>
       </div>
     </>
@@ -144,3 +148,21 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 }
 
 export default AnnotatorInterface;
+
+
+
+const DropdownWithLabel = ({ dropdown, label } : { dropdown : DropdownProps, label: string}) => {
+  return (
+    <>
+      <div className="flex items-center py-2">
+        <p className="ml-4 w-40">{label}:</p>
+        <Dropdown
+          options={dropdown.options}
+          title={dropdown.title}
+          inputValueName={dropdown.inputValueName}
+          initialValue={dropdown.initialValue}
+        />
+      </div>
+    </>
+  )
+}

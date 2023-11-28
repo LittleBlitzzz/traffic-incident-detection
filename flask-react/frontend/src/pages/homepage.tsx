@@ -82,11 +82,20 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
   let annotatorPanel = (
     <div className="px-36 pt-8 flex">
       { (currVideoName !== "" && currImageFileName !== "") &&
-        <AnnotatorInterface
-          datasetName={datasetName}
-          videoName={currVideoName}
-          imageFileName={currImageFileName}
-        />
+        <>
+          <ImageFromBackend
+            datasetName={datasetName}
+            videoName={currVideoName}
+            imageFileName={currImageFileName}
+            altText="Video footage"
+            className="rounded-lg w-[400px] h-fit border-2 border-slate-400"
+          />
+          <AnnotatorInterface
+            datasetName={datasetName}
+            videoName={currVideoName}
+            imageFileName={currImageFileName}
+          />
+        </>
       }
     </div>
   )
