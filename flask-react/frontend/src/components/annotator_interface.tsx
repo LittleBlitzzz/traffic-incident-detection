@@ -69,77 +69,42 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
               <DropdownWithLabel 
                 dropdown={{
                   options:[ "Urban", "Suburban", "Rural", unableToIdentifyOption ],
-                  title:"Road Location",
                   inputValueName:"road_location",
-                  initialValue:"Urban"
                 }}
                 label="Road Location"
+                indentClass="ml-4"
               />
 
               <DropdownWithLabel 
                 dropdown={{
                   options:[ "Highway", "Street", "Alley", unableToIdentifyOption ],
-                  title:"Type of Road",
                   inputValueName:"road_type",
-                  initialValue:"Highway"
                 }}
                 label="Type of Road"
+                indentClass="ml-4"
               />
 
-
-              <p className="ml-4">Road layout:</p>
-              <Dropdown
-                options={[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ]}
-                title='Road Layout'
+              <DropdownWithLabel 
+                dropdown={{
+                  options:[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ],
+                  inputValueName:"road_layout",
+                }}
+                label="Road Layout"
+                indentClass="ml-4"
               />
+
               <p className="ml-4">Surroundings:</p>
-            <p className="ml-2">Time of Day:</p>
-              <Dropdown
-                options={[ 'Dawn/Dusk', 'Daytime', 'Night', unableToIdentifyOption ]}
-                title='Time of Day'
-              />
-            <p className="ml-2">Weather Conditions:</p>
-              <Dropdown
-                options={[ 'Clear', 'Raining', 'Snowing', unableToIdentifyOption ]}
-                title='Weather'
-              />
-            <p className="ml-2">Lighting Conditions:</p>
-              <Dropdown
-                options={[ 'Daylight', 'Low light', 'Street lights', unableToIdentifyOption ]}
-                title='Lighting Conditions'
-              />
-            <p className="ml-2">Traffic Density:</p>
-              <Dropdown
-                options={[ 'Empty', 'Sparse', 'Moderate', 'Dense' ]}
-                title='Traffic Density'
-              />
-          <p>Traffic Participants:</p>
-            <p className="ml-2">Motor Vehicles:</p>
-              <p className="ml-4">Cars:</p>
-              <Dropdown
-                options={objectVolumeOptions}
-                title='Cars'
-              />
-              <p className="ml-4">Trucks/Large Vehicles:</p>
-              <Dropdown
-                options={objectVolumeOptions}
-                title='Trucks/Large Vehicles'
-              />
-              <p className="ml-4">Motorcycles/Rickshaws:</p>
-              <Dropdown
-                options={objectVolumeOptions}
-                title='Motorcycles'
-              />
-            <p className="ml-2">Cyclists:</p>
-              <Dropdown
-                options={objectVolumeOptions}
-                title='Cyclists'
-              />
-            <p className="ml-2">Pedestrians:</p>
-              <Dropdown
-                options={objectVolumeOptions}
-                title='Pedestrians'
-              />
+              
+
+            <DropdownWithLabel 
+              dropdown={{
+                options={[ 'Dawn/Dusk', 'Daytime', 'Night', unableToIdentifyOption ]},
+                inputValueName:"time_of_day",
+              }}
+              label="Time of Day"
+              indentClass="ml-2"
+            />
+              
           <input type="submit" value="Hello "/>
         </form>
       </div>
@@ -151,11 +116,12 @@ export default AnnotatorInterface;
 
 
 
-const DropdownWithLabel = ({ dropdown, label } : { dropdown : DropdownProps, label: string}) => {
+const DropdownWithLabel = ({ dropdown, label, indentClass } : { dropdown : DropdownProps, label: string, indentClass:string}) => {
+  dropdown.initialValue = dropdown.options[0]
   return (
     <>
       <div className="flex items-center py-2">
-        <p className="ml-4 w-40">{label}:</p>
+        <p className="{indentClass} w-40">{label}:</p>
         <Dropdown
           options={dropdown.options}
           title={dropdown.title}
