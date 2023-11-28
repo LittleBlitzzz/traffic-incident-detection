@@ -1,7 +1,6 @@
-import github_logo_light from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark.svg"
-import github_logo_dark from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark-white.svg"
+
 import React, { useState, useEffect } from 'react';
-import { Dropdown, ImageFromBackend } from '../components';
+import { Dropdown, ImageFromBackend, AnnotatorInterface } from '../components';
 
 interface HomepageProps {
   datasetName: string
@@ -11,8 +10,8 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
   const [videoTitles, setVideoTitles] = useState([])
   const [imageFileNames, setImageFileNames] = useState([])
 
-  const [currVideoName, setCurrVideoName] = useState("")
-  const [currImageFileName, setCurrImageFileName] = useState("")
+  const [currVideoName, setCurrVideoName] = useState("000000")
+  const [currImageFileName, setCurrImageFileName] = useState("0.jpg")
 
   useEffect(() => {
     fetch('/api/videos-in-dataset/' + datasetName, {
@@ -55,7 +54,7 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
   let imageFileNameList = (
     <div className="flex overflow-x-auto self-center grow">
       {
-        imageFileNames.map((filename) => {
+        imageFileNames.map((filename, index) => {
           let styleClass = "p-2 mx-2 h-full rounded-lg hover:cursor-pointer "
           if (filename == currImageFileName) {
             styleClass += "bg-cyan-300/[0.4] hover:bg-cyan-300/[0.6]"
@@ -63,7 +62,7 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
             styleClass += "hover:bg-cyan-300/[0.2]"
           }
           return (
-            <div className={styleClass} onClick={() => {
+            <div key={index} className={styleClass} onClick={() => {
               setCurrImageFileName(filename);
             }}>
               <p>{filename}</p>
@@ -83,35 +82,11 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
   let annotatorPanel = (
     <div className="px-36 pt-8 flex">
       { (currVideoName !== "" && currImageFileName !== "") &&
-        <>
-          <ImageFromBackend
-            datasetName={datasetName}
-            videoName={currVideoName}
-            imageFileName={currImageFileName}
-            altText="Video footage"
-            className="rounded-lg w-[400px] h-fit border-2 border-slate-400"
-          />
-          <div className="w-10"></div>
-          <div className="flex flex-col">
-            <p>Environment details:</p>
-              <p className="ml-2">Road details:</p>
-                <p className="ml-4">Location:</p>
-                <p className="ml-4">Type of Road:</p>
-                <p className="ml-4">Road layout:</p>
-                <p className="ml-4">Surroundings:</p>
-              <p className="ml-2">Time of Day:</p>
-              <p className="ml-2">Weather:</p>
-              <p className="ml-2">Lighting Conditions:</p>
-              <p className="ml-2">Traffic density:</p>
-            <p>Traffic Participants:</p>
-              <p className="ml-2">Motor Vehicles:</p>
-                <p className="ml-4">Cars:</p>
-                <p className="ml-4">Trucks/Large Vehicles:</p>
-                <p className="ml-4">Motorcycles/Rickshaws:</p>
-              <p className="ml-2">Cyclists:</p>
-              <p className="ml-2">Pedestrians:</p>
-          </div>
-        </>
+        <AnnotatorInterface
+          datasetName={datasetName}
+          videoName={currVideoName}
+          imageFileName={currImageFileName}
+        />
       }
     </div>
   )

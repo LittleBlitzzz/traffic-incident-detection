@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { AnnotatorInterfaceProps } from './';
 
-interface ImageFromBackendProps {
-  datasetName: string;
-  videoName: string;
-  imageFileName: string;
+interface ImageFromBackendProps extends AnnotatorInterfaceProps {
   altText: string,
   className: string;
 }
 
-const ImageFromBackend: React.FC<ImageFromBackendProps> = ({ 
-  datasetName, 
-  videoName, 
-  imageFileName, 
-  altText = "Image", 
-  className = "",
+const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
+    datasetName, 
+    videoName, 
+    imageFileName, 
+    altText = "Image", 
+    className = "",
   }) => {
   const [imageSrc, setImageSrc] = useState("");
 

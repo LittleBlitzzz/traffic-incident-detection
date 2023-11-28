@@ -8,7 +8,7 @@ interface DropdownProps {
   onOptionSelected: (option: string) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, title = 'Select an option', onOptionSelected = null }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an option', onOptionSelected = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -49,9 +49,9 @@ const Dropdown: React.FC<DropdownProps> = ({ options, title = 'Select an option'
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div
-            className="py-1 overflow-y-auto h-80"
+            className="py-1 overflow-y-auto max-h-80"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
