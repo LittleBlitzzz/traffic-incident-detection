@@ -6,10 +6,11 @@ import { OutsideClickNotifier } from './';
 interface DropdownProps {
   options: string[];
   title: string;
+  inputValueName; string;
   onOptionSelected: (option: string) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an option', onOptionSelected = null }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an option', inputValueName = "_dropdown", onOptionSelected = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -79,6 +80,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an op
           onNotified={closeDropdown}
         />
       )}
+      <input type="hidden" name={inputValueName} value={selectedOption || ''} />
     </div>
   );
 };

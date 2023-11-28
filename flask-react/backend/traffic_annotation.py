@@ -5,7 +5,6 @@ from utils.attr_map import AttrMap
 
 class TrafficAnnotation:
   def __init__(self):
-      # 'unable_to_identify': 'Unknown/Indistinguishable',
     self.annotations = AttrMap({
       'environment_details': {
         'road_details': {

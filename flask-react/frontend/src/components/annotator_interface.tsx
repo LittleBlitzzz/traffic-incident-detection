@@ -14,12 +14,47 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     imageFileName 
   }) => {
   
-  const unableToIdentifyOption = "Unknown/Indistinguishable";
-  const objectVolumeOptions = [ 'At least one', 'A few', 'Multiple' ];
-  
-  const handleFormSubmission = () => {
-    console.log("Form");
+  const annotationsData = {
+    environment_details: {
+      road_details: {
+        location: '',
+        type_of_road: '',
+        surroundings: [],
+        road_layout: '',
+      },
+      time_of_day: '',
+      weather: '',
+      lighting: '',
+      traffic_density: '',
+    },
+    traffic_participants: {
+      motor_vehicles: {
+        cars: '',
+        trucks_large_vehicles: '',
+        motorcycles_rickshaws: '',
+      },
+      cyclists: '',
+      pedestrians: '',
+    },
+    traffic_incident: {
+      timing: '',
+      collision_with_others: false,
+      type_of_collision: {
+        type: '',
+        involvement: '',
+      },
+      rollover_accident: false,
+      run_off_road_accident: false,
+      chain_accident: false,
+    },
+    potential_cause_of_incident: [],
+  };
 
+  const unableToIdentifyOption = "Unknown/Indistinguishable";
+  const objectVolumeOptions = [ "At least one", "A few", "Multiple" ];
+  
+  const handleFormSubmission = (e) => {
+    console.log(document.forms.Testing)
   };
 
   return (
@@ -33,24 +68,24 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       />
       <div className="w-10"></div>
       <div className="flex flex-col">
-        <form action={handleFormSubmission}>
+        <form onSubmit={handleFormSubmission} id="Testing">
           <p>Environment details:</p>
             <p className="ml-2">Road details:</p>
-              <div className='flex items-center'>
+              <div className="flex items-center">
                 <p className="ml-4">Road Location:</p>
                 <Dropdown
-                  options={[ 'Urban', 'Suburban', 'Rural', unableToIdentifyOption ]}
-                  title='Road Location'
+                  options={[ "Urban", "Suburban", "Rural", unableToIdentifyOption ]}
+                  title="Road Location"
                 />
               </div>
               <p className="ml-4">Type of Road:</p>
               <Dropdown
-                options={[ 'Highway', 'Street', 'Alley', unableToIdentifyOption ]}
-                title='Type of Road'
+                options={[ "Highway", "Street", "Alley", unableToIdentifyOption ]}
+                title="Type of Road"
               />
               <p className="ml-4">Road layout:</p>
               <Dropdown
-                options={[ 'Straight Road', 'Curved Road', 'T-Junction', 'Y-Juntion', 'Four-way Junction', 'Roundabout', unableToIdentifyOption ]}
+                options={[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ]}
                 title='Road Layout'
               />
               <p className="ml-4">Surroundings:</p>
