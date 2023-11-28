@@ -1,6 +1,7 @@
 // Dropdown.tsx
 
 import React, { useState } from 'react';
+import { OutsideClickNotifier } from './';
 
 interface DropdownProps {
   options: string[];
@@ -24,6 +25,10 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an op
       onOptionSelected(option);
     }
   };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+  }
 
   return (
     <div className="relative inline-block text-left">
@@ -49,25 +54,30 @@ const Dropdown: React.FC<DropdownProps> = ({ options = [], title = 'Select an op
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-          <div
-            className="py-1 overflow-y-auto max-h-80"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
-          >
-            {options.map((option) => (
-              <button
-                key={option}
-                onClick={() => handleOptionClick(option)}
-                className="block px-8 py-2 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
+        <OutsideClickNotifier
+          children = {(
+            <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+              <div
+                className="py-1 overflow-y-auto max-h-80"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
               >
-                {option}
-              </button>
-            ))}
-          </div>
-        </div>
+                {options.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => handleOptionClick(option)}
+                    className="block text-left px-8 py-2 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    role="menuitem"
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          onNotified={closeDropdown}
+        />
       )}
     </div>
   );

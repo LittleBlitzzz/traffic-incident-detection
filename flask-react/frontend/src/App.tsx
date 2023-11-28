@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Homepage } from './pages';
-import { NavBar } from './components';
+import { NavBar, Footer } from './components';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Homepage 
         datasetName="extracted_frames"
       />
+      <Footer />
     </>
   );
 }

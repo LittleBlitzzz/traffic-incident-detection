@@ -7,11 +7,11 @@ interface HomepageProps {
 }
 
 const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
-  const [videoTitles, setVideoTitles] = useState([])
-  const [imageFileNames, setImageFileNames] = useState([])
+  const [videoTitles, setVideoTitles] = useState([]);
+  const [imageFileNames, setImageFileNames] = useState([]);
 
-  const [currVideoName, setCurrVideoName] = useState("000000")
-  const [currImageFileName, setCurrImageFileName] = useState("0.jpg")
+  const [currVideoName, setCurrVideoName] = useState("000000");
+  const [currImageFileName, setCurrImageFileName] = useState("0.jpg");
 
   useEffect(() => {
     fetch('/api/videos-in-dataset/' + datasetName, {
@@ -25,7 +25,7 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
       setVideoTitles(data["video_titles"]);
     })
     .catch(error => console.error('Error:', error));
-  }, [])
+  }, []);
 
   let videoDropdown = (
     <div className="flex-initial self-center mr-2 w-60">
