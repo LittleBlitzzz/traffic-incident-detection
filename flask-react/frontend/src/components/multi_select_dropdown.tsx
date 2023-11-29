@@ -15,8 +15,8 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     options = [],
     title = null,
     inputValueName = '_multiselect',
-    initialValue = [],
     inputValueRef = null,
+    initialValue = [],
     onOptionSelected = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
 
   useEffect(() => {
     if (initialValue !== null && initialValue !== undefined) {
-      setSelectedOption(initialValue);
+      setSelectedOptions(initialValue);
     }
   }, [])
   
@@ -54,7 +54,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   const closeDropdown = () => {
     setIsOpen(false);
   };
-  
+
   return (
     <div className="relative inline-block text-left">
       <div>

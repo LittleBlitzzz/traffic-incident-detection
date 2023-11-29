@@ -5,15 +5,18 @@ import { OutsideClickNotifier } from './';
 interface DropdownProps {
   options: string[];
   title: string;
-  inputValueName; string;
+  btnClassName: string;
+  inputValueName: string;
   inputValueRef: RefObject<string>;
   initialValue: string;
   onOptionSelected: (option: string) => void;
 }
 
+defaultDropdownBtnClassName = "inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
 const Dropdown: React.FC<DropdownProps> = ({ 
     options = [], 
     title = null, 
+    btnClassName = defaultDropdownBtnClassName,
     inputValueName = "_dropdown", 
     inputValueRef = null,
     initialValue = null,
@@ -51,26 +54,24 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <div className="relative inline-block text-left">
-      <div>
-        <button
-          type="button"
-          onClick={toggleDropdown}
-          className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+      <button
+        type="button"
+        onClick={toggleDropdown}
+        className=
+      >
+        {selectedOption || title || "Select an Option"}
+        <svg
+          className="-mr-1 ml-2 h-5 w-5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
         >
-          {selectedOption || title || "Select an Option"}
-          <svg
-            className="-mr-1 ml-2 h-5 w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M6.293 7.293a1 1 0 0 1 1.414 0L10 9.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"
-            />
-          </svg>
-        </button>
-      </div>
+          <path
+            fillRule="evenodd"
+            d="M6.293 7.293a1 1 0 0 1 1.414 0L10 9.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 0 1 0-1.414z"
+          />
+        </svg>
+      </button>
 
       {isOpen && (
         <OutsideClickNotifier
