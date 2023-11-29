@@ -1,4 +1,9 @@
+
+import requests
+import os
 import torch
+import yaml
+import logging
 
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.conversation import conv_templates, SeparatorStyle
@@ -7,14 +12,12 @@ from llava.utils import disable_torch_init
 from llava.mm_utils import process_images, tokenizer_image_token, get_model_name_from_path, KeywordsStoppingCriteria
 
 from PIL import Image
-
-import requests
-from PIL import Image
 from io import BytesIO
 from transformers import TextStreamer
+from pathlib import Path
 
 class TrafficLLaVA:
-  def __init__(self, model_args, injected_prompt):
+  def __init__(self, model_args, system_prompt = None):
     self.model_name = get_model_name_from_path(model_args["model_path"])
     self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(model_args["model_path"], model_args["model_base"], self.model_name, model_args["load_8bit"], model_args["load_4bit"], device=model_args["device"])
 
@@ -34,27 +37,35 @@ class TrafficLLaVA:
 
     self.conv_mode = model_args["conv_mode"]
     
-    self.injected_prompt = injected_prompt
+    self.system_prompt = system_prompt
     self.max_new_tokens = model_args["max_new_tokens"]
     self.temperature = model_args["temperature"]
     self.debug = model_args["debug"]
-  
-  def process_image_text_pair(self, image_filepath, injected_prompt):
-    inp = injected_prompt
 
-    conv, roles = self.create_convo()
+  def process_image_text_pair(self, image_filepath, new_input="", conv=None, roles=None):
+    default_conv, default_roles = self.create_convo()
+
+    if conv is None or roles is None:
+      default_conv, default_roles = self.create_convo()
+
+      if conv is None:
+        conv = default_conv
+
+      if roles is None:
+        roles = default_roles
+
     image, image_tensor = self.load_image_as_tensor(image_filepath)
     if image is not None:
       # first message
       if self.model.config.mm_use_im_start_end:
-        inp = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + inp
+        inp = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + new_input
       else:
-        inp = DEFAULT_IMAGE_TOKEN + '\n' + inp
-      conv.append_message(roles[0], inp)
+        new_input = DEFAULT_IMAGE_TOKEN + '\n' + new_input
+      conv.append_message(roles[0], new_input)
       image = None
     else:
       # later messages
-      conv.append_message(roles[0], inp)
+      conv.append_message(roles[0], new_input)
     conv.append_message(roles[1], None)
     prompt = conv.get_prompt()
 
@@ -82,9 +93,16 @@ class TrafficLLaVA:
 
     if self.debug:
       print("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+    
+    return outputs
 
   def create_convo(self):
     conv = conv_templates[self.conv_mode].copy()
+
+    if self.system_prompt:
+      print("Overwritting original system prompt: " + str(conv.system))
+      conv.system = self.system_prompt
+
     roles = None
     if "mpt" in self.model_name.lower():
       roles = ('user', 'assistant')
@@ -112,136 +130,72 @@ class TrafficLLaVA:
 
     return image, image_tensor
 
+class PromptFramework:
+  def __init__(self, system_prompt, prompt_sequence):
+    self.system_prompt = system_prompt
+    self.prompt_sequence = prompt_sequence
 
-# def load_image(image_file):
-#   if image_file.startswith('http://') or image_file.startswith('https://'):
-#     response = requests.get(image_file)
-#     image = Image.open(BytesIO(response.content)).convert('RGB')
-#   else:
-#     image = Image.open(image_file).convert('RGB')
-#   return image
+  def apply_on_image(self, model: TrafficLLaVA, image_input, save_path=None):
+    model.system_prompt = self.system_prompt
 
-# def setup_model(args):
-#   # Model
-#   disable_torch_init()
+    if isinstance(image_path, list):
+      results = []
+      for image_path in image_input:
+        image_caption_outputs = self.apply_on_image(model, image_path)
+        results.append(image_caption_outputs)
 
-#   model_name = get_model_name_from_path(args["model_path"])
-#   tokenizer, model, image_processor, context_len = load_pretrained_model(args["model_path"], args["model_base"], model_name, args["load_8bit"], args["load_4bit"], device=args["device"])
+      if save_path:
+        if os.path.exists(Path(save_path).parent.absolute()):
+          with open(save_path, "w") as output_file:
+            data = yaml.safe_load(str({
+              "prompt_results": results
+            }))
+            yaml.dump(data, output_file, default_flow_style=False)
+        else:
+          logging.getLogger().debug("Directory to save prompt results does not exist!")
 
-#   if 'llama-2' in model_name.lower():
-#     conv_mode = "llava_llama_2"
-#   elif "v1" in model_name.lower():
-#     conv_mode = "llava_v1"
-#   elif "mpt" in model_name.lower():
-#     conv_mode = "mpt"
-#   else:
-#     conv_mode = "llava_v0"
-
-#   if args["conv_mode"] is not None and conv_mode != args["conv_mode"]:
-#     print('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, args.conv_mode, args.conv_mode))
-#   else:
-#     args["conv_mode"] = conv_mode
-
-#   conv = conv_templates[args["conv_mode"]].copy()
-#   if "mpt" in model_name.lower():
-#     roles = ('user', 'assistant')
-#   else:
-#     roles = conv.roles
-
-#   return
-
-# def main(args, input_prompt):
-#     # Model
-#   disable_torch_init()
-
-#   model_name = get_model_name_from_path(args["model_path"])
-#   tokenizer, model, image_processor, context_len = load_pretrained_model(args["model_path"], args["model_base"], model_name, args["load_8bit"], args["load_4bit"], device=args["device"])
-
-#   if 'llama-2' in model_name.lower():
-#       conv_mode = "llava_llama_2"
-#   elif "v1" in model_name.lower():
-#       conv_mode = "llava_v1"
-#   elif "mpt" in model_name.lower():
-#       conv_mode = "mpt"
-#   else:
-#       conv_mode = "llava_v0"
-
-#   if args["conv_mode"] is not None and conv_mode != args["conv_mode"]:
-#       print('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, args.conv_mode, args.conv_mode))
-#   else:
-#       args["conv_mode"] = conv_mode
-
-#   conv = conv_templates[args["conv_mode"]].copy()
-#   if "mpt" in model_name.lower():
-#       roles = ('user', 'assistant')
-#   else:
-#       roles = conv.roles
-#   print(args["conv_mode"])
-
-#   image = load_image(args["image_file"])
-#   # Similar operation in model_worker.py
-#   image_tensor = process_images([image], image_processor, model.config)
-#   if type(image_tensor) is list:
-#     image_tensor = [image.to(model.device, dtype=torch.float16) for image in image_tensor]
-#   else:
-#     image_tensor = image_tensor.to(model.device, dtype=torch.float16)
-
-#   # while True:
-#   #   try:
-#   #     inp = input(f"{roles[0]}: ")
-#   #   except EOFError:
-#   #     inp = ""
-#   #   if not inp:
-#   #     print("exit...")
-#   #     break
-
-#   inp = input_prompt
-
-#   print(f"{roles[1]}: ", end="")
-
-#   if image is not None:
-#     # first message
-#     if model.config.mm_use_im_start_end:
-#       inp = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + inp
-#     else:
-#       inp = DEFAULT_IMAGE_TOKEN + '\n' + inp
-#     conv.append_message(conv.roles[0], inp)
-#     image = None
-#   else:
-#     # later messages
-#     conv.append_message(conv.roles[0], inp)
-#   conv.append_message(conv.roles[1], None)
-#   prompt = conv.get_prompt()
-
-#   input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(model.device)
-#   stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
-#   keywords = [stop_str]
-#   stopping_criteria = KeywordsStoppingCriteria(keywords, tokenizer, input_ids)
-#   streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
-
-#   with torch.inference_mode():
-#     output_ids = model.generate(
-#       input_ids,
-#       images=image_tensor,
-#       do_sample=True if args["temperature"] > 0 else False,
-#       temperature=args["temperature"],
-#       max_new_tokens=args["max_new_tokens"],
-#       streamer=streamer,
-#       use_cache=True,
-#       stopping_criteria=[stopping_criteria])
-
-#   outputs = tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
-#   conv.messages[-1][-1] = outputs
-
-#   if args["debug"]:
-#     print("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+      return results
+    else:
+      conv, roles = model.create_convo()
+      results = []
+      for prompt in self.prompt_sequence:
+        image_caption_output = model.process_image_text_pair(image_path, prompt, conv, roles)
+        results.append(image_caption_output)
+      
+      if save_path:
+        if os.path.exists(Path(save_path).parent.absolute()):
+          with open(save_path, "w") as output_file:
+            data = yaml.safe_load(str({
+              "prompt_results": results
+            }))
+            yaml.dump(data, output_file, default_flow_style=False)
+        else:
+          logging.getLogger().debug("Directory to save prompt results does not exist!")
+          
+      return results
 
 
-def test():
+
+def setup_model():
   args = {
       "model_path": 'liuhaotian/llava-v1.5-13b',
       "model_base": None,
-      # "image_file": '/content/drive/MyDrive/Projects/Fyp_Data/000000/0.jpg',
+      "device": "cuda",
+      "conv_mode": None,
+      "max_new_tokens": 512,
+      "temperature": 0.2,
+      "load_8bit": False,
+      "load_4bit": True,
+      "debug": True,
+  }
+
+  traffic_llava = TrafficLLaVA(args)
+  return traffic_llava
+
+def test_model():
+  args = {
+      "model_path": 'liuhaotian/llava-v1.5-13b',
+      "model_base": None,
       "device": "cuda",
       "conv_mode": None,
       "max_new_tokens": 512,

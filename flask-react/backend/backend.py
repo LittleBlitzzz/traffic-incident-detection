@@ -23,7 +23,7 @@ def create_app(start_model:bool):
 
     # var obj = JSON.parse(string);
   if start_model:
-    from api.run_model import test
-    test()
+    from api.run_model import test_model
+    test_model()
   
   return app

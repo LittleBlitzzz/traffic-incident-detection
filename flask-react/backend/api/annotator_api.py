@@ -3,7 +3,6 @@ import logging
 
 from natsort import natsorted
 import os
-import yaml
 
 from api.traffic_annotation import TrafficAnnotation, VideoAnnotation
 
