@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { OutsideClickNotifier } from './';
 
 interface MultiSelectDropdownProps {
   options: string[];
   title: string;
   inputValueName: string;
+  inputValueRef: RefObject<string[]>;
   initialValue: string[];
   onOptionSelected: (options: string[]) => void;
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
-  options = [],
-  title = 'Select an option',
-  inputValueName = '_multiselect',
-  initialValue = [],
-  onOptionSelected = null,
-}) => {
+    options = [],
+    title = null,
+    inputValueName = '_multiselect',
+    initialValue = [],
+    inputValueRef = null,
+    onOptionSelected = null,
+  }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>(initialValue);
 
@@ -23,6 +26,12 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     setIsOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    if (initialValue !== null && initialValue !== undefined) {
+      setSelectedOption(initialValue);
+    }
+  }, [])
+  
   const handleOptionClick = (option: string) => {
     // If the option is "None," clear the selection
     if (option === 'None') {
@@ -45,7 +54,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   const closeDropdown = () => {
     setIsOpen(false);
   };
-
+  
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -56,7 +65,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
         >
           {selectedOptions.length > 0
             ? selectedOptions.join(', ')
-            : selectedOptions || title}
+            : title || 'Select option(s)'}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +124,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
           onNotified={closeDropdown}
         />
       )}
-      <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} />
+      <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} ref={inputValueRef} />
     </div>
   );
 };

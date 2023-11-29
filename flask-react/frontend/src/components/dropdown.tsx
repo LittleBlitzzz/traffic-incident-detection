@@ -1,24 +1,36 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { OutsideClickNotifier } from './';
 
 interface DropdownProps {
   options: string[];
   title: string;
   inputValueName; string;
+  inputValueRef: RefObject<string>;
   initialValue: string;
   onOptionSelected: (option: string) => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ 
     options = [], 
-    title = 'Select an option', 
+    title = null, 
     inputValueName = "_dropdown", 
+    inputValueRef = null,
     initialValue = null,
     onOptionSelected = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(initialValue || null);
+
+  if ( (title === null || title === undefined) && options.length > 0) {
+    initialValue = options[0];
+  }
+
+  useEffect(() => {
+    if (initialValue !== null && initialValue !== undefined) {
+      setSelectedOption(initialValue);
+    }
+  }, [])
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -45,7 +57,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           onClick={toggleDropdown}
           className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
         >
-          {selectedOption || title}
+          {selectedOption || title || "Select an Option"}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +98,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           onNotified={closeDropdown}
         />
       )}
-      <input type="hidden" name={inputValueName} value={selectedOption || ''} />
+      <input type="hidden" name={inputValueName} value={selectedOption || ''} ref={inputValueRef} />
     </div>
   );
 };
