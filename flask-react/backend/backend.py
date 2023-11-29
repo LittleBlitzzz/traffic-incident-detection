@@ -18,7 +18,7 @@ llava_path = os.path.join(Path(__file__).parent.absolute(), "LLaVA")
 if llava_path not in sys.path:
   sys.path.append(llava_path)
 
-from LLaVA.run_model import test
+from run_model import test
 test()
 
 @app.route('/', methods=['GET'])
