@@ -7,7 +7,7 @@ import yaml
 
 from traffic_annotation import TrafficAnnotation
 
-annotator_api = Blueprint('api', __name__, url_prefix='/api')
+annotator_api = Blueprint('api', __name__)
 
 @annotator_api.route('/videos-in-dataset/<dataset_name>', methods=['GET'])
 def videos_in_dataset(dataset_name):
