@@ -11,7 +11,7 @@ const NavBar: React.FC<NavBarProps> = ({
   }) => {
   return (
     <>
-      <div id="nav-bar" className="flex py-4 px-36 bg-slate-300">
+      <div id="nav-bar" className="sticky top-0 flex py-4 px-36 bg-slate-300">
         <div className="flex-initial self-center">
           <p className="text-2xl">Annotator</p>
         </div>

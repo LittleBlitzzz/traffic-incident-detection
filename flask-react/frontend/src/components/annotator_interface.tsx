@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Dropdown, ImageFromBackend, DropdownProps } from './';
+import { Dropdown, ImageFromBackend, DropdownProps, MultiSelectDropdown } from './';
 
 interface AnnotatorInterfaceProps {
   datasetName: string;
@@ -55,6 +55,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   
   const handleFormSubmission = (e) => {
     e.preventDefault();
+    console.log(e.target);
     console.log(e.target.road_location.value);
   };
 
@@ -98,6 +99,10 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                   />
 
                   <p className="ml-4">Surroundings:</p>
+                  <MultiSelectDropdown
+                    options={[ "Traffic Lights", "Pedestrian Crossings", "Road Signs"]}
+                    inputValueName='road_surroundings'
+                  />
               </div>
 
               <DropdownWithLabel 

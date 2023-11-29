@@ -1,41 +1,50 @@
-
 import React, { useState } from 'react';
 import { OutsideClickNotifier } from './';
 
-interface DropdownProps {
+interface MultiSelectDropdownProps {
   options: string[];
   title: string;
-  inputValueName; string;
-  initialValue: string;
-  onOptionSelected: (option: string) => void;
+  inputValueName: string;
+  initialValue: string[];
+  onOptionSelected: (options: string[]) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ 
-    options = [], 
-    title = 'Select an option', 
-    inputValueName = "_dropdown", 
-    initialValue = null,
-    onOptionSelected = null,
-  }) => {
+const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
+  options = [],
+  title = 'Select an option',
+  inputValueName = '_multiselect',
+  initialValue = [],
+  onOptionSelected = null,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(initialValue || null);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>(initialValue);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    setIsOpen(false);
+    // If the option is "None," clear the selection
+    if (option === 'None') {
+      setSelectedOptions([]);
+    } else {
+      const isSelected = selectedOptions.includes(option);
+
+      setSelectedOptions((prevOptions) =>
+        isSelected
+          ? prevOptions.filter((prevOption) => prevOption !== option)
+          : [...prevOptions, option]
+      );
+    }
 
     if (onOptionSelected) {
-      onOptionSelected(option);
+      onOptionSelected(selectedOptions);
     }
   };
 
   const closeDropdown = () => {
     setIsOpen(false);
-  }
+  };
 
   return (
     <div className="relative inline-block text-left">
@@ -45,7 +54,9 @@ const Dropdown: React.FC<DropdownProps> = ({
           onClick={toggleDropdown}
           className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
         >
-          {selectedOption || title}
+          {selectedOptions.length > 0
+            ? selectedOptions.join(', ')
+            : selectedOptions || title}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +73,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
       {isOpen && (
         <OutsideClickNotifier
-          children = {(
+          children={
             <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
               <div
                 className="py-1 overflow-y-auto max-h-80"
@@ -70,11 +81,29 @@ const Dropdown: React.FC<DropdownProps> = ({
                 aria-orientation="vertical"
                 aria-labelledby="options-menu"
               >
+                <button
+                  key="None"
+                  type="button"
+                  onClick={() => handleOptionClick('None')}
+                  className={`block text-left px-8 py-2 text-sm w-full ${
+                    selectedOptions.includes('None')
+                      ? 'bg-gray-100 text-gray-900'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
+                  role="menuitem"
+                >
+                  None
+                </button>
                 {options.map((option) => (
                   <button
                     key={option}
+                    type="button"
                     onClick={() => handleOptionClick(option)}
-                    className="block text-left px-8 py-2 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    className={`block text-left px-8 py-2 text-sm w-full ${
+                      selectedOptions.includes(option)
+                        ? 'bg-gray-100 text-gray-900'
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
                     role="menuitem"
                   >
                     {option}
@@ -82,13 +111,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 ))}
               </div>
             </div>
-          )}
+          }
           onNotified={closeDropdown}
         />
       )}
-      <input type="hidden" name={inputValueName} value={selectedOption || ''} />
+      <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} />
     </div>
   );
 };
 
-export { Dropdown, DropdownProps };
+export { MultiSelectDropdown, MultiSelectDropdownProps };
