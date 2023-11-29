@@ -40,8 +40,6 @@ class TrafficLLaVA:
     self.debug = model_args["debug"]
   
   def process_image_text_pair(self, image_filepath, injected_prompt):
-    print(f"{self.roles[1]}: ", end="")
-
     inp = injected_prompt
 
     conv, roles = self.create_convo()
@@ -60,8 +58,10 @@ class TrafficLLaVA:
     conv.append_message(roles[1], None)
     prompt = conv.get_prompt()
 
+    print(f"{roles[1]}: ", end="")
+
     input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(self.model.device)
-    stop_str = conv.sep if self.conv.sep_style != SeparatorStyle.TWO else conv.sep2
+    stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
     keywords = [stop_str]
     stopping_criteria = KeywordsStoppingCriteria(keywords, self.tokenizer, input_ids)
     streamer = TextStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
