@@ -49,33 +49,35 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     e.preventDefault();
     
     let annotationData = {
-      environment_details: {
-        road_details: {
-          location: refRoadLoc.current.value,
-          type_of_road: refRoadType.current.value,
-          road_layout: refRoadLayout.current.value,
-          surroundings: refRoadSurroundings.current.value,
+      annotations: {
+        environment_details: {
+          road_details: {
+            location: refRoadLoc.current.value,
+            type_of_road: refRoadType.current.value,
+            road_layout: refRoadLayout.current.value,
+            surroundings: refRoadSurroundings.current.value,
+          },
+          time_of_day: refTimeOfDay.current.value,
+          weather: refWeatherCond.current.value,
+          lighting: refLightingCond.current.value,
+          traffic_density: refTrafficDensity.current.value,
         },
-        time_of_day: refTimeOfDay.current.value,
-        weather: refWeatherCond.current.value,
-        lighting: refLightingCond.current.value,
-        traffic_density: refTrafficDensity.current.value,
-      },
-      traffic_participants: {
-        volume_car: refVolumeCar.current.value,
-        volume_large_vehicles: refVolumeLargeVehicles.current.value,
-        volume_motorcycles: refVolumeMotorcycles.current.value,
-        volume_cyclists: refVolumeCyclists.current.value,
-        volume_pedestrians: refVolumePedestrians.current.value,
-      },
-      traffic_incident: {
-        incident_timing: refIncidentTiming.current.value,
-        incident_type: refIncidentType.current.value,
-        collision_type: refCollisionType.current.value,
-        collision_category: refCollisionCategory.current.value,
-      },
-      analysis: {
-        cause_of_incident: refCauseOfIncident.current.value,
+        traffic_participants: {
+          volume_car: refVolumeCar.current.value,
+          volume_large_vehicles: refVolumeLargeVehicles.current.value,
+          volume_motorcycles: refVolumeMotorcycles.current.value,
+          volume_cyclists: refVolumeCyclists.current.value,
+          volume_pedestrians: refVolumePedestrians.current.value,
+        },
+        traffic_incident: {
+          incident_timing: refIncidentTiming.current.value,
+          incident_type: refIncidentType.current.value,
+          collision_type: refCollisionType.current.value,
+          collision_category: refCollisionCategory.current.value,
+        },
+        analysis: {
+          cause_of_incident: refCauseOfIncident.current.value,
+        }
       }
     }
 
@@ -285,7 +287,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       <InputWithLabel 
         inputElem={(
           <Dropdown
-            options={[ "Collision with Others", "Rollover Accident", "Run-off-road Accident", "Chain Accident" ]}
+            options={[ "N/A", "Collision with Others", "Rollover Accident", "Run-off-road Accident", "Chain Accident" ]}
             inputValueName="incident_type"
             inputValueRef={refIncidentType}
           />
