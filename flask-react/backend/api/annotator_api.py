@@ -5,7 +5,7 @@ from natsort import natsorted
 import os
 import yaml
 
-from traffic_annotation import TrafficAnnotation
+from api.traffic_annotation import TrafficAnnotation, VideoAnnotation
 
 annotator_api = Blueprint('api', __name__)
 
@@ -53,14 +53,19 @@ def save_annotations(dataset_name, video_name, image_filename):
 
     annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
 
-    annotations = TrafficAnnotation()
-    output_logs["existing_annotations"] = annotations.read_from_file(annotations_filepath)
-    
+    video_annotations = VideoAnnotation()
+    output_logs["existing_annotations"] = video_annotations.read_from_file(annotations_filepath)
+
+    traffic_annotation = video_annotations.annotations.get(image_filename)
+    if traffic_annotation is None:
+      traffic_annotation = TrafficAnnotation()
+      video_annotations.annotations[image_filename] = traffic_annotation
+
     # check inputs
     request_annotations = request_json["annotations"]
-    apply_dictionary_values(annotations.annotations, request_annotations)
+    apply_dictionary_values(traffic_annotation.annotations, request_annotations)
  
-    annotations.save_to_file(annotations_filepath)
+    video_annotations.save_to_file(annotations_filepath)
 
   return output_logs
 
