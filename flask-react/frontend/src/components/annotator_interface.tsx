@@ -13,42 +13,6 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     videoName, 
     imageFileName 
   }) => {
-  
-  const annotationsData = {
-    environment_details: {
-      road_details: {
-        location: '',
-        type_of_road: '',
-        surroundings: [],
-        road_layout: '',
-      },
-      time_of_day: '',
-      weather: '',
-      lighting: '',
-      traffic_density: '',
-    },
-    traffic_participants: {
-      motor_vehicles: {
-        cars: '',
-        trucks_large_vehicles: '',
-        motorcycles_rickshaws: '',
-      },
-      cyclists: '',
-      pedestrians: '',
-    },
-    traffic_incident: {
-      timing: '',
-      collision_with_others: false,
-      type_of_collision: {
-        type: '',
-        involvement: '',
-      },
-      rollover_accident: false,
-      run_off_road_accident: false,
-      chain_accident: false,
-    },
-    potential_cause_of_incident: [],
-  };
 
   const unableToIdentifyOption = "Unknown/Indistinguishable";
   const objectVolumeOptions = [ "None", "At least one", "A few", "Multiple" ];
@@ -65,10 +29,26 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const refLightingCond = useRef("");
   const refTrafficDensity = useRef("");
 
+  /** Traffic Participants */
+  const refVolumeCar = useRef("");
+  const refVolumeLargeVehicles = useRef("");
+  const refVolumeMotorcycles = useRef("");
+  const refVolumeCyclists = useRef("");
+  const refVolumePedestrians = useRef("");
+
+  /** Traffic Incident */
+  const refIncidentTiming = useRef("");
+  const refIncidentType = useRef("");
+  const refCollisionType = useRef("");
+  const refCollisionCategory = useRef("");
+
+  /** Potential Cause of Incident */
+  const refCauseOfIncident = useRef([]);
+
   const handleFormSubmission = (e) => {
     e.preventDefault();
     
-    console.log({
+    let annotationData = {
       environment_details: {
         road_details: {
           location: refRoadLoc.current.value,
@@ -80,7 +60,38 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         weather: refWeatherCond.current.value,
         lighting: refLightingCond.current.value,
         traffic_density: refTrafficDensity.current.value,
+      },
+      traffic_participants: {
+        volume_car: refVolumeCar.current.value,
+        volume_large_vehicles: refVolumeLargeVehicles.current.value,
+        volume_motorcycles: refVolumeMotorcycles.current.value,
+        volume_cyclists: refVolumeCyclists.current.value,
+        volume_pedestrians: refVolumePedestrians.current.value,
+      },
+      traffic_incident: {
+        incident_timing: refIncidentTiming.current.value,
+        incident_type: refIncidentType.current.value,
+        collision_type: refCollisionType.current.value,
+        collision_category: refCollisionCategory.current.value,
+      },
+      analysis: {
+        cause_of_incident: refCauseOfIncident.current.value,
       }
+    }
+
+    console.log(annotationData);
+
+    fetch("/api/save-annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
+      method: "post",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(annotationData),
+    })
+    .then(response => response.json())
+    .then(response_json => {
+      console.log(response_json);
     });
   };
 
@@ -95,7 +106,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Road Location"
-        indentClass="ml-4"
+        indentClass="ml-16"
       />
       
       <InputWithLabel 
@@ -107,7 +118,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Road Type"
-        indentClass="ml-4"
+        indentClass="ml-16"
       />
 
       <InputWithLabel 
@@ -119,7 +130,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Road Layout"
-        indentClass="ml-4"
+        indentClass="ml-16"
       />
 
       <InputWithLabel 
@@ -131,7 +142,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Road Surroundings"
-        indentClass="ml-4"
+        indentClass="ml-16"
       />
     </>
   );
@@ -139,7 +150,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const environmentDetailsInputs = (
     <>
       <div id="road-details-panel">
-        <p className="ml-2">Road details:</p>
+        <p className="ml-8">Road details:</p>
         {roadDetailsInputs}
       </div>
 
@@ -152,7 +163,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Time of Day"
-        indentClass="ml-2"
+        indentClass="ml-8"
       />
 
       <InputWithLabel 
@@ -164,7 +175,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Weather Condition"
-        indentClass="ml-2"
+        indentClass="ml-8"
       />
       
       <InputWithLabel 
@@ -176,7 +187,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Lighting Condition"
-        indentClass="ml-2"
+        indentClass="ml-8"
       />
 
       <InputWithLabel 
@@ -188,29 +199,179 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           />
         )}
         label="Traffic Density"
-        indentClass="ml-2"
+        indentClass="ml-8"
       />
     </>
   );
 
+  const traficParticipantsInputs = (
+    <>
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={objectVolumeOptions}
+            inputValueName="volume_car"
+            inputValueRef={refVolumeCar}
+          />
+        )}
+        label="Car Volume"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={objectVolumeOptions}
+            inputValueName="volume_large_vehicles"
+            inputValueRef={refVolumeLargeVehicles}
+          />
+        )}
+        label="Trucks/Large Vehicles Volume"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={objectVolumeOptions}
+            inputValueName="volume_motorcycles"
+            inputValueRef={refVolumeMotorcycles}
+          />
+        )}
+        label="Motorcycles Volume"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={objectVolumeOptions}
+            inputValueName="volume_cyclists"
+            inputValueRef={refVolumeCyclists}
+          />
+        )}
+        label="Cyclists Volume"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={objectVolumeOptions}
+            inputValueName="volume_pedestrians"
+            inputValueRef={refVolumePedestrians}
+          />
+        )}
+        label="Pedestrians Volume"
+        indentClass="ml-8"
+      />
+    </>
+  )
+
+  const traficIncidentInputs = (
+    <>
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={[ "No incident", "Potential", "Happening", "Aftermath" ]}
+            inputValueName="incident_timing"
+            inputValueRef={refIncidentTiming}
+          />
+        )}
+        label="Is there a traffic incident?"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={[ "Collision with Others", "Rollover Accident", "Run-off-road Accident", "Chain Accident" ]}
+            inputValueName="incident_type"
+            inputValueRef={refIncidentType}
+          />
+        )}
+        label="What type of incident?"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={[ "N/A", "T-Bone", "Rear end", "Front end", "Side Swipe Collision", "Run-off-road", "Chain Collision" ]}
+            inputValueName="collision_type"
+            inputValueRef={refCollisionType}
+          />
+        )}
+        label="What type of collision?"
+        indentClass="ml-8"
+      />
+
+      <InputWithLabel 
+        inputElem={(
+          <Dropdown
+            options={[ "N/A", "Car-on-car", "Car-on-motorcycle", "Car-on-truck/bus/etc", "Truck/bus/etc-on-motorcycle",
+                      "Vehicle on pedestrians", "Vehicle on cyclists", "Multiple" ]}
+            inputValueName="collision_category"
+            inputValueRef={refCollisionCategory}
+          />
+        )}
+        label="Category of the collision"
+        indentClass="ml-8"
+      />
+    </>
+  )
+
+  const causeOfIncidentInputs = (
+    <>
+      <InputWithLabel 
+        inputElem={(
+          <MultiSelectDropdown
+            options={[ "Speeding/Lack of reaction time", 
+                       "Rollover Accident", 
+                       "Run-off-road Accident", 
+                       "Chain Accident" 
+                    ]}
+            inputValueName="cause_of_incident"
+            inputValueRef={refCauseOfIncident}
+          />
+        )}
+        label="What were the potential cause of the incident?"
+        indentClass="ml-8"
+      />
+    </>
+  )
+
   return (
     <>
-      <div className="w-10"></div>
-      <div className="flex flex-col">
-        <form onSubmit={handleFormSubmission} id="Testing">
-
+      <div className="w-10"></div> 
+      <form className="flex" onSubmit={handleFormSubmission} id="Testing">
+      
+        <div className="flex flex-col">
           <div id="environment-details-panel">
-            <p className="text-bold">Environment details:</p>
+            <p className="font-bold">Environment details:</p>
             {environmentDetailsInputs}
           </div>
-          
-          <div id="traffic-participants-panel">
+
+          <div id="traffic-details-panel">
+            <p className="font-bold">Traffic details:</p>
+            {traficParticipantsInputs}
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <div id="environment-details-panel">
+            <p className="font-bold">Environment details:</p>
+            {traficIncidentInputs}
           </div>
 
+          <div id="traffic-details-panel">
+            <p className="font-bold">Traffic details:</p>
+            {causeOfIncidentInputs}
+          </div>
+        </div>
 
-          <input type="submit" value="Hello "/>
-        </form>
-      </div>
+        <input type="submit" value="Hello "/>
+      </form> 
     </>
   )
 }
@@ -218,7 +379,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 export default AnnotatorInterface;
 
 const InputWithLabel = ({ inputElem, label, indentClass } : { inputElem : React.ReactElement<any>, label: string, indentClass:string}) => {
-  let parentDivClass = "flex items-center py-2 " + indentClass;
+  let parentDivClass = "flex items-center py-0.5 " + indentClass;
   return (
     <>
       <div className={parentDivClass}>

@@ -109,6 +109,8 @@ const Homepage: React.FC<HomepageProps> = ({ datasetName }) => {
           {ssimFilterToggle}
         </div>
         {annotatorPanel}
+        <div className="h-40">
+        </div>
       </div>
     </>
   );

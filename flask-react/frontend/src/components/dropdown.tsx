@@ -5,18 +5,15 @@ import { OutsideClickNotifier } from './';
 interface DropdownProps {
   options: string[];
   title: string;
-  btnClassName: string;
   inputValueName: string;
   inputValueRef: RefObject<string>;
   initialValue: string;
   onOptionSelected: (option: string) => void;
 }
 
-defaultDropdownBtnClassName = "inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
 const Dropdown: React.FC<DropdownProps> = ({ 
     options = [], 
-    title = null, 
-    btnClassName = defaultDropdownBtnClassName,
+    title = null,
     inputValueName = "_dropdown", 
     inputValueRef = null,
     initialValue = null,
@@ -53,11 +50,11 @@ const Dropdown: React.FC<DropdownProps> = ({
   }
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="inline-block text-left">
       <button
         type="button"
         onClick={toggleDropdown}
-        className=
+        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
       >
         {selectedOption || title || "Select an Option"}
         <svg
@@ -74,30 +71,32 @@ const Dropdown: React.FC<DropdownProps> = ({
       </button>
 
       {isOpen && (
-        <OutsideClickNotifier
-          children = {(
-            <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <div
-                className="py-1 overflow-y-auto max-h-80"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                {options.map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => handleOptionClick(option)}
-                    className="block text-left px-8 py-2 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
-                  >
-                    {option}
-                  </button>
-                ))}
+        <div className="relative">
+          <OutsideClickNotifier
+            children = {(
+              <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                <div
+                  className="py-1 overflow-y-auto max-h-80"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  {options.map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => handleOptionClick(option)}
+                      className="block text-left px-8 py-2 text-sm w-full text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-          onNotified={closeDropdown}
-        />
+            )}
+            onNotified={closeDropdown}
+          />
+        </div>
       )}
       <input type="hidden" name={inputValueName} value={selectedOption || ''} ref={inputValueRef} />
     </div>

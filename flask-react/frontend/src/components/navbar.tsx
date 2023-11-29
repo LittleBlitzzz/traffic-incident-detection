@@ -11,13 +11,13 @@ const NavBar: React.FC<NavBarProps> = ({
   }) => {
   return (
     <>
-      <div id="nav-bar" className="sticky top-0 flex py-4 px-36 bg-slate-300">
+      <div id="nav-bar" className="sticky top-0 flex py-4 px-36 bg-slate-300 z-20">
         <div className="flex-initial self-center">
           <p className="text-2xl">Annotator</p>
         </div>
         <div className="grow"></div>
         <div>
-          <a href="https://github.com/LittleBlitzzz/traffic-incident-detection">
+          <a href="https://github.com/LittleBlitzzz/traffic-incident-detection" target="blank">
             <img src={github_logo_light} className="w-10" alt="GitHub Logo" />
           </a>
         </div>

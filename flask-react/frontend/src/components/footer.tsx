@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> = ({
   }) => {
   return (
     <>
-      <div className='h-40 bg-slate-200'>
+      <div className='h-40 bg-slate-200 p-4'>
 
       </div>
     </>

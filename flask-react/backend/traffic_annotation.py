@@ -19,26 +19,21 @@ class TrafficAnnotation:
         'traffic_density': ''
       },
       'traffic_participants': {
-        'motor_vehicles': {
-          'cars': '',
-          'trucks_large_vehicles': '',
-          'motorcycles_rickshaws': ''
-        },
-        'cyclists': '',
-        'pedestrians': ''
+        'volume_car': '',
+        'volume_large_vehicles': '',
+        'volume_motorcycles': '',
+        'volume_cyclists': '',
+        'volume_pedestrians': '',
       },
       'traffic_incident': {
-        'timing': '',
-        'collision_with_others': False,
-        'type_of_collision': {
-          'type': '',
-          'involvement': ''
-        },
-        'rollover_accident': False,
-        'run_off_road_accident': False,
-        'chain_accident': False
+        'incident_timing': '',
+        'incident_type': '',
+        'collision_type': '',
+        'collision_category': '',
       },
-      'potential_cause_of_incident': []
+      'analysis': {
+        'cause_of_incident': [],
+      }
     })
     self.video_metadata = AttrMap({})
 

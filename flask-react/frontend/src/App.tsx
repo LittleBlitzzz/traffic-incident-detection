@@ -6,11 +6,13 @@ import { NavBar, Footer } from './components';
 function App() {
   return (
     <>
-      <NavBar />
-      <Homepage 
-        datasetName="extracted_frames"
-      />
-      <Footer />
+      <div className="justify-between">
+        <NavBar />
+        <Homepage 
+          datasetName="extracted_frames"
+        />
+        <Footer />
+      </div>
     </>
   );
 }

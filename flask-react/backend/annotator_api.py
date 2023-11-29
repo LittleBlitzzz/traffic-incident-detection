@@ -40,9 +40,10 @@ def get_image(dataset_name, video_name, image_filename):
   else :
     return "Image not found!"
 
-@annotator_api.route('/save_annotations/<dataset_name>/<video_name>/<image_filename>', methods=['POST'])
+@annotator_api.route('/save-annotations/<dataset_name>/<video_name>/<image_filename>', methods=['POST'])
 def save_annotations(dataset_name, video_name, image_filename):
-  output_logs = {}
+  output_logs = {"hello": "world"}
+  print("Hi")
   
   if request.method == "POST":
     request_json = request.get_json()
