@@ -346,7 +346,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   return (
     <>
       <div className="w-10"></div> 
-      <form className="flex" onSubmit={handleFormSubmission} id="Testing">
+      <form className="flex space-x-4" onSubmit={handleFormSubmission} id="Testing">
       
         <div className="flex flex-col">
           <div id="environment-details-panel">

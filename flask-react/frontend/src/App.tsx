@@ -1,33 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import './App.css';
 import { Homepage, AnnotatorPage, ModelInterfacePage, PageNotFound } from './pages';
 import { NavBar, Footer } from './components';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="justify-between">
         <NavBar />
-        <Switch>
-          <Route path="/" exact>
-            <Homepage />
-          </Route>
-          <Route path="/annotator" exact>
-            <AnnotatorPage 
-              datasetName="extracted_frames" 
-            />
-          </Route>
-          <Route path="/model-interface" exact>
-            <ModelInterfacePage />
-          </Route>
-          <Route path="*">
-            <PageNotFound />
-          </Route>
-        </Switch>
+        <div id="main-body-content" className="mb-40">
+          <Routes>
+            <Route path="/" exact element={
+              <Homepage />
+            } />
+            <Route path="/annotator" exact element={
+              <AnnotatorPage 
+                datasetName="extracted_frames" 
+              />
+            } /> 
+            <Route path="/model-interface" exact element={
+              <ModelInterfacePage />
+            } />
+            <Route path="*" element={
+              <PageNotFound />
+            } />
+          </Routes>
+        </div>
+        
+        <Outlet />
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

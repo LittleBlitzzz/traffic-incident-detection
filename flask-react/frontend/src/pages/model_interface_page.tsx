@@ -7,7 +7,7 @@ interface ModelInterfacePageProps {
 const ModelInterfacePage: React.FC<ModelInterfacePageProps> = ({ }) => {
   return (
     <>
-      <div className="px-20">
+      <div className="px-36">
         <p>Welcome to the model interface!</p>
       </div>
     </>
