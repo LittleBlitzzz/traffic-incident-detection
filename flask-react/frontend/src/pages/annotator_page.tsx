@@ -14,7 +14,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
   const [currImageFileName, setCurrImageFileName] = useState("0.jpg");
 
   useEffect(() => {
-    fetch('/api/videos-in-dataset/' + datasetName, {
+    fetch('/annotator-api/videos-in-dataset/' + datasetName, {
         method: "get",
         headers: new Headers({
           "ngrok-skip-browser-warning": "1",
@@ -35,7 +35,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
         onOptionSelected={(option) => {
           setCurrVideoName(option);
 
-          fetch('/api/images-in-video/' + datasetName + '/' + option, {
+          fetch('/annotator-api/images-in-video/' + datasetName + '/' + option, {
               method: "get",
               headers: new Headers({
                 "ngrok-skip-browser-warning": "1",

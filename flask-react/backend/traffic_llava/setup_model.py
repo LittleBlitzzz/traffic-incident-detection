@@ -43,8 +43,6 @@ class TrafficLLaVA:
     self.debug = model_args["debug"]
 
   def process_image_text_pair(self, image_filepath, new_input="", conv=None, roles=None):
-    default_conv, default_roles = self.create_convo()
-
     if conv is None or roles is None:
       default_conv, default_roles = self.create_convo()
 
@@ -174,9 +172,7 @@ class PromptFramework:
           
       return results
 
-
-
-def load_traffic_llava():
+def setup_model():
   args = {
       "model_path": 'liuhaotian/llava-v1.5-13b',
       "model_base": None,

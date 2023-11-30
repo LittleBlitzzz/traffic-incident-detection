@@ -1,8 +1,8 @@
 from flask import Flask, Blueprint
 
-test_backend = Blueprint('test_backend', __name__)
+debugger_api = Blueprint("debugger-api", __name__)
 
-@test_backend.route('/', methods=['GET'])
+@debugger_api.route("/", methods=["GET"])
 def welcome():
   return """
   <h1>Welcome to the annotator backend!<h1>

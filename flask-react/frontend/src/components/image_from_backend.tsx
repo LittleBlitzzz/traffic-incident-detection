@@ -15,7 +15,7 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
   }) => {
   const [imageSrc, setImageSrc] = useState("");
 
-  const apiUrl = '/api/get-image/' + datasetName + '/' + videoName + '/' + imageFileName
+  const apiUrl = '/annotator-api/get-image/' + datasetName + '/' + videoName + '/' + imageFileName
   const fetchImage = () => {
     fetch(apiUrl, {
       method:"get",
