@@ -176,7 +176,7 @@ class PromptFramework:
 
 
 
-def load_traffic_llava():
+def setup_model():
   args = {
       "model_path": 'liuhaotian/llava-v1.5-13b',
       "model_base": None,
