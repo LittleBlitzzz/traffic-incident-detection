@@ -9,6 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" />
     <App />
   </React.StrictMode>
 );

@@ -83,7 +83,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 
     console.log(annotationData);
 
-    fetch("/annotator-api/save-annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
+    fetch("/api/annotator/save-annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
       method: "post",
       headers: new Headers({
         "ngrok-skip-browser-warning": "1",

@@ -11,17 +11,17 @@ function App() {
         <NavBar />
         <div id="main-body-content" className="mb-40">
           <Routes>
-            <Route path="/" exact element={
+            <Route path="/" element={
               <Homepage />
-            } />
-            <Route path="/annotator" exact element={
+            } exact/>
+            <Route path="/annotator" element={
               <AnnotatorPage 
                 datasetName="extracted_frames" 
               />
-            } /> 
-            <Route path="/model-interface" exact element={
+            } exact/> 
+            <Route path="/model-interface" element={
               <ModelInterfacePage />
-            } />
+            } exact/>
             <Route path="*" element={
               <PageNotFound />
             } />
