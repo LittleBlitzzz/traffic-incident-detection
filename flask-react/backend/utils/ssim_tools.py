@@ -1,6 +1,7 @@
 import os
 import cv2
 import json
+import logging
 
 from base64 import b64encode
 from pathlib import Path
@@ -9,6 +10,9 @@ from skimage.metrics import structural_similarity as ssim
 
 from utils.video_tools import sort_image_files_in_dir
 
+logger = logging.getLogger()
+
+# Calculates the ssim scores between 2 frames
 def calculate_ssim(frame1, frame2):
     # Convert frames to grayscale if they are in color
     if len(frame1.shape) == 3:
@@ -24,8 +28,10 @@ def calculate_ssim(frame1, frame2):
     ssim_score, _ = ssim(frame1, frame2, full=True)
     return ssim_score
 
+# Sequentially processes the images to filter frames that fall above the threshold, 
+# that is every sequential frame will have ssim scores of lesser or equal to the threshold
 def calculate_frames_ssim(image_file_paths, ssim_threshold = 0.85):
-  print("Processing video with " + str(len(image_file_paths)) + "frames with SSIM Threshold = " + str(ssim_threshold))
+  logger.debug("Processing video with " + str(len(image_file_paths)) + "frames with SSIM Threshold = " + str(ssim_threshold))
   # Get the dimensions of the first image
   first_image = cv2.imread(image_file_paths[0])
 
@@ -41,7 +47,7 @@ def calculate_frames_ssim(image_file_paths, ssim_threshold = 0.85):
   # Write each image to the video
   for current_frame_index in range(1, len(image_file_paths)):
     if current_frame_index % 100 == 0:
-      print("Processing frame : ", current_frame_index)
+      logger.debug("Processing frame : " + str(current_frame_index))
 
     img_path = image_file_paths[current_frame_index]
     image = cv2.imread(img_path)
@@ -53,30 +59,16 @@ def calculate_frames_ssim(image_file_paths, ssim_threshold = 0.85):
       ssim_scores.append(ssim_score)
       previous_frame = image
 
-  print(f"Finished processing all {len(image_file_paths)} frames")
+  logger.debug(f"Finished processing all {len(image_file_paths)} frames")
   return scores
-
-# Example usage
-# video_path = "/content/output/output.mp4"
-# output_path = "/content/output/"
-# output_collage = "/content/output/collage.jpg"
-# start_time = 15
-# end_time = 17
-# num_frames = 4
-
-# extract_frames(video_path, output_folder, start_time, end_time, num_frames)
-# create_collage(output_folder, output_collage)
-
-def calculate_video_ssim(video_path, ssim_threshold = 0.85):
+  
+# Calculates the score for all images in a directory (first natsorts it)
+def calculate_video_ssim(video_path, ssim_threshold = 0.85, save_path=None):
   image_file_paths = sort_image_files_in_dir(video_path)
   frame_ssim_scores = calculate_frames_ssim(image_file_paths, ssim_threshold)
 
-  return frame_ssim_scores
-
-def calculate_video_ssim_and_save(video_path, video_title, ssim_scores_json_path, ssim_threshold = 0.85):
-  image_file_paths = sort_image_files_in_dir(video_path)
-  frame_ssim_scores = calculate_frames_ssim(image_file_paths, ssim_threshold)
-  with open(ssim_scores_json_path, "w") as ssim_scores_file:
-    ssim_scores_file.write(json.dumps(frame_ssim_scores, indent=2))
+  if save_path:
+    with open(save_path, "w") as save_file:
+      save_file.write(json.dumps(frame_ssim_scores, indent=2))
 
   return frame_ssim_scores

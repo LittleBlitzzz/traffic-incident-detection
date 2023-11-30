@@ -1,10 +1,10 @@
 from flask import Flask, Blueprint, request, send_file
-import logging
 
 from natsort import natsorted
 import os
 
 from api.traffic_annotation import TrafficAnnotation, VideoAnnotation
+from utils.ssim_tools import calculate_video_ssim
 
 annotator_api = Blueprint('api', __name__)
 
@@ -41,6 +41,22 @@ def get_image(dataset_name, video_name, image_filename):
   else :
     return "Image not found!"
 
+@annotator_api.route('/get-ssim-score/<dataset_name>/<video_name>/<float:ssim_threshold>', methods=['GET'])
+def get_ssim_score(dataset_name, video_name, ssim_threshold):
+  video_path = os.path.join(os.path.join(os.environ["datasets_path"], dataset_name, video_name))
+
+  results = {
+    "error_message": "",
+  }
+
+  if os.path.exists(video_path):
+    frame_scores = calculate_video_ssim(video_path, ssim_threshold)
+    results["frame_scores"] = frame_scores
+  else:
+    results["error_message"] += "Video not found!"
+  
+  return results
+
 @annotator_api.route('/save-annotations/<dataset_name>/<video_name>/<image_filename>', methods=['POST'])
 def save_annotations(dataset_name, video_name, image_filename):
   output_logs = {}
@@ -62,17 +78,9 @@ def save_annotations(dataset_name, video_name, image_filename):
 
     # check inputs
     request_annotations = request_json["annotations"]
-    apply_dictionary_values(traffic_annotation.annotations, request_annotations)
+    traffic_annotation.annotations.apply_dictionary_values(request_annotations)
  
     video_annotations.save_to_file(annotations_filepath)
 
   return output_logs
 
-def apply_dictionary_values(attrDict, targetDict):
-  for k, v in targetDict.items():
-    if v is not None:
-      if attrDict.get(k, None) is not None:
-        if isinstance(k, dict):
-          apply_dictionary_values(attrDict[k], v)
-        else:
-          attrDict[k] = v

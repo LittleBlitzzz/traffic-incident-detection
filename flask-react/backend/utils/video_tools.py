@@ -8,7 +8,6 @@ from base64 import b64encode
 from natsort import natsorted
 
 from moviepy.editor import VideoFileClip
-from IPython.display import HTML
 
 def convert_avi_to_mp4(input_file, output_file):
     clip = VideoFileClip(input_file)
@@ -18,7 +17,6 @@ def convert_avi_to_mp4(input_file, output_file):
 # input_file = 'downloaded.avi'
 # output_file = 'output.mp4'
 # convert_avi_to_mp4(input_file, output_file)
-
 
 def cut_video_frames(input_file, output_file, start_frame, end_frame):
     cap = cv2.VideoCapture(input_file)
@@ -106,25 +104,6 @@ def images_to_video(folder_path, output_folder, output_file_title, start_frame =
 
 # images_to_video(folder_path, output_folder, output_file_title, start_frame, end_frame)
 
-def show_vid(uncompressed_mp4_filepath, temp_output_path = "temp/temp_compressed.mp4"):
-  if os.path.exists(temp_output_path):
-    os.remove(temp_output_path)
-  command = f"ffmpeg -i {uncompressed_mp4_filepath} -vcodec libx264 {temp_output_path}"
-  print("Running command : ", command)
-  os.system(command)
-  print("Done")
-
-  mp4 = open(temp_output_path,'rb').read()
-  data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
-  return HTML("""
-  <video width=400 controls>
-        <source src="%s" type="video/mp4" video.playbackRate=0.25;>
-  </video>
-  """ % data_url)
-
-# Example usage
-# show_vid("sample/test_vid.mp4")
-
 
 def extract_frames(video_path, output_folder, start_time, end_time, num_frames):
     capture = cv2.VideoCapture(video_path)
@@ -158,3 +137,26 @@ def create_collage(input_folder, output_path):
     collage = cv2.vconcat([cv2.hconcat(images[:2]), cv2.hconcat(images[2:])])
     cv2.imwrite(output_path, collage)
     print(f"Collage created successfully at {output_path}.")
+
+
+# For Python Notebooks
+# from IPython.display import HTML
+# def show_vid(uncompressed_mp4_filepath, temp_output_path = "temp/temp_compressed.mp4"):
+#   if os.path.exists(temp_output_path):
+#     os.remove(temp_output_path)
+#   command = f"ffmpeg -i {uncompressed_mp4_filepath} -vcodec libx264 {temp_output_path}"
+#   print("Running command : ", command)
+#   os.system(command)
+#   print("Done")
+
+#   mp4 = open(temp_output_path,'rb').read()
+#   data_url = "data:video/mp4;base64," + b64encode(mp4).decode()
+#   return HTML("""
+#   <video width=400 controls>
+#         <source src="%s" type="video/mp4" video.playbackRate=0.25;>
+#   </video>
+#   """ % data_url)
+
+# Example usage
+# show_vid("sample/test_vid.mp4")
+

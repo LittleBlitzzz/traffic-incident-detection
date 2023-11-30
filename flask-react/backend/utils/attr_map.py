@@ -44,3 +44,12 @@ class AttrMap(dict):
 
   def __repr__(self):
     return self.__dict__.__repr__()
+
+  def apply_dictionary_values(self, targetDict):
+    for k, v in targetDict.items():
+      if v is not None:
+        if self.get(k, None) is not None:
+          if isinstance(k, dict):
+            self.apply_dictionary_values(self[k], v)
+          else:
+            self[k] = v
