@@ -14,8 +14,17 @@ llava_path = os.path.join(Path(__file__).parent.absolute(), "LLaVA")
 if llava_path not in sys.path:
   sys.path.append(llava_path)
 
+model = None
+
+def get_active_model():
+  from traffic_llava.setup_model import setup_model
+  global model
+  if model is None:
+    model = setup_model()
+  return model
+
 # Todo : Explore the factory pattern
-def create_app(start_model:bool):
+def create_app(load_model_on_start:bool):
   app = Flask(__name__)
   app.register_blueprint(debugger_api, url_prefix='/') 
   app.register_blueprint(annotator_api, url_prefix='/annotator-api')
@@ -24,8 +33,7 @@ def create_app(start_model:bool):
   logging.basicConfig(filename='backend.log', level=logging.DEBUG)
 
     # var obj = JSON.parse(string);
-  if start_model:
-    from traffic_llava.setup_model import test_model
-    test_model()
+  if load_model_on_start:
+    model = get_active_model()
   
   return app
