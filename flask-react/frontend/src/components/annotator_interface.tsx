@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Dropdown, DropdownProps, MultiSelectDropdown } from './';
+import React, { useState, useEffect, useRef, FormEvent } from 'react';
+import { Dropdown, DropdownProps, MultiSelectDropdown, InputWithLabel } from './';
 
 interface AnnotatorInterfaceProps {
   datasetName: string;
@@ -45,7 +45,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   /** Potential Cause of Incident */
   const refCauseOfIncident = useRef([]);
 
-  const handleFormSubmission = (e) => {
+  const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
     
     let annotationData = {
@@ -346,7 +346,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   return (
     <>
       <div className="w-10"></div> 
-      <form className="flex space-x-4" onSubmit={handleFormSubmission} id="Testing">
+      <form className="flex space-x-4" onSubmit={handleFormSubmission} id="annotator_form">
       
         <div className="flex flex-col">
           <div id="environment-details-panel">
@@ -379,15 +379,3 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 }
 
 export default AnnotatorInterface;
-
-const InputWithLabel = ({ inputElem, label, indentClass } : { inputElem : React.ReactElement<any>, label: string, indentClass:string}) => {
-  let parentDivClass = "flex items-center py-0.5 " + indentClass;
-  return (
-    <>
-      <div className={parentDivClass}>
-        <p className="w-40">{label}:</p>
-        {inputElem}
-      </div>
-    </>
-  )
-}
