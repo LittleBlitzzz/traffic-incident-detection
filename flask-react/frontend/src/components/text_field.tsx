@@ -1,5 +1,5 @@
 
-import React, { RefObject, ChangeEvent } from 'react';
+import React, { useState, useEffect, RefObject, ChangeEvent } from 'react';
 
 interface TextFieldProps {
   inputValueName: string;
@@ -20,8 +20,11 @@ const TextField: React.FC<TextFieldProps> = ({
   onTextChanged = null,
   rows = 3,
 }) => {
+  const [text, setText] = useState(initialValue);
+
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newText = event.target.value;
+    setText(newText);
 
     if (onTextChanged) {
       onTextChanged(newText);
@@ -36,7 +39,7 @@ const TextField: React.FC<TextFieldProps> = ({
           name={inputValueName}
           placeholder={placeholder}
           ref={inputValueRef as RefObject<HTMLTextAreaElement>}
-          defaultValue={initialValue}
+          value={text}
           onChange={handleChange as React.ChangeEventHandler<HTMLTextAreaElement>}
           rows={rows}
         />
@@ -47,7 +50,7 @@ const TextField: React.FC<TextFieldProps> = ({
           name={inputValueName}
           placeholder={placeholder}
           ref={inputValueRef as RefObject<HTMLInputElement>}
-          defaultValue={initialValue}
+          value={text}
           onChange={handleChange as React.ChangeEventHandler<HTMLInputElement>}
         />
       )}

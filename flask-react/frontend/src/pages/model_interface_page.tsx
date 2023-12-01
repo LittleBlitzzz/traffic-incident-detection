@@ -55,7 +55,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
         <InputWithLabel
           inputElem={(
             <TextField 
-              placeholder="Enter Image Filename"
+              placeholder="Enter image filename"
               initialValue="0.jpg"
               inputValueName="image_filename"
               inputValueRef={refImageFilename}
@@ -70,12 +70,17 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
     </form>
   )
 
-  const [promptFields, setPromptFields] = useState<string[]>([]);
+  const [promptFields, setPromptFields] = useState([]);
+  const [promptKeyCounter, setPromptKeyCounter] = useState(0);
+
   const promptTemplateForm = (
     <>
       <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e) => {
         e.preventDefault();
         console.log(promptFields);
+        setPromptFields(promptFields.map(([keyIndex, value, llavaOutput], index) => {
+          return [keyIndex, value, `Test with randoms : ${Math.floor(Math.random() * 10000000000)}`]
+        }))
       }}>
         <InputWithLabel
           inputElem={(
@@ -91,50 +96,60 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
           label="System Prompt"
           labelClassName="w-56 mb-auto"
         />
-
-        {promptFields.map((value, index) => (
-          <div className="flex space-x-4">
-            <InputWithLabel
-              inputElem={(
-                <TextField
-                  key={index}
-                  inputValueName={`prompt-index-${index}`}
-                  initialValue={promptFields[index]}
-                  placeholder={`Field ${index + 1}`}
-                  dataType="text"
-                  onTextChanged={(text) => {
-                    promptFields[index] = text;
-                  }}
-                />
-              )}
-              parentWidthClass="w-full"
-              label={`Prompt ${index + 1}`}
-              labelClassName="w-56 mb-auto"
-            />
-            <button type="button" onClick={() => {
-              setPromptFields(promptFields.filter( (prompt, i) => i !== index ));
-            }}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="red"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
+        
+        {promptFields.map(([keyIndex, value, llavaOutput], index) => (
+          <>
+            <div className="flex space-x-4">
+              <InputWithLabel
+                inputElem={(
+                  <TextField
+                    inputValueName={`prompt-index-${index}`}
+                    initialValue={value}
+                    placeholder={`Prompt ${index + 1}`}
+                    dataType="text"
+                    onTextChanged={(text) => {
+                      promptFields[index][1] = text;
+                    }}
+                  />
+                )}
+                key={`prompt-field-${keyIndex}`}
+                parentWidthClass="w-full"
+                label={`Prompt ${index + 1}`}
+                labelClassName="w-56 mb-auto"
+              />
+              <button type="button" onClick={() => {
+                setPromptFields(promptFields.filter( (prompt, i) => i !== index ));
+              }}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="red"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            
+            {llavaOutput !== null &&(
+              <div className="flex space-x-4 self-end">
+                <p className="self-center">{llavaOutput}</p>
+                <p className="p-1 bg-slate-100 rounded-md">LLaVA</p>
+              </div>
+            )}
+          </>
         ))}
 
         <div className="flex space-x-4 self-end">
           <button className={btnDefaultClassName} type="button" onClick={() => {
-            setPromptFields([...promptFields, ''])
+            setPromptFields([...promptFields, [promptKeyCounter, '', null ]]);
+            setPromptKeyCounter(promptKeyCounter + 1);
           }}>Add prompt</button>
           <button className={btnDefaultClassName} type="submit">Update prompt template</button>
         </div>
@@ -165,9 +180,3 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
 }
 
 export default ModelInterfacePage;
-
-const UpdateButton: React.FC<{ string: title, string: btnAttributes }> = ({ title, btnAttributes="" }) => {
-  return (
-    <button className="py-2 px-4 bg-emerald-200 rounded-lg self-end" >{title}</button>
-  );
-}
