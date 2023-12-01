@@ -134,10 +134,12 @@ class PromptFramework:
     self.prompt_sequence = prompt_sequence
 
   def apply_on_image(self, model: TrafficLLaVA, image_input, save_path=None):
+    original_prompt = model.system_prompt
     model.system_prompt = self.system_prompt
 
+    results = []
+
     if isinstance(image_path, list):
-      results = []
       for image_path in image_input:
         image_caption_outputs = self.apply_on_image(model, image_path)
         results.append(image_caption_outputs)
@@ -152,10 +154,8 @@ class PromptFramework:
         else:
           logging.getLogger().debug("Directory to save prompt results does not exist!")
 
-      return results
     else:
       conv, roles = model.create_convo()
-      results = []
       for prompt in self.prompt_sequence:
         image_caption_output = model.process_image_text_pair(image_path, prompt, conv, roles)
         results.append(image_caption_output)
@@ -170,7 +170,8 @@ class PromptFramework:
         else:
           logging.getLogger().debug("Directory to save prompt results does not exist!")
           
-      return results
+    model.system_prompt = original_prompt
+    return results
 
 def setup_model():
   args = {

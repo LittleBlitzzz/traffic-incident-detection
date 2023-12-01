@@ -4,7 +4,7 @@ import logging
 import os
 
 from backend import get_active_model
-from traffic_llava.setup_model import PromptFramework, setup_model
+from traffic_llava.traffic_llava import PromptFramework, setup_model
 
 model_api = Blueprint("model-api", __name__)
 

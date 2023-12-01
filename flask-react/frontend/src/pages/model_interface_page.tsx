@@ -17,7 +17,6 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
   const refDatasetName = useRef("");
   const refVideoName = useRef("");
   const refImageFilename = useRef("");
-  const refSystemPrompt = useRef(defaultSystemPrompt);
 
   const inputContextForm = (
     <form id="input-context-form" className="flex flex-col space-y-4 w-1/2" onSubmit={(e: FormEvent) => {
@@ -70,6 +69,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
     </form>
   )
 
+  const refSystemPrompt = useRef(defaultSystemPrompt);
   const [promptFields, setPromptFields] = useState([]);
   const [promptKeyCounter, setPromptKeyCounter] = useState(0);
 
@@ -78,9 +78,31 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
       <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e) => {
         e.preventDefault();
         console.log(promptFields);
-        setPromptFields(promptFields.map(([keyIndex, value, llavaOutput], index) => {
-          return [keyIndex, value, `Test with randoms : ${Math.floor(Math.random() * 10000000000)}`]
-        }))
+
+        const requestBody = {
+          "prompt_framework": {
+            "system_prompt": refSystemPrompt.current.value,
+            "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
+          },
+        };
+
+        fetch('api/model/ask-llava', {
+          method: "POST",
+          headers: new Headers({
+            "ngrok-skip-browser-warning": "1",
+          }),
+          body: JSON.stringify(requestBody),
+        })
+        .then(response => response.json())
+        .then(response_json => {
+          console.log(response_json);
+          const model_output = response_json.get("model_output");
+
+          setPromptFields(promptFields.map(([keyIndex, value, llavaOutput], index) => {
+            return [keyIndex, value, `model_output[index]`]
+          }));
+        });
+
       }}>
         <InputWithLabel
           inputElem={(
