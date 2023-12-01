@@ -99,13 +99,11 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
                 <TextField
                   key={index}
                   inputValueName={`prompt-index-${index}`}
-                  initialValue={value}
+                  initialValue={promptFields[index]}
                   placeholder={`Field ${index + 1}`}
                   dataType="text"
                   onTextChanged={(text) => {
-                    const updatedFields = [...promptFields];
-                    updatedFields[index] = value;
-                    setPromptFields(updatedFields);
+                    promptFields[index] = text;
                   }}
                 />
               )}
@@ -114,11 +112,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
               labelClassName="w-56 mb-auto"
             />
             <button type="button" onClick={() => {
-              setPromptFields((prevFields) => {
-                const updatedFields = [...prevFields];
-                updatedFields.splice(index, 1);
-                return updatedFields;
-              });
+              setPromptFields(promptFields.filter( (prompt, i) => i !== index ));
             }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
