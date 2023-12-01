@@ -11,7 +11,7 @@ if llava_path not in sys.path:
   sys.path.append(llava_path)
 
 # Todo : Explore the factory pattern
-def create_app(load_model_on_start:bool):
+def create_app(load_model:bool):
   app = Flask(__name__)
 
   from api.debugger_api import debugger_api
@@ -23,8 +23,8 @@ def create_app(load_model_on_start:bool):
   logging.basicConfig(filename='backend.log', level=logging.DEBUG)
 
     # var obj = JSON.parse(string);
-  if load_model_on_start:
+  if load_model:
     from api.model_api import model_api
     app.register_blueprint(model_api, url_prefix='/api/model')
-  
+
   return app

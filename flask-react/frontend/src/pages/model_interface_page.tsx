@@ -84,22 +84,25 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
             "system_prompt": refSystemPrompt.current.value,
             "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
           },
+          "dataset_name": refDatasetName.current.value,
+          "video_name": refVideoName.current.value,
+          "image_filename": refImageFilename.current.value,
         };
 
         fetch('api/model/ask-llava', {
           method: "POST",
           headers: new Headers({
             "ngrok-skip-browser-warning": "1",
+            "Content-Type": "application/json",
           }),
           body: JSON.stringify(requestBody),
         })
         .then(response => response.json())
         .then(response_json => {
-          console.log(response_json);
-          const model_output = response_json.get("model_output");
-
+          const model_output = response_json["model_output"];
+          console.log(model_output)
           setPromptFields(promptFields.map(([keyIndex, value, llavaOutput], index) => {
-            return [keyIndex, value, `model_output[index]`]
+            return [keyIndex, value, `${model_output[0][index]}`]
           }));
         });
 

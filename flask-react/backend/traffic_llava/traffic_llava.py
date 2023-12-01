@@ -4,6 +4,7 @@ import os
 import torch
 import yaml
 import logging
+logger = logging.getLogger()
 
 from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.conversation import conv_templates, SeparatorStyle
@@ -42,7 +43,7 @@ class TrafficLLaVA:
     self.temperature = model_args["temperature"]
     self.debug = model_args["debug"]
 
-  def process_image_text_pair(self, image_filepath, new_input="", conv=None, roles=None):
+  def process_image_text_pair(self, image_filepath, text_inputs="", conv=None, roles=None):
     if conv is None or roles is None:
       default_conv, default_roles = self.create_convo()
 
@@ -51,49 +52,56 @@ class TrafficLLaVA:
 
       if roles is None:
         roles = default_roles
-
+        
     image, image_tensor = self.load_image_as_tensor(image_filepath)
-    if image is not None:
-      # first message
-      if self.model.config.mm_use_im_start_end:
-        inp = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + new_input
-      else:
-        new_input = DEFAULT_IMAGE_TOKEN + '\n' + new_input
-      conv.append_message(roles[0], new_input)
-      image = None
-    else:
-      # later messages
-      conv.append_message(roles[0], new_input)
-    conv.append_message(roles[1], None)
-    prompt = conv.get_prompt()
 
-    print(f"{roles[1]}: ", end="")
-
-    input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(self.model.device)
-    stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
-    keywords = [stop_str]
-    stopping_criteria = KeywordsStoppingCriteria(keywords, self.tokenizer, input_ids)
-    streamer = TextStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
-
-    with torch.inference_mode():
-      output_ids = self.model.generate(
-        input_ids,
-        images=image_tensor,
-        do_sample=True if self.temperature > 0 else False,
-        temperature=self.temperature,
-        max_new_tokens=self.max_new_tokens,
-        streamer=streamer,
-        use_cache=True,
-        stopping_criteria=[stopping_criteria])
-
-    outputs = self.tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
-    conv.messages[-1][-1] = outputs
-
-    if self.debug:
-      print("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+    if not isinstance(text_inputs, list):
+      text_inputs = [ text_inputs ]
     
-    return outputs
+    results = []
+    for text_input in text_inputs:
+      if len(conv.messages) == 0 and image is not None:
+        # first message
+        if self.model.config.mm_use_im_start_end:
+          text_input = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN + '\n' + text_input
+        else:
+          text_input = DEFAULT_IMAGE_TOKEN + '\n' + text_input
+        conv.append_message(roles[0], text_input)
+        image = None
+      else:
+        # later messages
+        conv.append_message(roles[0], text_input)
+      conv.append_message(roles[1], None)
+      prompt = conv.get_prompt()
 
+      print(f"{roles[1]}: ", end="")
+
+      input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(self.model.device)
+      stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
+      keywords = [stop_str]
+      stopping_criteria = KeywordsStoppingCriteria(keywords, self.tokenizer, input_ids)
+      streamer = TextStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
+
+      with torch.inference_mode():
+        output_ids = self.model.generate(
+          input_ids,
+          images=image_tensor,
+          do_sample=True if self.temperature > 0 else False,
+          temperature=self.temperature,
+          max_new_tokens=self.max_new_tokens,
+          streamer=streamer,
+          use_cache=True,
+          stopping_criteria=[stopping_criteria])
+
+      outputs = self.tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
+      conv.messages[-1][-1] = outputs
+      results.append(outputs)
+
+      if self.debug:
+        print("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+    
+    return results
+  
   def create_convo(self):
     conv = conv_templates[self.conv_mode].copy()
 
@@ -139,7 +147,7 @@ class PromptFramework:
 
     results = []
 
-    if isinstance(image_path, list):
+    if isinstance(image_input, list):
       for image_path in image_input:
         image_caption_outputs = self.apply_on_image(model, image_path)
         results.append(image_caption_outputs)
@@ -156,9 +164,9 @@ class PromptFramework:
 
     else:
       conv, roles = model.create_convo()
-      for prompt in self.prompt_sequence:
-        image_caption_output = model.process_image_text_pair(image_path, prompt, conv, roles)
-        results.append(image_caption_output)
+      
+      image_caption_output = model.process_image_text_pair(image_input, self.prompt_sequence, conv, roles)
+      results.append(image_caption_output)
       
       if save_path:
         if os.path.exists(Path(save_path).parent.absolute()):
@@ -174,6 +182,7 @@ class PromptFramework:
     return results
 
 def setup_model():
+  print("Setting up the model (Setup_Model)")
   args = {
       "model_path": 'liuhaotian/llava-v1.5-13b',
       "model_base": None,
