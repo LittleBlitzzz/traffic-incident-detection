@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "cd ../backend && env/bin/flask --app \"backend:create_app(load_model=True)\" run --no-reload",
+    "start-backend": "cd ../backend && env/bin/flask --app \"backend:create_app(load_model=False)\" run --no-reload",
     "dev": "concurrently \"npm run start\" \"npm run start-backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -370,9 +370,10 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
             <p className="font-bold">Traffic details:</p>
             {causeOfIncidentInputs}
           </div>
-        </div>
 
-        <input type="submit" value="Hello "/>
+          <button type="submit" className="bg-slate-100 p-2 rounded-lg">Submit</button>
+        </div>
+        
       </form> 
     </>
   )
