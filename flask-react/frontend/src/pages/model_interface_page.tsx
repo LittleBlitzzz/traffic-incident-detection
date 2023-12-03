@@ -18,16 +18,63 @@ The assistant is tasked with classifying traffic incidents (if any) in the given
   const refDatasetName = useRef("extracted_frames");
   const refVideoName = useRef("000000");
   const refImageFilename = useRef("0.jpg");
-  const refModelTemperature = useRef(0.8);
+  const refModelTemperature = useRef(0.2);
  
-  const refSystemPrompt = useRef("");
-  const [promptFields, setPromptFields] = useState<[number, string, string][]>([]);
-  const [promptKeyCounter, setPromptKeyCounter] = useState(0);
+  const refSystemPrompt = useRef(defaultSystemPrompt);
+  const [promptFields, setPromptFields] = useState<[number, string, string][]>([
+    [0, 
+`
+environment:
+  lighting: (day, night, dawn/dusk)
+  road_surface_condition: (dry, wet, icy, snowy, potholes)
+  road_layout: (straight, curved, intersection, roundabout)
+  road_type: (alley, street, dirt_road)
+  road_location: (urban, rural)
+  traffic_density: (empty, sparse, congested)
+  traffic_speed: (not_moving_or_slow, fast)
+  surroundings (multi-choice list): (traffic_lights, road_signs, pedestrian_crosswalk, sidewalk, overhead_bridge, bicycle_lanes, speed_bumps, construction_work, street_lights, electric_polls, trees/nature, animals_crossing, others)
+`.trim().replace(/^\s+|\s+$/g, ''),
+    ""
+    ],
+    [1, 
+`
+road_users:
+  car: (none, at_least_one, a_few, many)
+  truck_or_large_vehicle: (none, at_least_one, a_few, many)
+  motorcycle: (none, at_least_one, a_few, many)
+  bicycle: (none, at_least_one, a_few, many)
+  pedestrian: (none, at_least_one, a_few, many)
+  other: (none, at_least_one, a_few, many)
+`.trim().replace(/^\s+|\s+$/g, ''),
+    ""
+    ],
+    [2, 
+`
+incident_details:
+  is_traffic_incident: (true, false)
+  type_of_incident: (run_off_road, roll_over, single_car_collision, multicar_collision)
+  type_of_collision: (rear-end, side_impact, rollover, sideswipe, head-on, single_car, multiple_vehicle_pile-up)
+  types_of_road_users_involved: [car, truck_or_large_vehicle, motorcycle, bicycle, pedestrian]
+  severity_of_incident: (none, light_injuries, serious_injuries, fatal)
+  causes (multi-choice list):
+    human_behavior: (driver_error, impairment_or_distraction, behavior_or_inexperience, pedestrian_causes)
+    injudicious_actions: (jaywalking, speeding_red_light)
+    vehicle_defects
+    road_conditions
+    obstructed_vision
+    animals_crossing
+`.trim().replace(/^\s+|\s+$/g, ''),
+    ""
+    ]
+  ]);
+  const [promptKeyCounter, setPromptKeyCounter] = useState(3);
 
   const promptTemplateForm = (
     <>
       <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e : FormEvent) => {
         e.preventDefault();
+        console.log(refModelTemperature.current);
+        console.log(refSystemPrompt.current);
         console.log(promptFields);
 
         const requestBody = {
@@ -63,10 +110,10 @@ The assistant is tasked with classifying traffic incidents (if any) in the given
           inputElem={(
             <TextField 
               placeholder="Enter model temperature"
-              initialValue={0.9}
+              initialValue={0.2}
               inputValueName="model_temperature"
               refInputValue={refModelTemperature}
-              rows={2}
+              dataType="number"
             />
           )}
           label="Model Temperature"

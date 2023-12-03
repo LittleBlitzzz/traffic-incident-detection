@@ -32,7 +32,7 @@ class TrafficLLaVA:
       conv_mode = "llava_v0"
 
     if model_args["conv_mode"] is not None and conv_mode != model_args["conv_mode"]:
-      logger.debug('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, args.conv_mode, args.conv_mode))
+      logger.debug('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, model_args.conv_mode, model_args.conv_mode))
     else:
       model_args["conv_mode"] = conv_mode
 
@@ -74,8 +74,6 @@ class TrafficLLaVA:
       conv.append_message(roles[1], None)
       prompt = conv.get_prompt()
 
-      logger.debug(f"{roles[1]}: ", end="")
-
       input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(self.model.device)
       stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
       keywords = [stop_str]
@@ -98,7 +96,7 @@ class TrafficLLaVA:
       results.append(outputs)
 
       if self.debug:
-        logger.debug("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+        logger.debug({"prompt": prompt, "outputs": outputs})
     
     return results
   
@@ -163,6 +161,7 @@ class PromptFramework:
               "system_prompt": self.system_prompt,
               "prompt_sequence" : self.prompt_sequence,
               "temperature": self.temperature,
+              "image_input": image_input,s
               "results": results
             }))
             yaml.dump(data, output_file, default_flow_style=False)
@@ -182,6 +181,7 @@ class PromptFramework:
               "system_prompt": self.system_prompt,
               "prompt_sequence" : self.prompt_sequence,
               "temperature": self.temperature,
+              "image_input": image_input,
               "results": results,
             }))
             yaml.dump(data, output_file, default_flow_style=False)
@@ -193,14 +193,14 @@ class PromptFramework:
     return results
 
 def setup_model():
-  print("Setting up the model (Setup_Model)")
+  logger.debug("Setting up the model (Setup_Model)")
   args = {
       "model_path": 'liuhaotian/llava-v1.5-13b',
       "model_base": None,
       "device": "cuda",
       "conv_mode": None,
       "max_new_tokens": 512,
-      "temperature": 0.9,
+      "temperature": 0.2,
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
@@ -219,7 +219,7 @@ def test_model():
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
-      "temperature": 0.9,
+      "temperature": 0.2,
   }
 
   prompt = "What do you see"
