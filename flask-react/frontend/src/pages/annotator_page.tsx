@@ -10,8 +10,8 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
   const [videoTitles, setVideoTitles] = useState([]);
   const [imageFileNames, setImageFileNames] = useState([]);
 
-  const [currVideoName, setCurrVideoName] = useState("000000");
-  const [currImageFileName, setCurrImageFileName] = useState("0.jpg");
+  const [currVideoName, setCurrVideoName] = useState("");
+  const [currImageFileName, setCurrImageFileName] = useState("");
 
   useEffect(() => {
     fetch('/api/annotator/videos-in-dataset/' + datasetName, {
@@ -80,7 +80,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
   )
 
   let annotatorPanel = (
-    <div className="px-36 pt-8 flex">
+    <div className="px-36 pt-8">
       { (currVideoName !== "" && currImageFileName !== "") &&
         <>
           <ImageFromBackend
@@ -88,7 +88,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
             videoName={currVideoName}
             imageFileName={currImageFileName}
             altText="Video footage"
-            className="rounded-lg w-[400px] h-fit border-2 border-slate-400"
+            className="rounded-lg w-[400px] h-fit border-2 border-slate-400 m-auto"
           />
           <AnnotatorInterface
             datasetName={datasetName}

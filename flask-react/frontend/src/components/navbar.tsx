@@ -5,7 +5,7 @@ import github_logo_light from "/content/traffic-incident-detection/flask-react/f
 import github_logo_dark from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark-white.svg"
 
 interface NavBarProps {
-  currentPage: string;
+  currentPage?: string;
 }
 
 const NavBar: React.FC<NavBarProps> = ({

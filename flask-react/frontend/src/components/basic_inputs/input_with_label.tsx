@@ -4,9 +4,9 @@ import React from 'react';
 interface InputWithLabelProps { 
   inputElem : React.ReactElement<any>;
   label: string;
-  labelClassName: string;
-  indentClass: string;
-  parentWidthClass: string;
+  labelClassName?: string;
+  indentClass?: string;
+  parentWidthClass?: string;
 }
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({ 

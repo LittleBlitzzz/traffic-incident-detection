@@ -113,7 +113,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
               placeholder="Enter system prompt"
               initialValue={defaultSystemPrompt}
               inputValueName="system_prompt"
-              inputValueRef={refSystemPrompt}
+              refInputValue={refSystemPrompt}
               dataType="textarea"
               rows="4"
             />

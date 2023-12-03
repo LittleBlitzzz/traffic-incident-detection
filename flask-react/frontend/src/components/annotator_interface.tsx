@@ -6,12 +6,14 @@ interface AnnotatorInterfaceProps {
   datasetName: string;
   videoName: string;
   imageFileName: string;
+  url?: string;
 }
 
 const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({ 
     datasetName, 
     videoName, 
-    imageFileName 
+    imageFileName,
+    url="",
   }) => {
 
   const unableToIdentifyOption = "Unknown/Indistinguishable";
@@ -344,38 +346,35 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   )
 
   return (
-    <>
-      <div className="w-10"></div> 
-      <form className="flex space-x-4" onSubmit={handleFormSubmission} id="annotator_form">
+    <form className="flex space-x-4 place-content-evenly" onSubmit={handleFormSubmission} id="annotator_form">
+    
+      <div className="flex flex-col">
+        <div id="environment-details-panel">
+          <p className="font-bold">Environment details:</p>
+          {environmentDetailsInputs}
+        </div>
+
+        <div id="traffic-details-panel">
+          <p className="font-bold">Traffic details:</p>
+          {traficParticipantsInputs}
+        </div>
+      </div>
+
+      <div className="flex flex-col">
+        <div id="environment-details-panel">
+          <p className="font-bold">Environment details:</p>
+          {traficIncidentInputs}
+        </div>
+
+        <div id="traffic-details-panel">
+          <p className="font-bold">Traffic details:</p>
+          {causeOfIncidentInputs}
+        </div>
+
+        <button type="submit" className="bg-slate-100 p-2 rounded-lg">Submit</button>
+      </div>
       
-        <div className="flex flex-col">
-          <div id="environment-details-panel">
-            <p className="font-bold">Environment details:</p>
-            {environmentDetailsInputs}
-          </div>
-
-          <div id="traffic-details-panel">
-            <p className="font-bold">Traffic details:</p>
-            {traficParticipantsInputs}
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <div id="environment-details-panel">
-            <p className="font-bold">Environment details:</p>
-            {traficIncidentInputs}
-          </div>
-
-          <div id="traffic-details-panel">
-            <p className="font-bold">Traffic details:</p>
-            {causeOfIncidentInputs}
-          </div>
-
-          <button type="submit" className="bg-slate-100 p-2 rounded-lg">Submit</button>
-        </div>
-        
-      </form> 
-    </>
+    </form>
   )
 }
 

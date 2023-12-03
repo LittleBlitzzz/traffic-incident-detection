@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 
 
 interface FooterProps {
-  currentPage: string;
-  heightClass: string;
+  currentPage?: string;
+  heightClass?: string;
 }
 
 const Footer: React.FC<FooterProps> = ({
