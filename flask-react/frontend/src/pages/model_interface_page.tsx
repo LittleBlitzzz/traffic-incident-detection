@@ -82,7 +82,7 @@ incident_details:
           "prompt_framework": {
             "system_prompt": refSystemPrompt.current,
             "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
-            "temperature": refModelTemperature.current,
+            "temperature": Number(refModelTemperature.current),
           },
           "dataset_name": refDatasetName.current,
           "video_name": refVideoName.current,
@@ -192,7 +192,7 @@ incident_details:
             
             {llavaOutput !== null && llavaOutput !== "" &&(
               <div className="flex space-x-4 self-end">
-                <p className="self-center">{llavaOutput}</p>
+                <p className="self-center">{llavaOutput.replace("\n\g", "<br />")}</p>
                 <p className="p-1 bg-slate-100 rounded-md">LLaVA</p>
               </div>
             )}
