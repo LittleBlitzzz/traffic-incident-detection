@@ -161,8 +161,8 @@ class PromptFramework:
               "system_prompt": self.system_prompt,
               "prompt_sequence" : self.prompt_sequence,
               "temperature": self.temperature,
-              "image_input": image_input,s
-              "results": results
+              "image_input": image_input,
+              "results": results,
             }))
             yaml.dump(data, output_file, default_flow_style=False)
         else:
