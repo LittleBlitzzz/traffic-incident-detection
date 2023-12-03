@@ -32,7 +32,7 @@ class TrafficLLaVA:
       conv_mode = "llava_v0"
 
     if model_args["conv_mode"] is not None and conv_mode != model_args["conv_mode"]:
-      print('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, args.conv_mode, args.conv_mode))
+      logger.debug('[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}'.format(conv_mode, args.conv_mode, args.conv_mode))
     else:
       model_args["conv_mode"] = conv_mode
 
@@ -74,7 +74,7 @@ class TrafficLLaVA:
       conv.append_message(roles[1], None)
       prompt = conv.get_prompt()
 
-      print(f"{roles[1]}: ", end="")
+      logger.debug(f"{roles[1]}: ", end="")
 
       input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).to(self.model.device)
       stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
@@ -98,7 +98,7 @@ class TrafficLLaVA:
       results.append(outputs)
 
       if self.debug:
-        print("\n", {"prompt": prompt, "outputs": outputs}, "\n")
+        logger.debug("\n", {"prompt": prompt, "outputs": outputs}, "\n")
     
     return results
   
@@ -106,7 +106,7 @@ class TrafficLLaVA:
     conv = conv_templates[self.conv_mode].copy()
 
     if self.system_prompt:
-      print("Overwritting original system prompt: " + str(conv.system))
+      logger.debug("Overwritting original system prompt: " + str(conv.system))
       conv.system = self.system_prompt
 
     roles = None
@@ -137,13 +137,17 @@ class TrafficLLaVA:
     return image, image_tensor
 
 class PromptFramework:
-  def __init__(self, system_prompt, prompt_sequence):
+  def __init__(self, system_prompt, prompt_sequence, temperature):
     self.system_prompt = system_prompt
     self.prompt_sequence = prompt_sequence
+    self.temperature = temperature
 
   def apply_on_image(self, model: TrafficLLaVA, image_input, save_path=None):
     original_prompt = model.system_prompt
+    original_temperature = model.temperature
+
     model.system_prompt = self.system_prompt
+    model.temperature = self.temperature
 
     results = []
 
@@ -156,11 +160,14 @@ class PromptFramework:
         if os.path.exists(Path(save_path).parent.absolute()):
           with open(save_path, "w") as output_file:
             data = yaml.safe_load(str({
-              "prompt_results": results
+              "system_prompt": self.system_prompt,
+              "prompt_sequence" : self.prompt_sequence,
+              "temperature": self.temperature,
+              "results": results
             }))
             yaml.dump(data, output_file, default_flow_style=False)
         else:
-          logging.getLogger().debug("Directory to save prompt results does not exist!")
+          logger.debug("Directory to save prompt results does not exist!")
 
     else:
       conv, roles = model.create_convo()
@@ -172,13 +179,17 @@ class PromptFramework:
         if os.path.exists(Path(save_path).parent.absolute()):
           with open(save_path, "w") as output_file:
             data = yaml.safe_load(str({
-              "prompt_results": results
+              "system_prompt": self.system_prompt,
+              "prompt_sequence" : self.prompt_sequence,
+              "temperature": self.temperature,
+              "results": results,
             }))
             yaml.dump(data, output_file, default_flow_style=False)
         else:
-          logging.getLogger().debug("Directory to save prompt results does not exist!")
+          logger.debug("Directory to save prompt results does not exist!")
           
     model.system_prompt = original_prompt
+    model.temperature = original_temperature
     return results
 
 def setup_model():
@@ -189,7 +200,7 @@ def setup_model():
       "device": "cuda",
       "conv_mode": None,
       "max_new_tokens": 512,
-      "temperature": 0.2,
+      "temperature": 0.9,
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
@@ -208,8 +219,7 @@ def test_model():
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
-      "temperature": 0.2,
-      "max_new_tokens": 512,
+      "temperature": 0.9,
   }
 
   prompt = "What do you see"

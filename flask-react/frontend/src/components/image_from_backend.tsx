@@ -59,9 +59,9 @@ interface ImageSelectorProps {
 }
 
 const ImageSelector: React.FC<ImageSelectorProps> = ({ 
-    refDatasetName=useRef(""),
-    refVideoName=useRef(""),
-    refImageFilename=useRef(""),
+    refDatasetName=useRef("extracted_frames"),
+    refVideoName=useRef("000000"),
+    refImageFilename=useRef("6.jpg"),
     altText="Image", 
     className="",
   }) => {
@@ -78,7 +78,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
           inputElem={(
             <TextField 
               placeholder="Enter dataset name"
-              initialValue="extracted_frames"
+              initialValue={refDatasetName.current}
               inputValueName="dataset_name"
               refInputValue={refDatasetName}
             />
@@ -91,7 +91,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
           inputElem={(
             <TextField 
               placeholder="Enter video name"
-              initialValue="000000"
+              initialValue={refVideoName.current}
               inputValueName="video_name"
               refInputValue={refVideoName}
             />
@@ -104,7 +104,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
           inputElem={(
             <TextField 
               placeholder="Enter image filename"
-              initialValue="0.jpg"
+              initialValue={refImageFilename.current}
               inputValueName="image_filename"
               refInputValue={refImageFilename}
             />

@@ -12,9 +12,10 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
 
   const btnDefaultClassName = "py-2 px-4 bg-emerald-200 rounded-lg"
 
-  const refDatasetName = useRef("");
-  const refVideoName = useRef("");
-  const refImageFilename = useRef("");
+  const refDatasetName = useRef("extracted_frames");
+  const refVideoName = useRef("000000");
+  const refImageFilename = useRef("0.jpg");
+  const refModelTemperature = useRef(0.8);
  
   const refSystemPrompt = useRef("");
   const [promptFields, setPromptFields] = useState<[number, string, string][]>([]);
@@ -30,6 +31,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
           "prompt_framework": {
             "system_prompt": refSystemPrompt.current,
             "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
+            "temperature": refModelTemperature.current,
           },
           "dataset_name": refDatasetName.current,
           "video_name": refVideoName.current,
@@ -54,6 +56,20 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
         });
 
       }}>
+        <InputWithLabel
+          inputElem={(
+            <TextField 
+              placeholder="Enter model temperature"
+              initialValue={0.9}
+              inputValueName="model_temperature"
+              refInputValue={refModelTemperature}
+              rows={2}
+            />
+          )}
+          label="Model Temperature"
+          labelClassName="w-56 mb-auto"
+        />
+
         <InputWithLabel
           inputElem={(
             <TextField 
