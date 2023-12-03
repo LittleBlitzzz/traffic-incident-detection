@@ -19,6 +19,7 @@ The assistant is tasked with classifying traffic incidents (if any) in the given
   const refVideoName = useRef("000000");
   const refImageFilename = useRef("0.jpg");
   const refModelTemperature = useRef(0.2);
+  const refResultsSavePath = useRef("/content/drive/MyDrive/Projects/FYP_Sunway/Results/test.txt");
  
   const refSystemPrompt = useRef(defaultSystemPrompt);
   const [promptFields, setPromptFields] = useState<[number, string, string][]>([
@@ -86,6 +87,7 @@ incident_details:
           "dataset_name": refDatasetName.current,
           "video_name": refVideoName.current,
           "image_filename": refImageFilename.current,
+          "save_path_name": refResultsSavePath.current,
         };
 
         fetch('api/model/ask-llava', {
@@ -109,9 +111,22 @@ incident_details:
         <InputWithLabel
           inputElem={(
             <TextField 
+              placeholder="Enter results save path"
+              initialValue={refResultsSavePath.current}
+              inputValueName="results-safe-path"
+              refInputValue={refResultsSavePath}
+            />
+          )}
+          label="Results Save Path"
+          labelClassName="w-56 mb-auto"
+        />
+
+        <InputWithLabel
+          inputElem={(
+            <TextField 
               placeholder="Enter model temperature"
               initialValue={0.2}
-              inputValueName="model_temperature"
+              inputValueName="model-temperature"
               refInputValue={refModelTemperature}
               dataType="number"
             />
@@ -119,13 +134,14 @@ incident_details:
           label="Model Temperature"
           labelClassName="w-56 mb-auto"
         />
+        
 
         <InputWithLabel
           inputElem={(
             <TextField 
               placeholder="Enter system prompt"
               initialValue={defaultSystemPrompt}
-              inputValueName="system_prompt"
+              inputValueName="system-prompt"
               refInputValue={refSystemPrompt}
               rows={2}
             />
