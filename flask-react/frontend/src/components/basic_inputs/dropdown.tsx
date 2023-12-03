@@ -5,22 +5,22 @@ import { OutsideClickNotifier } from '../';
 interface DropdownProps {
   options?: string[];
   title?: string;
-  inputValueName?: string;
-  inputValueRef?: RefObject<string>;
   initialValue?: string;
+  inputValueName?: string;
+  refInputValue?: RefObject<string>;
   onOptionSelected?: (option: string) => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ 
     options = [], 
     title = null,
-    inputValueName = "_dropdown", 
-    inputValueRef = null,
     initialValue = null,
+    inputValueName = "_dropdown",
+    refInputValue = null,
     onOptionSelected = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(initialValue || null);
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   if ( (title === null || title === undefined) && options.length > 0) {
     initialValue = options[0];
@@ -30,7 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (initialValue !== null && initialValue !== undefined) {
       setSelectedOption(initialValue);
     }
-  }, [])
+  }, [initialValue])
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -42,6 +42,9 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     if (onOptionSelected) {
       onOptionSelected(option);
+    }
+    if (refInputValue) {
+      refInputValue.current = option;
     }
   };
 
@@ -98,7 +101,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           />
         </div>
       )}
-      <input type="hidden" name={inputValueName} value={selectedOption || ''} ref={inputValueRef} />
+      <input type="hidden" name={inputValueName} value={selectedOption || ''} />
     </div>
   );
 };
@@ -107,7 +110,7 @@ interface MultiSelectDropdownProps {
   options?: string[];
   title?: string;
   inputValueName?: string;
-  inputValueRef?: RefObject<string[]>;
+  refInputValue?: RefObject<string[]>;
   initialValue?: string[];
   onOptionSelected?: (options: string[]) => void;
 }
@@ -116,40 +119,42 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     options = [],
     title = null,
     inputValueName = '_multiselect',
-    inputValueRef = null,
-    initialValue = [],
+    refInputValue = null,
+    initialValue = null,
     onOptionSelected = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>(initialValue);
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   useEffect(() => {
     if (initialValue !== null && initialValue !== undefined) {
       setSelectedOptions(initialValue);
     }
-  }, [])
+  }, [initialValue])
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
   
-  const handleOptionClick = (option: string) => {
-    // If the option is "None," clear the selection
-    if (option === 'None') {
-      setSelectedOptions([]);
-    } else {
-      const isSelected = selectedOptions.includes(option);
+  const handleOptionClick = (selectedOption: string) => { 
+    setSelectedOptions((prevOptions) => {
+      if (selectedOption === 'None') {
+        return [];
+      } else {
+        const isSelected = prevOptions.includes(selectedOption);
+        const newOptions = isSelected
+        ? prevOptions.filter((option) => option !== selectedOption)
+        : [...prevOptions, selectedOption];
 
-      setSelectedOptions((prevOptions) =>
-        isSelected
-          ? prevOptions.filter((prevOption) => prevOption !== option)
-          : [...prevOptions, option]
-      );
-    }
-
-    if (onOptionSelected) {
-      onOptionSelected(selectedOptions);
-    }
+        if (onOptionSelected) {
+          onOptionSelected(newOptions);
+        }
+        if (refInputValue) {
+          refInputValue.current = newOptions;
+        }
+        return newOptions;
+      }
+    });
   };
 
   const closeDropdown = () => {
@@ -225,9 +230,9 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
           onNotified={closeDropdown}
         />
       )}
-      <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} ref={inputValueRef} />
+      <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} />
     </div>
   );
 };
 
-export { Dropdown, DropdownProps, MultiSelectDropdown, MultiSelectDropdownProps };
+export { Dropdown, MultiSelectDropdown };

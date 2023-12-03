@@ -1,13 +1,11 @@
 
 import React, { useRef, useState, FormEvent } from 'react';
-import { TextField, InputWithLabel, ImageFromBackend } from '../components'
+import { TextField, InputWithLabel, ImageSelector } from '../components'
 
 interface ModelInterfacePageProps {
 }
 
-const ModelInterfacePage: React.FC<ModelInterfacePageProps> = ({ }) => {
-  const [imagePath, setImagePath] = useState("")
-
+const ModelInterfacePage: React.FC = () => {
   const defaultSystemPrompt =
 `A chat between a curious human and an artificial intelligence assistant focused on traffic incident detection. 
 The assistant gives helpful, detailed, polite and relevant answers to the human's questions.`
@@ -17,76 +15,25 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
   const refDatasetName = useRef("");
   const refVideoName = useRef("");
   const refImageFilename = useRef("");
-
-  const inputContextForm = (
-    <form id="input-context-form" className="flex flex-col space-y-4 w-1/2" onSubmit={(e: FormEvent) => {
-      e.preventDefault();
-      setImagePath([ refDatasetName.current.value, refVideoName.current.value, refImageFilename.current.value].join("/"))
-    }}>
-      <fieldset className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend>Input image</legend>
-        <InputWithLabel
-          inputElem={(
-            <TextField 
-              placeholder="Enter dataset name"
-              initialValue="extracted_frames"
-              inputValueName="dataset_name"
-              inputValueRef={refDatasetName}
-            />
-          )}
-          label="Dataset Name"
-          labelClassName="w-56 mb-auto"
-        />
-        
-        <InputWithLabel
-          inputElem={(
-            <TextField 
-              placeholder="Enter video name"
-              initialValue="000000"
-              inputValueName="video_name"
-              inputValueRef={refVideoName}
-            />
-          )}
-          label="Video Name"
-          labelClassName="w-56 mb-auto"
-        />
-        
-        <InputWithLabel
-          inputElem={(
-            <TextField 
-              placeholder="Enter image filename"
-              initialValue="0.jpg"
-              inputValueName="image_filename"
-              inputValueRef={refImageFilename}
-            />
-          )}
-          label="Image Filename"
-          labelClassName="w-56 mb-auto"
-        />
-      </fieldset>
-
-      <button className={btnDefaultClassName + " self-end"} type="submit">Update context</button>
-    </form>
-  )
-
-  const refSystemPrompt = useRef(defaultSystemPrompt);
-  const [promptFields, setPromptFields] = useState([]);
+ 
+  const refSystemPrompt = useRef("");
+  const [promptFields, setPromptFields] = useState<[number, string, string][]>([]);
   const [promptKeyCounter, setPromptKeyCounter] = useState(0);
 
   const promptTemplateForm = (
     <>
-      <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e) => {
+      <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e : FormEvent) => {
         e.preventDefault();
         console.log(promptFields);
 
         const requestBody = {
           "prompt_framework": {
-            "system_prompt": refSystemPrompt.current.value,
+            "system_prompt": refSystemPrompt.current,
             "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
           },
-          "dataset_name": refDatasetName.current.value,
-          "video_name": refVideoName.current.value,
-          "image_filename": refImageFilename.current.value,
+          "dataset_name": refDatasetName.current,
+          "video_name": refVideoName.current,
+          "image_filename": refImageFilename.current,
         };
 
         fetch('api/model/ask-llava', {
@@ -114,8 +61,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
               initialValue={defaultSystemPrompt}
               inputValueName="system_prompt"
               refInputValue={refSystemPrompt}
-              dataType="textarea"
-              rows="4"
+              rows={2}
             />
           )}
           label="System Prompt"
@@ -131,10 +77,10 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
                     inputValueName={`prompt-index-${index}`}
                     initialValue={value}
                     placeholder={`Prompt ${index + 1}`}
-                    dataType="text"
                     onTextChanged={(text) => {
                       promptFields[index][1] = text;
                     }}
+                    rows={2}
                   />
                 )}
                 key={`prompt-field-${keyIndex}`}
@@ -162,7 +108,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
               </button>
             </div>
             
-            {llavaOutput !== null &&(
+            {llavaOutput !== null && llavaOutput !== "" &&(
               <div className="flex space-x-4 self-end">
                 <p className="self-center">{llavaOutput}</p>
                 <p className="p-1 bg-slate-100 rounded-md">LLaVA</p>
@@ -173,7 +119,7 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
 
         <div className="flex space-x-4 self-end">
           <button className={btnDefaultClassName} type="button" onClick={() => {
-            setPromptFields([...promptFields, [promptKeyCounter, '', null ]]);
+            setPromptFields([...promptFields, [promptKeyCounter, '', '' ]]);
             setPromptKeyCounter(promptKeyCounter + 1);
           }}>Add prompt</button>
           <button className={btnDefaultClassName} type="submit">Update prompt template</button>
@@ -187,15 +133,11 @@ The assistant gives helpful, detailed, polite and relevant answers to the human'
     <>
       <div className="px-36 py-4">
         <p className="text-lg">Welcome to the model interface!</p>
-        <div className="flex space-x-8 py-4">
-          {inputContextForm}
-          { refDatasetName.current.value && refVideoName.current.value && refImageFilename.current.value && (<ImageFromBackend
-            datasetName={refDatasetName.current.value}
-            videoName={refVideoName.current.value}
-            imageFileName={refImageFilename.current.value}
-            altText={imagePath}
-          />)}
-        </div>
+        <ImageSelector 
+          refDatasetName={refDatasetName}
+          refVideoName={refVideoName}
+          refImageFilename={refImageFilename}
+        />
         <div className="flex space-x-8 py-4">
           {promptTemplateForm}
         </div>

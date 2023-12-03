@@ -1,12 +1,12 @@
 
-import React, { useState, useEffect, RefObject, ChangeEvent } from 'react';
+import React, { useState, RefObject, ChangeEvent } from 'react';
 
 interface TextFieldProps {
   inputValueName?: string;
   initialValue?: string;
   placeholder?: string;
   dataType?: 'text' | 'number';
-  refInputValue?: RefObject<string | HTMLTextAreaElement>;
+  refInputValue?: RefObject<string>;
   onTextChanged?: (text: string) => void;
   rows?: number;
 }
@@ -29,6 +29,10 @@ const TextField: React.FC<TextFieldProps> = ({
     if (onTextChanged) {
       onTextChanged(newText);
     }
+
+    if (refInputValue) {
+      refInputValue.current = newText;
+    }
   };
 
   return (
@@ -38,7 +42,6 @@ const TextField: React.FC<TextFieldProps> = ({
           className="w-full px-3 py-2 text-base border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           name={inputValueName}
           placeholder={placeholder}
-          ref={refInputValue as RefObject<HTMLTextAreaElement>}
           value={text}
           onChange={handleChange as React.ChangeEventHandler<HTMLTextAreaElement>}
           rows={rows}
@@ -49,7 +52,6 @@ const TextField: React.FC<TextFieldProps> = ({
           type="text"
           name={inputValueName}
           placeholder={placeholder}
-          ref={refInputValue as RefObject<HTMLInputElement>}
           value={text}
           onChange={handleChange as React.ChangeEventHandler<HTMLInputElement>}
         />

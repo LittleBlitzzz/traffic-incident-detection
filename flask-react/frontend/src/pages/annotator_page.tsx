@@ -7,8 +7,8 @@ interface AnnotatorPageProps {
 }
 
 const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
-  const [videoTitles, setVideoTitles] = useState([]);
-  const [imageFileNames, setImageFileNames] = useState([]);
+  const [videoTitles, setVideoTitles] = useState<string[]>([]);
+  const [imageFileNames, setImageFileNames] = useState<string[]>([]);
 
   const [currVideoName, setCurrVideoName] = useState("");
   const [currImageFileName, setCurrImageFileName] = useState("");
@@ -25,7 +25,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
       setVideoTitles(data["video_titles"]);
     })
     .catch(error => console.error('Error:', error));
-  }, []);
+  }, [datasetName]);
 
   let videoDropdown = (
     <div className="flex-initial self-center mr-2 w-60">
@@ -56,7 +56,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
       {
         imageFileNames.map((filename, index) => {
           let styleClass = "p-2 mx-2 h-full rounded-lg hover:cursor-pointer "
-          if (filename == currImageFileName) {
+          if (filename === currImageFileName) {
             styleClass += "bg-cyan-300/[0.4] hover:bg-cyan-300/[0.6]"
           } else {
             styleClass += "hover:bg-cyan-300/[0.2]"

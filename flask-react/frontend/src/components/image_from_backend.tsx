@@ -1,4 +1,6 @@
-import React, { useState, useEffect, RefObject, FormEvent } from 'react';
+import React, { useState, useEffect, useRef, RefObject, FormEvent } from 'react';
+
+import { InputWithLabel, TextField } from './';
 
 interface ImageFromBackendProps {
   datasetName: string;
@@ -17,29 +19,27 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
   }) => {
   const [imageSrc, setImageSrc] = useState("");
 
-  const apiUrl = '/api/annotator/get-image/' + datasetName + '/' + videoName + '/' + imageFileName
-  const fetchImage = () => {
+  let apiUrl = '/api/annotator/get-image/' + datasetName + '/' + videoName + '/' + imageFileName;
+
+  useEffect(() => {
     fetch(apiUrl, {
       method:"get",
       headers: new Headers({
         "ngrok-skip-browser-warning": "1",
       }),
     })
-      .then(response => response.blob())
-      .then(blob => {
-        console.log(blob)
-        if (imageSrc) {
-          URL.revokeObjectURL(imageSrc);
-        }
-        const imageUrl = URL.createObjectURL(blob);
-        setImageSrc(imageUrl);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
-  useEffect(() => {
-    fetchImage();
+    .then(response => response.blob())
+    .then(blob => {
+      console.log(blob)
+      if (imageSrc) {
+        URL.revokeObjectURL(imageSrc);
+      }
+      const imageUrl = URL.createObjectURL(blob);
+      setImageSrc(imageUrl);
+    })
+    .catch(error => {
+      console.error(error);
+    });
   }, [apiUrl]);
 
   return (
@@ -50,7 +50,7 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
 };
 
 
-interface ImageFromBackendProps {
+interface ImageSelectorProps {
   refDatasetName?: RefObject<string>;
   refVideoName?: RefObject<string>;
   refImageFilename?: RefObject<string>;
@@ -58,29 +58,19 @@ interface ImageFromBackendProps {
   className?: string;
 }
 
-const ImageSelector: React.FC<ImageFromBackendProps> = ({ 
-    refDatasetName=null,
-    refVideoName=null,
-    refImageFilename=null,
+const ImageSelector: React.FC<ImageSelectorProps> = ({ 
+    refDatasetName=useRef(""),
+    refVideoName=useRef(""),
+    refImageFilename=useRef(""),
     altText="Image", 
     className="",
   }) => {
+  const [imagePath, setImagePath] = useState("");
  
-  
-  if (refDatasetName === null) {
-    refDatasetName = useRef("");
-  }
-  if (refVideoName === null) {
-    refVideoName = useRef("");
-  }
-  if (refImageFilename === null) {
-    refImageFilename = useRef("");
-  }
-
   const inputContextForm = (
     <form id="input-context-form" className="flex flex-col space-y-4 w-1/2" onSubmit={(e: FormEvent) => {
       e.preventDefault();
-      setImagePath([ refDatasetName.current.value, refVideoName.current.value, refImageFilename.current.value].join("/"))
+      setImagePath([ refDatasetName.current, refVideoName.current, refImageFilename.current].join("/"))
     }}>
       <fieldset className="border-4 p-4 rounded-lg border ring-blue-500">
         <legend>Input image</legend>
@@ -132,10 +122,10 @@ const ImageSelector: React.FC<ImageFromBackendProps> = ({
     <>
       <div className="flex space-x-8 py-4">
         { inputContextForm }
-        { refDatasetName.current.value && refVideoName.current.value && refImageFilename.current.value && (<ImageFromBackend
-          datasetName={refDatasetName.current.value}
-          videoName={refVideoName.current.value}
-          imageFileName={refImageFilename.current.value}
+        { refDatasetName.current && refVideoName.current && refImageFilename.current && (<ImageFromBackend
+          datasetName={refDatasetName.current}
+          videoName={refVideoName.current}
+          imageFileName={refImageFilename.current}
           altText={imagePath}
           className={className}
         />)}

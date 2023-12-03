@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, useRef, FormEvent } from 'react';
-import { Dropdown, DropdownProps, MultiSelectDropdown, InputWithLabel } from './';
+import React, { useRef, FormEvent } from 'react';
+import { Dropdown, MultiSelectDropdown, InputWithLabel } from './';
 
 interface AnnotatorInterfaceProps {
   datasetName: string;
@@ -23,7 +23,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const refRoadLoc = useRef("");
   const refRoadType = useRef("");
   const refRoadLayout = useRef("");
-  const refRoadSurroundings = useRef([]);
+  const refRoadSurroundings = useRef<string[]>([]);
 
   /** Environment Details */
   const refTimeOfDay = useRef("");
@@ -45,7 +45,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const refCollisionCategory = useRef("");
 
   /** Potential Cause of Incident */
-  const refCauseOfIncident = useRef([]);
+  const refCauseOfIncident = useRef<string[]>([]);
 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
@@ -54,31 +54,31 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       annotations: {
         environment_details: {
           road_details: {
-            location: refRoadLoc.current.value,
-            type_of_road: refRoadType.current.value,
-            road_layout: refRoadLayout.current.value,
-            surroundings: refRoadSurroundings.current.value,
+            location: refRoadLoc.current,
+            type_of_road: refRoadType.current,
+            road_layout: refRoadLayout.current,
+            surroundings: refRoadSurroundings.current,
           },
-          time_of_day: refTimeOfDay.current.value,
-          weather: refWeatherCond.current.value,
-          lighting: refLightingCond.current.value,
-          traffic_density: refTrafficDensity.current.value,
+          time_of_day: refTimeOfDay.current,
+          weather: refWeatherCond.current,
+          lighting: refLightingCond.current,
+          traffic_density: refTrafficDensity.current,
         },
         traffic_participants: {
-          volume_car: refVolumeCar.current.value,
-          volume_large_vehicles: refVolumeLargeVehicles.current.value,
-          volume_motorcycles: refVolumeMotorcycles.current.value,
-          volume_cyclists: refVolumeCyclists.current.value,
-          volume_pedestrians: refVolumePedestrians.current.value,
+          volume_car: refVolumeCar.current,
+          volume_large_vehicles: refVolumeLargeVehicles.current,
+          volume_motorcycles: refVolumeMotorcycles.current,
+          volume_cyclists: refVolumeCyclists.current,
+          volume_pedestrians: refVolumePedestrians.current,
         },
         traffic_incident: {
-          incident_timing: refIncidentTiming.current.value,
-          incident_type: refIncidentType.current.value,
-          collision_type: refCollisionType.current.value,
-          collision_category: refCollisionCategory.current.value,
+          incident_timing: refIncidentTiming.current,
+          incident_type: refIncidentType.current,
+          collision_type: refCollisionType.current,
+          collision_category: refCollisionCategory.current,
         },
         analysis: {
-          cause_of_incident: refCauseOfIncident.current.value,
+          cause_of_incident: refCauseOfIncident.current,
         }
       }
     }
@@ -106,7 +106,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Urban", "Suburban", "Rural", unableToIdentifyOption ]}
             inputValueName="road_loc"
-            inputValueRef={refRoadLoc}
+            refInputValue={refRoadLoc}
           />
         )}
         label="Road Location"
@@ -118,7 +118,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Highway", "Street", "Alley", unableToIdentifyOption ]}
             inputValueName="road_type"
-            inputValueRef={refRoadType}
+            refInputValue={refRoadType}
           />
         )}
         label="Road Type"
@@ -130,7 +130,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ]}
             inputValueName="road_layout"
-            inputValueRef={refRoadLayout}
+            refInputValue={refRoadLayout}
           />
         )}
         label="Road Layout"
@@ -142,7 +142,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <MultiSelectDropdown
             options={[ "Traffic Lights", "Pedestrian Crossings", "Road Signs" ]}
             inputValueName="road_surroundings"
-            inputValueRef={refRoadSurroundings}
+            refInputValue={refRoadSurroundings}
           />
         )}
         label="Road Surroundings"
@@ -163,7 +163,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Dawn/Dusk", "Daytime", "Night", unableToIdentifyOption ]}
             inputValueName="time_of_day"
-            inputValueRef={refTimeOfDay}
+            refInputValue={refTimeOfDay}
           />
         )}
         label="Time of Day"
@@ -175,7 +175,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Clear", "Raining", "Snowing", unableToIdentifyOption ]}
             inputValueName="weather_cond"
-            inputValueRef={refWeatherCond}
+            refInputValue={refWeatherCond}
           />
         )}
         label="Weather Condition"
@@ -187,7 +187,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Daylight", "Low light", "Street lights", unableToIdentifyOption ]}
             inputValueName="lighting_cond"
-            inputValueRef={refLightingCond}
+            refInputValue={refLightingCond}
           />
         )}
         label="Lighting Condition"
@@ -199,7 +199,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "Empty", "Sparse", "Moderate", "Dense" ]}
             inputValueName="traffic_density"
-            inputValueRef={refTrafficDensity}
+            refInputValue={refTrafficDensity}
           />
         )}
         label="Traffic Density"
@@ -215,7 +215,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={objectVolumeOptions}
             inputValueName="volume_car"
-            inputValueRef={refVolumeCar}
+            refInputValue={refVolumeCar}
           />
         )}
         label="Car Volume"
@@ -227,7 +227,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={objectVolumeOptions}
             inputValueName="volume_large_vehicles"
-            inputValueRef={refVolumeLargeVehicles}
+            refInputValue={refVolumeLargeVehicles}
           />
         )}
         label="Trucks/Large Vehicles Volume"
@@ -239,7 +239,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={objectVolumeOptions}
             inputValueName="volume_motorcycles"
-            inputValueRef={refVolumeMotorcycles}
+            refInputValue={refVolumeMotorcycles}
           />
         )}
         label="Motorcycles Volume"
@@ -251,7 +251,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={objectVolumeOptions}
             inputValueName="volume_cyclists"
-            inputValueRef={refVolumeCyclists}
+            refInputValue={refVolumeCyclists}
           />
         )}
         label="Cyclists Volume"
@@ -263,7 +263,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={objectVolumeOptions}
             inputValueName="volume_pedestrians"
-            inputValueRef={refVolumePedestrians}
+            refInputValue={refVolumePedestrians}
           />
         )}
         label="Pedestrians Volume"
@@ -279,7 +279,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "No incident", "Potential", "Happening", "Aftermath" ]}
             inputValueName="incident_timing"
-            inputValueRef={refIncidentTiming}
+            refInputValue={refIncidentTiming}
           />
         )}
         label="Is there a traffic incident?"
@@ -291,7 +291,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "N/A", "Collision with Others", "Rollover Accident", "Run-off-road Accident", "Chain Accident" ]}
             inputValueName="incident_type"
-            inputValueRef={refIncidentType}
+            refInputValue={refIncidentType}
           />
         )}
         label="What type of incident?"
@@ -303,7 +303,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
           <Dropdown
             options={[ "N/A", "T-Bone", "Rear end", "Front end", "Side Swipe Collision", "Run-off-road", "Chain Collision" ]}
             inputValueName="collision_type"
-            inputValueRef={refCollisionType}
+            refInputValue={refCollisionType}
           />
         )}
         label="What type of collision?"
@@ -316,7 +316,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
             options={[ "N/A", "Car-on-car", "Car-on-motorcycle", "Car-on-truck/bus/etc", "Truck/bus/etc-on-motorcycle",
                       "Vehicle on pedestrians", "Vehicle on cyclists", "Multiple" ]}
             inputValueName="collision_category"
-            inputValueRef={refCollisionCategory}
+            refInputValue={refCollisionCategory}
           />
         )}
         label="Category of the collision"
@@ -336,7 +336,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                        "Chain Accident" 
                     ]}
             inputValueName="cause_of_incident"
-            inputValueRef={refCauseOfIncident}
+            refInputValue={refCauseOfIncident}
           />
         )}
         label="What were the potential cause of the incident?"

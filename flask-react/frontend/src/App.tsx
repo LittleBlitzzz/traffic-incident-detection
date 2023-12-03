@@ -13,16 +13,16 @@ function App() {
           <Routes>
             <Route path="/" element={
               <Homepage />
-            } exact/>
+            } />
             <Route path="/annotator" element={
               <AnnotatorPage 
                 datasetName="extracted_frames" 
               />
-            } exact/> 
+            } /> 
             <Route path="/model-interface" element={
               <ModelInterfacePage />
-            } exact/>
-            <Route path="*" element={
+            } />
+            <Route path="/*" element={
               <PageNotFound />
             } />
           </Routes>
