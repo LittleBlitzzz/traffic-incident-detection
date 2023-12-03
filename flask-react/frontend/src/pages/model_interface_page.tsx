@@ -7,8 +7,11 @@ interface ModelInterfacePageProps {
 
 const ModelInterfacePage: React.FC = () => {
   const defaultSystemPrompt =
-`A chat between a curious human and an artificial intelligence assistant focused on traffic incident detection. 
-The assistant gives helpful, detailed, polite and relevant answers to the human's questions.`
+`
+A chat between a curious human and an artificial intelligence assistant focused on traffic incident detection. The assistant gives helpful, detailed, polite and relevant answers to the human's questions.
+
+The assistant is tasked with classifying traffic incidents (if any) in the given footage. The user will describe each section, and the assistant will analyse the image and output the variables in JSON format.
+`.trim().replace(/^\s+|\s+$/g, '');
 
   const btnDefaultClassName = "py-2 px-4 bg-emerald-200 rounded-lg"
 
