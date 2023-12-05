@@ -1,6 +1,6 @@
 sections:
   - section_title: Environment Details
-    section_id: environment-details-fieldset
+    section_id: environment_details
     section_variables:
       - label: Lighting Condition
         input_name: lighting
@@ -71,7 +71,7 @@ sections:
         - animals_crossing
   
   - section_title: Road User Details
-    section_id: road-user-details-fieldset
+    section_id: road_user_details
     section_variables:
       - label: Cars
         input_name: volume_car
@@ -114,7 +114,7 @@ sections:
         - many
 
   - section_title: Traffic Incident Details
-    section_id: traffic-incident-details-fieldset
+    section_id: traffic_incident_details
     section_variables:
       - label: Is there a traffic incident?
         input_name: is_traffic_incident

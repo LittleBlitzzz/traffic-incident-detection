@@ -19,8 +19,9 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     readonly=false,
   }) => {
 
-
+  const imageFullPath = datasetName + "/" + videoName + "/" + imageFileName;
   const [annotatorVariables, setAnnotatorVariables] = useState(null);
+  const [annotationData, setAnnotationData] = useState(null);
 
   useEffect(() => {
     fetch("/annotator_variables.yaml", {
@@ -38,13 +39,28 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     })
     .catch(error => console.error('Error:', error));
   }, []);
+  
+  useEffect(() => {
+    fetch("/api/annotator/annotations/" + imageFullPath, {
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+      }),
+    })
+    .then(response => response.json())
+    .then(response_json => {
+      const annotationForCurrImage = response_json["existing_annotations"][imageFileName]["annotations"];
+      setAnnotationData(annotationForCurrImage);
+    })
+    .catch(error => console.error('Error:', error));
+  }, []);
 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
     console.log(formData);
     
-    const annotationData = {
+    const annotationDataToSubmit = {
       environment_details: {
         lighting: formData["lighting"],
         road_surface_condition: formData["road_surface_condition"],
@@ -61,7 +77,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         volume_cyclist: formData["volume_cyclist"],
         volume_pedestrian: formData["volume_pedestrian"],
       },
-      traffic_incident: {
+      traffic_incident_details: {
         is_traffic_incident: formData["is_traffic_incident"],
         single_vehicle_incident: formData["single_vehicle_incident"],
         multi_vehicle_incident: formData["multi_vehicle_incident"],
@@ -71,19 +87,30 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       },
     };
 
-    fetch("/api/annotator/annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
+    fetch("/api/annotator/annotations/" + imageFullPath, {
       method: "post",
       headers: new Headers({
         "ngrok-skip-browser-warning": "1",
         "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        annotations: annotationData
+        annotations: annotationDataToSubmit,
       }),
     })
+    .then(response => response.json())
+    .then(response_json => {
+      console.log(response_json);
+    })
+    .catch(error => console.error('Error:', error));
+    
   };
 
-  return annotatorVariables === null ? (
+  if (annotationData) {
+    console.log(annotationData.environment_details)
+  }
+  
+
+  return annotatorVariables === null || annotationData === null ? (
     <div className="flex justify-center items-center h-screen">
       <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
     </div>
@@ -93,7 +120,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       { interfaceTitle && (<legend>{interfaceTitle}</legend>)}
 
       { annotatorVariables["sections"].map(section_details => 
-        (<fieldset id={section_details["section_id"]}>
+        (<fieldset id={section_details["section_id"] + "-fieldset"}>
           <legend>{section_details["section_title"]}</legend>
           {section_details["section_variables"].map(variable => variable["is_multi_select"] ? 
             (<InputWithLabel 
@@ -101,6 +128,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                 <MultiSelectDropdown
                   options={variable["options"]}
                   inputValueName={variable["input_name"]}
+                  initialValue={annotationData[section_details["section_id"]][variable["input_name"]] || variable["options"][0]}
                 />
               )}
               label={variable["label"]}
@@ -111,6 +139,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                 <Dropdown
                   options={variable["options"]}
                   inputValueName={variable["input_name"]}
+                  initialValue={annotationData[section_details["section_id"]][variable["input_name"]] || variable["options"][0]}
                 />
               )}
               label={variable["label"]}

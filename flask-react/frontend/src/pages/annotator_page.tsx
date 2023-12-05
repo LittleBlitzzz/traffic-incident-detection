@@ -85,48 +85,40 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
 
   let annotatorPanel = (
     <div className="px-36 pt-8">
-      { (currVideoName !== "" && currImageFileName !== "") &&
-        <>
-          <ImageFromBackend
-            datasetName={datasetName}
-            videoName={currVideoName}
-            imageFileName={currImageFileName}
-            altText="Video footage"
-            className="rounded-lg w-[400px] h-fit border-2 border-slate-400 m-auto"
-          />
-          <ImageSelector 
-            refDatasetName={refDatasetName}
-            refVideoName={refVideoName}
-            refImageFilename={refImageFilename}
-          />
-          <div className="h-10"></div>
-          <AnnotatorInterface
-            datasetName={datasetName}
-            videoName={currVideoName}
-            imageFileName={currImageFileName}
-            interfaceTitle="User Inputs"
-          />
-          <div className="h-10"></div>
-          <AnnotatorInterface
-            datasetName={datasetName}
-            videoName={currVideoName}
-            imageFileName={currImageFileName}
-            readonly="true"
-            interfaceTitle="Model Outputs"
-          />
-        </>
-      }
+      <ImageSelector 
+        refDatasetName={refDatasetName}
+        refVideoName={refVideoName}
+        refImageFilename={refImageFilename}
+      />
+      <div className="h-10"></div>
+      <AnnotatorInterface
+        datasetName={datasetName}
+        videoName={currVideoName}
+        imageFileName={currImageFileName}
+        interfaceTitle="User Inputs"
+      />
+      <div className="h-10"></div>
+      <AnnotatorInterface
+        datasetName={datasetName}
+        videoName={currVideoName}
+        imageFileName={currImageFileName}
+        readonly="true"
+        interfaceTitle="Model Outputs"
+      />
     </div>
   )
   
+  const oldImageSelector = (
+    <div id="video-selection-panel" className="flex py-4 px-36 bg-slate-200">
+      {videoDropdown}
+      {imageFileNameList}
+      {ssimFilterToggle}
+    </div>
+  )
+
   return (
     <>
       <div>
-        <div id="video-selection-panel" className="flex py-4 px-36 bg-slate-200">
-          {videoDropdown}
-          {imageFileNameList}
-          {ssimFilterToggle}
-        </div>
         {annotatorPanel}
         <div className="h-40">
         </div>

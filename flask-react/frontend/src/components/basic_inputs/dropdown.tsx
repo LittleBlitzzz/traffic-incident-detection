@@ -102,18 +102,18 @@ const Dropdown: React.FC<DropdownProps> = ({
 interface MultiSelectDropdownProps {
   options?: string[];
   title?: string;
+  initialValue?: string[];
   inputValueName?: string;
   refInputValue?: RefObject<string[]>;
-  initialValue?: string[];
   onOptionSelected?: (options: string[]) => void;
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     options = [],
     title = null,
+    initialValue = null,
     inputValueName = '_multiselect',
     refInputValue = null,
-    initialValue = null,
     onOptionSelected = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);

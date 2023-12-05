@@ -70,12 +70,12 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
   const [imagePath, setImagePath] = useState("");
  
   const inputContextForm = (
-    <form id="input-context-form" className="flex space-x-4" onSubmit={(e: FormEvent) => {
+    <form id="input-context-form" className="flex space-x-4 justify-center" onSubmit={(e: FormEvent) => {
       e.preventDefault();
       setImagePath([ refDatasetName.current, refVideoName.current, refImageFilename.current].join("/"))
     }}>
-      <fieldset className="flex flex-col space-y-4 w-1/2">
-        <legend>Input paths</legend>
+      <fieldset className="flex flex-col space-y-4 w-1/3 ">
+        <legend>Input path</legend>
         <InputWithLabel
           inputElem={(
             <TextField 
@@ -119,7 +119,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
       </fieldset>
       
       { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
-        <fieldset className="p-8 border rounded-lg">
+        <fieldset className="w-1/3">
           <legend>Image from Server</legend>
           <ImageFromBackend
             datasetName={refDatasetName.current}
@@ -135,24 +135,6 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
   )
 
   return inputContextForm;
-  return (
-    <>
-      <div className="flex space-x-8 py-4">
-        { inputContextForm }
-        { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
-          <div className="p-8 border rounded-lg">
-            <ImageFromBackend
-              datasetName={refDatasetName.current}
-              videoName={refVideoName.current}
-              imageFileName={refImageFilename.current}
-              altText={imagePath}
-              className={className}
-            />
-          </div>
-        )}
-      </div>
-    </>
-  )
 }
 
 export { ImageSelector, ImageFromBackend };

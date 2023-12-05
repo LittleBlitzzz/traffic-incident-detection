@@ -22,7 +22,7 @@ legend {
 }
 
 fieldset {
-  @apply border-4 p-4 rounded-lg border ring-blue-500
+  @apply border border-4 p-4 rounded-lg ring-blue-500
 }
 
 input, textarea {

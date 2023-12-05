@@ -53,7 +53,7 @@ class TrafficAnnotation:
         "volume_cyclist" : "",
         "volume_pedestrian" : "",
       },
-      'traffic_incident': {
+      'traffic_incident_details': {
         "is_traffic_incident" : "",
         "single_vehicle_incident": "",
         "multi_vehicle_incident": "",
