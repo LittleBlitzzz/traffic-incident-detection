@@ -151,6 +151,7 @@ sections:
         - head_on_collision
         - side_collision
         - multi_vehicle_pileup
+        - chain_collision
         - others
 
       - label: Incident Severity
