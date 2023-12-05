@@ -13,8 +13,6 @@ A chat between a curious human and an artificial intelligence assistant focused 
 The assistant is tasked with classifying traffic incidents (if any) in the given footage. The user will describe each section, and the assistant will analyse the image and output the variables in JSON format.
 `.trim().replace(/^\s+|\s+$/g, '');
 
-  const btnDefaultClassName = "py-2 px-4 bg-emerald-200 rounded-lg"
-
   const refDatasetName = useRef("extracted_frames");
   const refVideoName = useRef("000000");
   const refImageFilename = useRef("0.jpg");
@@ -200,11 +198,11 @@ incident_details:
         ))}
 
         <div className="flex space-x-4 self-end">
-          <button className={btnDefaultClassName} type="button" onClick={() => {
+          <button className="form-submit-btn" type="button" onClick={() => {
             setPromptFields([...promptFields, [promptKeyCounter, '', '' ]]);
             setPromptKeyCounter(promptKeyCounter + 1);
           }}>Add prompt</button>
-          <button className={btnDefaultClassName} type="submit">Update prompt template</button>
+          <button className="form-submit-btn" type="submit">Update prompt template</button>
         </div>
 
       </form>

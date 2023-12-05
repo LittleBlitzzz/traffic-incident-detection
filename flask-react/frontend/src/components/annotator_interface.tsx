@@ -6,14 +6,16 @@ interface AnnotatorInterfaceProps {
   datasetName: string;
   videoName: string;
   imageFileName: string;
-  url?: string;
+  interfaceTitle?: string;
+  readonly?: boolean;
 }
 
 const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({ 
     datasetName, 
     videoName, 
     imageFileName,
-    url="",
+    interfaceTitle=null,
+    readonly=false,
   }) => {
 
   const unableToIdentifyOption = "Unknown/Indistinguishable";
@@ -85,18 +87,20 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 
     console.log(annotationData);
 
-    fetch("/api/annotator/save-annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
-      method: "post",
-      headers: new Headers({
-        "ngrok-skip-browser-warning": "1",
-        "Content-Type": "application/json",
-      }),
-      body: JSON.stringify(annotationData),
-    })
-    .then(response => response.json())
-    .then(response_json => {
-      console.log(response_json);
-    });
+    if (!readonly) {
+      fetch("/api/annotator/annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
+        method: "post",
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "1",
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(annotationData),
+      })
+      .then(response => response.json())
+      .then(response_json => {
+        console.log(response_json);
+      });
+    }
   };
 
   const roadDetailsInputs = (
@@ -322,11 +326,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         label="Category of the collision"
         indentClass="ml-8"
       />
-    </>
-  )
-
-  const causeOfIncidentInputs = (
-    <>
+      
       <InputWithLabel 
         inputElem={(
           <MultiSelectDropdown
@@ -342,38 +342,48 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         label="What were the potential cause of the incident?"
         indentClass="ml-8"
       />
+
+    </>
+  )
+
+  const annotatorForm = (
+    <>
+      <fieldset id="environment-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+        <legend className="font-bold text-lg px-2">Environment Details</legend>
+        {environmentDetailsInputs}
+      </fieldset>
+      
+      <fieldset id="traffic-participants-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+        <legend className="font-bold text-lg px-2">Traffic Participants Details</legend>
+        {traficParticipantsInputs}
+      </fieldset>
+      
+      <fieldset id="incident-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+        <legend className="font-bold text-lg px-2">Traffic Incident Details</legend>
+        {traficIncidentInputs}
+      </fieldset>
     </>
   )
 
   return (
-    <form className="flex space-x-4 place-content-evenly" onSubmit={handleFormSubmission} id="annotator_form">
-    
-      <div className="flex flex-col">
-        <div id="environment-details-panel">
-          <p className="font-bold">Environment details:</p>
-          {environmentDetailsInputs}
-        </div>
+    <form className="flex flex-col space-y-8 place-content-center" onSubmit={handleFormSubmission} id="annotator_form">
 
-        <div id="traffic-details-panel">
-          <p className="font-bold">Traffic details:</p>
-          {traficParticipantsInputs}
+      {interfaceTitle ? (
+        <fieldset className="flex space-x-8 self-center">
+          <legend className="font-bold text-lg px-2">{interfaceTitle}</legend>
+          {annotatorForm}
+        </fieldset>
+      ) : (
+        <div className="flex space-x-8 self-center">
+          {annotatorForm}
         </div>
-      </div>
+      )}
 
-      <div className="flex flex-col">
-        <div id="environment-details-panel">
-          <p className="font-bold">Environment details:</p>
-          {traficIncidentInputs}
+      {!readonly && (
+        <div className="self-end w-80">
+          <button type="submit" className="form-submit-btn w-full">Submit</button>
         </div>
-
-        <div id="traffic-details-panel">
-          <p className="font-bold">Traffic details:</p>
-          {causeOfIncidentInputs}
-        </div>
-
-        <button type="submit" className="bg-slate-100 p-2 rounded-lg">Submit</button>
-      </div>
-      
+      )}
     </form>
   )
 }

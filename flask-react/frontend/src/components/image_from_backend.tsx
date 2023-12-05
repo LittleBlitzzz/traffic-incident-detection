@@ -114,7 +114,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
         />
       </fieldset>
 
-      <button className={"py-2 px-4 bg-cyan-200 rounded-lg self-end"} type="submit">Update context</button>
+      <button className="form-submit-btn self-end" type="submit">Update context</button>
     </form>
   )
 
@@ -122,13 +122,15 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
     <>
       <div className="flex space-x-8 py-4">
         { inputContextForm }
-        { refDatasetName.current && refVideoName.current && refImageFilename.current && (<ImageFromBackend
-          datasetName={refDatasetName.current}
-          videoName={refVideoName.current}
-          imageFileName={refImageFilename.current}
-          altText={imagePath}
-          className={className}
-        />)}
+        { refDatasetName.current && refVideoName.current && refImageFilename.current && (
+          <ImageFromBackend
+            datasetName={refDatasetName.current}
+            videoName={refVideoName.current}
+            imageFileName={refImageFilename.current}
+            altText={imagePath}
+            className={className}
+          />
+        )}
       </div>
     </>
   )

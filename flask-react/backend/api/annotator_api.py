@@ -60,19 +60,18 @@ def get_ssim_score(dataset_name, video_name, ssim_threshold):
   
   return results
 
-@annotator_api.route("/save-annotations/<dataset_name>/<video_name>/<image_filename>", methods=["POST"])
-def save_annotations(dataset_name, video_name, image_filename):
+@annotator_api.route("/annotations/<dataset_name>/<video_name>/<image_filename>", methods=["GET", "POST"])
+def annotations(dataset_name, video_name, image_filename):
   results = { "error_message": "" }
-  
-  if request.method == "POST":
-    request_json = request.get_json()
 
-    logger.debug("Save Annotations - request : " + str(request_json))
+  annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
 
-    annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
+  video_annotations = VideoAnnotation()
+  results["has_existing_annotations"] = video_annotations.read_from_file(annotations_filepath)
 
-    video_annotations = VideoAnnotation()
-    results["existing_annotations"] = video_annotations.read_from_file(annotations_filepath)
+  if request.method == "GET":
+    results["existing_annotations"] = video_annotations.annotations
+  elif request.method == "POST":
 
     traffic_annotation = video_annotations.annotations.get(image_filename)
     if traffic_annotation is None:
@@ -80,10 +79,13 @@ def save_annotations(dataset_name, video_name, image_filename):
       video_annotations.annotations[image_filename] = traffic_annotation
 
     # check inputs
+    request_json = request.get_json()
+
+    logger.debug("Save Annotations - request : " + str(request_json))
+
     request_annotations = request_json["annotations"]
     traffic_annotation.annotations.apply_dictionary_values(request_annotations)
  
     video_annotations.save_to_file(annotations_filepath)
 
   return results
-
