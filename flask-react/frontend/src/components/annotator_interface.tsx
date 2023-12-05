@@ -51,6 +51,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     .then(response_json => {
       const annotationForCurrImage = response_json["existing_annotations"][imageFileName]["annotations"];
       setAnnotationData(annotationForCurrImage);
+      console.log(annotationForCurrImage);
     })
     .catch(error => console.error('Error:', error));
   }, []);
@@ -105,11 +106,6 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     
   };
 
-  if (annotationData) {
-    console.log(annotationData.environment_details)
-  }
-  
-
   return annotatorVariables === null || annotationData === null ? (
     <div className="flex justify-center items-center h-screen">
       <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
@@ -122,29 +118,40 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       { annotatorVariables["sections"].map(section_details => 
         (<fieldset id={section_details["section_id"] + "-fieldset"}>
           <legend>{section_details["section_title"]}</legend>
-          {section_details["section_variables"].map(variable => variable["is_multi_select"] ? 
-            (<InputWithLabel 
-              inputElem={(
-                <MultiSelectDropdown
-                  options={variable["options"]}
-                  inputValueName={variable["input_name"]}
-                  initialValue={annotationData[section_details["section_id"]][variable["input_name"]] || variable["options"][0]}
-                />
-              )}
-              label={variable["label"]}
-            />)
-            : 
-            (<InputWithLabel 
-              inputElem={(
-                <Dropdown
-                  options={variable["options"]}
-                  inputValueName={variable["input_name"]}
-                  initialValue={annotationData[section_details["section_id"]][variable["input_name"]] || variable["options"][0]}
-                />
-              )}
-              label={variable["label"]}
-            />)
-          )}
+          {section_details["section_variables"].map(variable => {
+            
+            if (variable.is_multi_select) {
+              let initialValue = annotationData[section_details["section_id"]][variable["input_name"]] 
+              if (!initialValue) {
+                initialValue = []
+              }
+              if (initialValue === "none") {
+                initialValue = [];
+              }
+
+              return (<InputWithLabel 
+                inputElem={(
+                  <MultiSelectDropdown
+                    options={variable.options}
+                    inputValueName={variable.input_name}
+                    initialValue={annotationData[section_details.section_id][variable.input_name] || []}
+                  />
+                )}
+                label={variable["label"]}
+              />)
+            } else {
+              return (<InputWithLabel 
+                inputElem={(
+                  <Dropdown
+                    options={variable.options}
+                    inputValueName={variable.input_name}
+                    initialValue={annotationData[section_details.section_id][variable.input_name] || variable.options[0]}
+                  />
+                )}
+                label={variable["label"]}
+              />)
+            }
+          })}
         </fieldset>
       )) }
     </fieldset>
