@@ -1,6 +1,7 @@
 
-import React, { useRef, FormEvent } from 'react';
+import React, { useState, useRef, useEffect, FormEvent } from 'react';
 import { Dropdown, MultiSelectDropdown, InputWithLabel } from './';
+import * as yaml from 'js-yaml';
 
 interface AnnotatorInterfaceProps {
   datasetName: string;
@@ -49,6 +50,29 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   /** Potential Cause of Incident */
   const refCauseOfIncident = useRef<string[]>([]);
 
+  let annotatorVariables = []
+  const [loading, setLoading] = useState(true);
+
+  const loadYamlData = async () => {
+    try {
+      const response = await fetch('/annotator_variables.yaml');
+      const text = await response.text();
+      const parsedData = yaml.load(text);
+      console.log(parsedData);
+
+      annotatorVariables = parsedData;
+    } catch (error) {
+      console.error('Error loading or parsing YAML:', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadYamlData();
+  });
+
+ 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
     
@@ -103,65 +127,9 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     }
   };
 
-  const roadDetailsInputs = (
-    <>
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Urban", "Suburban", "Rural", unableToIdentifyOption ]}
-            inputValueName="road_loc"
-            refInputValue={refRoadLoc}
-          />
-        )}
-        label="Road Location"
-        indentClass="ml-16"
-      />
-      
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Highway", "Street", "Alley", unableToIdentifyOption ]}
-            inputValueName="road_type"
-            refInputValue={refRoadType}
-          />
-        )}
-        label="Road Type"
-        indentClass="ml-16"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Straight Road", "Curved Road", "T-Junction", "Y-Juntion", "Four-way Junction", "Roundabout", unableToIdentifyOption ]}
-            inputValueName="road_layout"
-            refInputValue={refRoadLayout}
-          />
-        )}
-        label="Road Layout"
-        indentClass="ml-16"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <MultiSelectDropdown
-            options={[ "Traffic Lights", "Pedestrian Crossings", "Road Signs" ]}
-            inputValueName="road_surroundings"
-            refInputValue={refRoadSurroundings}
-          />
-        )}
-        label="Road Surroundings"
-        indentClass="ml-16"
-      />
-    </>
-  );
 
   const environmentDetailsInputs = (
     <>
-      <div id="road-details-panel">
-        <p className="ml-8">Road details:</p>
-        {roadDetailsInputs}
-      </div>
-
       <InputWithLabel 
         inputElem={(
           <Dropdown
@@ -346,38 +314,28 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     </>
   )
 
-  const annotatorForm = (
-    <>
-      <fieldset id="environment-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend>Environment Details</legend>
-        {environmentDetailsInputs}
-      </fieldset>
-      
-      <fieldset id="traffic-participants-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend>Traffic Participants Details</legend>
-        {traficParticipantsInputs}
-      </fieldset>
-      
-      <fieldset id="incident-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend>Traffic Incident Details</legend>
-        {traficIncidentInputs}
-      </fieldset>
-    </>
-  )
-
   return (
     <form className="flex flex-col space-y-8 place-content-center" onSubmit={handleFormSubmission} id="annotator_form">
 
-      {interfaceTitle ? (
-        <fieldset className="flex space-x-8 self-center">
-          <legend>{interfaceTitle}</legend>
-          {annotatorForm}
+      <fieldset className="flex space-x-8 self-center">
+        { interfaceTitle && (<legend>{interfaceTitle}</legend>)}
+
+        <fieldset id="environment-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+          <legend>Environment Details</legend>
+          {environmentDetailsInputs}
         </fieldset>
-      ) : (
-        <div className="flex space-x-8 self-center">
-          {annotatorForm}
-        </div>
-      )}
+        
+        <fieldset id="traffic-participants-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+          <legend>Traffic Participants Details</legend>
+          {traficParticipantsInputs}
+        </fieldset>
+        
+        <fieldset id="incident-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
+          <legend>Traffic Incident Details</legend>
+          {traficIncidentInputs}
+        </fieldset>
+
+      </fieldset>
 
       {!readonly && (
         <div className="self-end w-80">

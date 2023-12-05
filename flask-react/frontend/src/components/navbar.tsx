@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import github_logo_light from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark.svg"
-import github_logo_dark from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark-white.svg"
 import { SliderToggle } from './';
 
 interface NavBarProps {
@@ -34,7 +32,7 @@ const NavBar: React.FC<NavBarProps> = ({
         />
         <div>
           <a href="https://github.com/LittleBlitzzz/traffic-incident-detection" target="blank">
-            <img src={github_logo_light} className="w-10" alt="GitHub Logo" />
+            <img src="/github-mark/github-mark.svg" className="w-10" alt="GitHub Logo" />
           </a>
         </div>
       </div>

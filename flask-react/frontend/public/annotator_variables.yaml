@@ -1,0 +1,105 @@
+environmental_details:
+  lighting:
+    - dawn_or_dusk
+    - day
+    - night
+    - artificial
+
+  road_surface_condition:
+    - normal
+    - wet
+    - snowy
+    - potholes
+    - roadworks
+
+  road_layout:
+    - straight
+    - curved
+    - intersection
+    - others
+
+  road_type:
+    - alley
+    - street
+    - dirt_road
+    - others
+
+  traffic_density:
+    - empty
+    - sparse
+    - congested
+
+  traffic_speed:
+    - not_moving_or_slow
+    - fast
+
+  surroundings:
+    - traffic_lights
+    - streetlights
+    - electric_poles
+    - road_signs
+    - pedestrian_crossing
+    - overhead_bridge
+    - sidewalk
+    - bicycle_lanes
+    - speed_bumps
+    - trees/nature
+    - animals_crossing
+
+road_user_details:
+  road_users:
+    - none
+    - at_least_one
+    - many
+
+  road_user_types:
+    - car
+    - large_vehicle
+    - motorcycles
+    - cyclists
+    - pedestrians
+
+traffic_incident_details:
+  is_traffic_incident: [true, false]
+
+  incident_type:
+    - none
+    - single_vehicle
+    - multi_vehicle
+    - others
+
+  single_vehicle_incident:
+    - none
+    - run_off_road
+    - rollover
+    - collision_with_surroundings
+    - collision_with_pedestrian
+    - others
+
+  multi_vehicle_incident:
+    - none
+    - rear_end_collision
+    - head_on_collision
+    - side_collision
+    - multi_vehicle_pileup
+    - others
+
+  road_users_involved:
+    - car
+    - large_vehicle
+    - motorcycles
+    - cyclists
+    - pedestrians
+
+  incident_severity:
+    - none
+    - light_injuries
+    - serious_injuries
+
+  cause_of_incident:
+    - none
+    - human_behaviour
+    - injudicious_actions
+    - vehicle_malfunction
+    - road_conditions
+    - animals_crossing
