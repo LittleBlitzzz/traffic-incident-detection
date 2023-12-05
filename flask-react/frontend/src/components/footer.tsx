@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({
     heightClass="h-40",
   }) => {
 
-  const rootStyle = `fixed bottom-0 w-full ${heightClass} bg-slate-200 p-4`
+  const rootStyle = `fixed bottom-0 w-full ${heightClass} bg-slate-300 p-4`
   return (
     <>
       <div className={rootStyle}>
