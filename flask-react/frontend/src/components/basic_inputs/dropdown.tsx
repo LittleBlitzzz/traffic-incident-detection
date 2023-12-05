@@ -158,48 +158,50 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
       </div>
 
       {isOpen && (
-        <OutsideClickNotifier
-          children={
-            <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
-              <div
-                className="py-1 overflow-y-auto max-h-80"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                <button
-                  key="None"
-                  type="button"
-                  onClick={() => handleOptionClick('None')}
-                  className={`block text-left px-8 py-2 text-sm w-full ${
-                    selectedOptions.includes('None')
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                  }`}
-                  role="menuitem"
+        <div className="relative">
+          <OutsideClickNotifier
+            children={
+              <div className="origin-top-right absolute max-h-80 right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10">
+                <div
+                  className="py-1 overflow-y-auto max-h-80"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
                 >
-                  None
-                </button>
-                {options.map((option) => (
                   <button
-                    key={option}
+                    key="None"
                     type="button"
-                    onClick={() => handleOptionClick(option)}
+                    onClick={() => handleOptionClick('None')}
                     className={`block text-left px-8 py-2 text-sm w-full ${
-                      selectedOptions.includes(option)
+                      selectedOptions.includes('None')
                         ? 'bg-gray-100 text-gray-900'
                         : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                     }`}
                     role="menuitem"
                   >
-                    {option}
+                    None
                   </button>
-                ))}
+                  {options.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => handleOptionClick(option)}
+                      className={`block text-left px-8 py-2 text-sm w-full ${
+                        selectedOptions.includes(option)
+                          ? 'bg-gray-100 text-gray-900'
+                          : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                      }`}
+                      role="menuitem"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          }
-          onNotified={closeDropdown}
-        />
+            }
+            onNotified={closeDropdown}
+          />
+        </div>
       )}
       <input type="hidden" name={inputValueName} value={selectedOptions.join(',')} />
     </div>

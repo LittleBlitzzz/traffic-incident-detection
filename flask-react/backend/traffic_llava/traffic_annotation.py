@@ -55,6 +55,7 @@ class TrafficAnnotation:
       },
       'traffic_incident_details': {
         "is_traffic_incident" : "",
+        "incident_type" : "",
         "single_vehicle_incident": "",
         "multi_vehicle_incident": "",
         "incident_severity": "",

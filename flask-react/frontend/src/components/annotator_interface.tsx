@@ -69,7 +69,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         road_type: formData["road_type"],
         traffic_density: formData["traffic_density"],
         traffic_speed: formData["traffic_speed"],
-        surroundings: formData["surroundings"],
+        surroundings: formData["surroundings"].split(","),
       },
       road_user_details: {
         volume_car: formData["volume_car"],
@@ -83,8 +83,8 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
         single_vehicle_incident: formData["single_vehicle_incident"],
         multi_vehicle_incident: formData["multi_vehicle_incident"],
         incident_severity: formData["incident_severity"],
-        road_users_involved: formData["road_users_involved"],
-        cause_of_incident: formData["cause_of_incident"],
+        road_users_involved: formData["road_users_involved"].split(","),
+        cause_of_incident: formData["cause_of_incident"].split(","),
       },
     };
 
