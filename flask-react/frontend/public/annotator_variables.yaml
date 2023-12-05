@@ -1,105 +1,206 @@
 environmental_details:
-  lighting:
-    - dawn_or_dusk
-    - day
-    - night
-    - artificial
+  section_title: Environment Details
+  section_id: environment-details-fieldset
+  section_variables:
+    lighting:
+      label: Lighting Condition
+      input_name: lighting
+      is_multi_select: false
+      options:
+        - dawn_or_dusk
+        - day
+        - night
+        - artificial
 
-  road_surface_condition:
-    - normal
-    - wet
-    - snowy
-    - potholes
-    - roadworks
+    road_surface_condition:
+      label: Road Surface Condition
+      input_name: road-surface-condition
+      is_multi_select: false
+      options:
+      - normal
+      - wet
+      - snowy
+      - potholes
+      - roadworks
 
-  road_layout:
-    - straight
-    - curved
-    - intersection
-    - others
+    road_layout:
+      label: Road Layout
+      input_name: road-layout
+      is_multi_select: false
+      options:
+      - straight
+      - curved
+      - intersection
+      - others
 
-  road_type:
-    - alley
-    - street
-    - dirt_road
-    - others
+    road_type:
+      label: Road Type
+      input_name: road-type
+      is_multi_select: false
+      options:
+      - alley
+      - street
+      - dirt_road
+      - others
 
-  traffic_density:
-    - empty
-    - sparse
-    - congested
+    traffic_density:
+      label: Traffic Density
+      input_name: traffic-density
+      is_multi_select: false
+      options:
+      - empty
+      - sparse
+      - congested
 
-  traffic_speed:
-    - not_moving_or_slow
-    - fast
+    traffic_speed:
+      label: Traffic Speed
+      input_name: traffic-speed
+      is_multi_select: false
+      options:
+      - not_moving_or_slow
+      - fast
 
-  surroundings:
-    - traffic_lights
-    - streetlights
-    - electric_poles
-    - road_signs
-    - pedestrian_crossing
-    - overhead_bridge
-    - sidewalk
-    - bicycle_lanes
-    - speed_bumps
-    - trees/nature
-    - animals_crossing
+    surroundings:
+      label: Surroundings
+      input_name: surroundings
+      is_multi_select: true
+      options:
+      - traffic_lights
+      - streetlights
+      - electric_poles
+      - road_signs
+      - pedestrian_crossing
+      - overhead_bridge
+      - sidewalk
+      - bicycle_lanes
+      - speed_bumps
+      - trees/nature
+      - animals_crossing
 
 road_user_details:
-  road_users:
-    - none
-    - at_least_one
-    - many
-
-  road_user_types:
-    - car
-    - large_vehicle
-    - motorcycles
-    - cyclists
-    - pedestrians
+  section_title: Road User Details
+  section_id: road-user-details-fieldset
+  section_variables:
+    volume_car:
+      label: Cars
+      input_name: volume-car
+      is_multi_select: false
+      options:
+      - none
+      - at_least_one
+      - many
+      
+    volume_large_vehicle:
+      label: Large Vehicles
+      input_name: volume-large-vehicle
+      is_multi_select: false
+      options:
+      - none
+      - at_least_one
+      - many
+      
+    volume_motorcycles:
+      label: Motorcycles
+      input_name: volume-motorcycles
+      is_multi_select: false
+      options:
+      - none
+      - at_least_one
+      - many
+      
+    volume_cyclists:
+      label: Cyclists
+      input_name: volume-cyclists
+      is_multi_select: false
+      options:
+      - none
+      - at_least_one
+      - many
+      
+    volume_pedestrians:
+      label: Pedestrians
+      input_name: volume-pedestrians
+      is_multi_select: false
+      options:
+      - none
+      - at_least_one
+      - many
 
 traffic_incident_details:
-  is_traffic_incident: [true, false]
+  section_title: Traffic Incident Details
+  section_id: traffic-incident-details-fieldset
+  section_variables:
+    is_traffic_incident:
+      label: Is there a traffic incident?
+      input_name: is-traffic-incident
+      is_multi_select: false
+      options:
+      - true
+      - false
 
-  incident_type:
-    - none
-    - single_vehicle
-    - multi_vehicle
-    - others
+    incident_type:
+      label: What type of incident?
+      input_name: incident-type
+      is_multi_select: false
+      options:
+      - none
+      - single_vehicle
+      - multi_vehicle
+      - others
 
-  single_vehicle_incident:
-    - none
-    - run_off_road
-    - rollover
-    - collision_with_surroundings
-    - collision_with_pedestrian
-    - others
+    single_vehicle_incident:
+      label: What type of single vehicle incident?
+      input_name: single-vehicle-incident
+      is_multi_select: false
+      options:
+      - none
+      - run_off_road
+      - rollover
+      - collision_with_surroundings
+      - collision_with_pedestrian
+      - others
 
-  multi_vehicle_incident:
-    - none
-    - rear_end_collision
-    - head_on_collision
-    - side_collision
-    - multi_vehicle_pileup
-    - others
+    multi_vehicle_incident:
+      label: What type of multi-vehicle incident?
+      input_name: multi-vehicle-incident
+      is_multi_select: false
+      options:
+      - none
+      - rear_end_collision
+      - head_on_collision
+      - side_collision
+      - multi_vehicle_pileup
+      - others
 
-  road_users_involved:
-    - car
-    - large_vehicle
-    - motorcycles
-    - cyclists
-    - pedestrians
+    road_users_involved:
+      label: Who are the road users involved?
+      input_name: road-users-involved
+      is_multi_select: true
+      options:
+      - car
+      - large_vehicle
+      - motorcycles
+      - cyclists
+      - pedestrians
 
-  incident_severity:
-    - none
-    - light_injuries
-    - serious_injuries
+    incident_severity:
+      label: Incident Severity
+      input_name: incident-severity
+      is_multi_select: false
+      options:
+      - none
+      - light_injuries
+      - serious_injuries
 
-  cause_of_incident:
-    - none
-    - human_behaviour
-    - injudicious_actions
-    - vehicle_malfunction
-    - road_conditions
-    - animals_crossing
+    cause_of_incident:
+      label: Cause of incident
+      input_name: cause-of-incident
+      is_multi_select: true
+      options:
+      - none
+      - human_behaviour
+      - injudicious_actions
+      - vehicle_malfunction
+      - road_conditions
+      - animals_crossing
+

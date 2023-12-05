@@ -19,60 +19,27 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     readonly=false,
   }) => {
 
-  const unableToIdentifyOption = "Unknown/Indistinguishable";
-  const objectVolumeOptions = [ "None", "At least one", "A few", "Multiple" ];
-  
-  /** Road Details */
-  const refRoadLoc = useRef("");
-  const refRoadType = useRef("");
-  const refRoadLayout = useRef("");
-  const refRoadSurroundings = useRef<string[]>([]);
-
-  /** Environment Details */
-  const refTimeOfDay = useRef("");
-  const refWeatherCond = useRef("");
-  const refLightingCond = useRef("");
-  const refTrafficDensity = useRef("");
-
-  /** Traffic Participants */
-  const refVolumeCar = useRef("");
-  const refVolumeLargeVehicles = useRef("");
-  const refVolumeMotorcycles = useRef("");
-  const refVolumeCyclists = useRef("");
-  const refVolumePedestrians = useRef("");
-
-  /** Traffic Incident */
-  const refIncidentTiming = useRef("");
-  const refIncidentType = useRef("");
-  const refCollisionType = useRef("");
-  const refCollisionCategory = useRef("");
-
-  /** Potential Cause of Incident */
-  const refCauseOfIncident = useRef<string[]>([]);
 
   let annotatorVariables = []
   const [loading, setLoading] = useState(true);
 
-  const loadYamlData = async () => {
-    try {
-      const response = await fetch('/annotator_variables.yaml');
-      const text = await response.text();
-      const parsedData = yaml.load(text);
-      console.log(parsedData);
-
-      annotatorVariables = parsedData;
-    } catch (error) {
-      console.error('Error loading or parsing YAML:', error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    loadYamlData();
+    fetch('/annotator_variables.yaml' + datasetName, {
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+      }),
+    })
+    .then(response => response.text())
+    .then(content => {
+      annotatorVariables = yaml.load(content);
+      console.log(annotatorVariables)
+
+      setLoading(false);
+    })
+    .catch(error => console.error('Error:', error));
   });
 
- 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
     
@@ -127,213 +94,33 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     }
   };
 
+  return loading ? (
 
-  const environmentDetailsInputs = (
-    <>
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Dawn/Dusk", "Daytime", "Night", unableToIdentifyOption ]}
-            inputValueName="time_of_day"
-            refInputValue={refTimeOfDay}
-          />
-        )}
-        label="Time of Day"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Clear", "Raining", "Snowing", unableToIdentifyOption ]}
-            inputValueName="weather_cond"
-            refInputValue={refWeatherCond}
-          />
-        )}
-        label="Weather Condition"
-        indentClass="ml-8"
-      />
-      
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Daylight", "Low light", "Street lights", unableToIdentifyOption ]}
-            inputValueName="lighting_cond"
-            refInputValue={refLightingCond}
-          />
-        )}
-        label="Lighting Condition"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "Empty", "Sparse", "Moderate", "Dense" ]}
-            inputValueName="traffic_density"
-            refInputValue={refTrafficDensity}
-          />
-        )}
-        label="Traffic Density"
-        indentClass="ml-8"
-      />
-    </>
-  );
-
-  const traficParticipantsInputs = (
-    <>
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={objectVolumeOptions}
-            inputValueName="volume_car"
-            refInputValue={refVolumeCar}
-          />
-        )}
-        label="Car Volume"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={objectVolumeOptions}
-            inputValueName="volume_large_vehicles"
-            refInputValue={refVolumeLargeVehicles}
-          />
-        )}
-        label="Trucks/Large Vehicles Volume"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={objectVolumeOptions}
-            inputValueName="volume_motorcycles"
-            refInputValue={refVolumeMotorcycles}
-          />
-        )}
-        label="Motorcycles Volume"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={objectVolumeOptions}
-            inputValueName="volume_cyclists"
-            refInputValue={refVolumeCyclists}
-          />
-        )}
-        label="Cyclists Volume"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={objectVolumeOptions}
-            inputValueName="volume_pedestrians"
-            refInputValue={refVolumePedestrians}
-          />
-        )}
-        label="Pedestrians Volume"
-        indentClass="ml-8"
-      />
-    </>
-  )
-
-  const traficIncidentInputs = (
-    <>
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "No incident", "Potential", "Happening", "Aftermath" ]}
-            inputValueName="incident_timing"
-            refInputValue={refIncidentTiming}
-          />
-        )}
-        label="Is there a traffic incident?"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "N/A", "Collision with Others", "Rollover Accident", "Run-off-road Accident", "Chain Accident" ]}
-            inputValueName="incident_type"
-            refInputValue={refIncidentType}
-          />
-        )}
-        label="What type of incident?"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "N/A", "T-Bone", "Rear end", "Front end", "Side Swipe Collision", "Run-off-road", "Chain Collision" ]}
-            inputValueName="collision_type"
-            refInputValue={refCollisionType}
-          />
-        )}
-        label="What type of collision?"
-        indentClass="ml-8"
-      />
-
-      <InputWithLabel 
-        inputElem={(
-          <Dropdown
-            options={[ "N/A", "Car-on-car", "Car-on-motorcycle", "Car-on-truck/bus/etc", "Truck/bus/etc-on-motorcycle",
-                      "Vehicle on pedestrians", "Vehicle on cyclists", "Multiple" ]}
-            inputValueName="collision_category"
-            refInputValue={refCollisionCategory}
-          />
-        )}
-        label="Category of the collision"
-        indentClass="ml-8"
-      />
-      
-      <InputWithLabel 
-        inputElem={(
-          <MultiSelectDropdown
-            options={[ "Speeding/Lack of reaction time", 
-                       "Rollover Accident", 
-                       "Run-off-road Accident", 
-                       "Chain Accident" 
-                    ]}
-            inputValueName="cause_of_incident"
-            refInputValue={refCauseOfIncident}
-          />
-        )}
-        label="What were the potential cause of the incident?"
-        indentClass="ml-8"
-      />
-
-    </>
-  )
-
-  return (
+  ) : (
     <form className="flex flex-col space-y-8 place-content-center" onSubmit={handleFormSubmission} id="annotator_form">
-
       <fieldset className="flex space-x-8 self-center">
         { interfaceTitle && (<legend>{interfaceTitle}</legend>)}
 
-        <fieldset id="environment-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-          <legend>Environment Details</legend>
-          {environmentDetailsInputs}
-        </fieldset>
-        
-        <fieldset id="traffic-participants-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-          <legend>Traffic Participants Details</legend>
-          {traficParticipantsInputs}
-        </fieldset>
-        
-        <fieldset id="incident-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-          <legend>Traffic Incident Details</legend>
-          {traficIncidentInputs}
-        </fieldset>
+        { annotatorVariables.map((section_details, index) => (
+          <fieldset id={section_details["section_id"]} className="border-4 p-4 rounded-lg border ring-blue-500">
+            <legend>{section_details["section_title"]}</legend>
+            {section_variables.map((variable, index) => variable["is_multi_select"] ? (
+                
+              ) : (
+              <InputWithLabel 
+                inputElem={(
+                  <Dropdown
+                    options={[ "N/A", "T-Bone", "Rear end", "Front end", "Side Swipe Collision", "Run-off-road", "Chain Collision" ]}
+                    inputValueName="collision_type"
+                    refInputValue={refCollisionType}
+                  />
+                )}
+                label="What type of collision?"
+                indentClass="ml-8"
+              />)
+            )}
+          </fieldset>
+        )) }
 
       </fieldset>
 

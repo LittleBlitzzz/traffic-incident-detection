@@ -15,10 +15,10 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
 
   useEffect(() => {
     fetch('/api/annotator/videos-in-dataset/' + datasetName, {
-        method: "get",
-        headers: new Headers({
-          "ngrok-skip-browser-warning": "1",
-        }),
+      method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+      }),
     })
     .then(response => response.json())
     .then(data => {
