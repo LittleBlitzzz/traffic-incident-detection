@@ -9,11 +9,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-gray-900 dark:text-gray-100
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+legend {
+  @apply font-bold text-lg px-2
 }
 
 .form-submit-btn {

@@ -349,17 +349,17 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   const annotatorForm = (
     <>
       <fieldset id="environment-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend className="font-bold text-lg px-2">Environment Details</legend>
+        <legend>Environment Details</legend>
         {environmentDetailsInputs}
       </fieldset>
       
       <fieldset id="traffic-participants-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend className="font-bold text-lg px-2">Traffic Participants Details</legend>
+        <legend>Traffic Participants Details</legend>
         {traficParticipantsInputs}
       </fieldset>
       
       <fieldset id="incident-details-fieldset" className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend className="font-bold text-lg px-2">Traffic Incident Details</legend>
+        <legend>Traffic Incident Details</legend>
         {traficIncidentInputs}
       </fieldset>
     </>
@@ -370,7 +370,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 
       {interfaceTitle ? (
         <fieldset className="flex space-x-8 self-center">
-          <legend className="font-bold text-lg px-2">{interfaceTitle}</legend>
+          <legend>{interfaceTitle}</legend>
           {annotatorForm}
         </fieldset>
       ) : (

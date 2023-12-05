@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Dropdown, ImageFromBackend, AnnotatorInterface } from '../components';
+import React, { useRef, useState, useEffect } from 'react';
+import { Dropdown, ImageFromBackend, AnnotatorInterface, ImageSelector } from '../components';
 
 interface AnnotatorPageProps {
   datasetName: string
@@ -79,6 +79,10 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
     </div>
   )
 
+  const refDatasetName = useRef("extracted_frames");
+  const refVideoName = useRef("000000");
+  const refImageFilename = useRef("0.jpg");
+
   let annotatorPanel = (
     <div className="px-36 pt-8">
       { (currVideoName !== "" && currImageFileName !== "") &&
@@ -89,6 +93,11 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
             imageFileName={currImageFileName}
             altText="Video footage"
             className="rounded-lg w-[400px] h-fit border-2 border-slate-400 m-auto"
+          />
+          <ImageSelector 
+            refDatasetName={refDatasetName}
+            refVideoName={refVideoName}
+            refImageFilename={refImageFilename}
           />
           <div className="h-10"></div>
           <AnnotatorInterface

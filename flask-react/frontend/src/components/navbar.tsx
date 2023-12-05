@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import github_logo_light from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark.svg"
 import github_logo_dark from "/content/traffic-incident-detection/flask-react/frontend/src/assets/github-mark/github-mark-white.svg"
+import { SliderToggle } from './';
 
 interface NavBarProps {
   currentPage?: string;
@@ -13,7 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({
   }) => {
   return (
     <>
-      <div id="nav-bar" className="sticky top-0 flex py-4 px-36 bg-slate-300 z-20">
+      <div id="nav-bar" className="sticky top-0 flex py-4 space-x-8 px-36 bg-slate-300 z-20">
         <div className="flex-initial self-center">
           <p className="text-2xl">Traffic LLaVA</p>
         </div>
@@ -29,7 +30,8 @@ const NavBar: React.FC<NavBarProps> = ({
             <Link to="/model-interface">Model Interface</Link>
           </li>
         </ul>
-        <div className="w-8"/>
+        <SliderToggle
+        />
         <div>
           <a href="https://github.com/LittleBlitzzz/traffic-incident-detection" target="blank">
             <img src={github_logo_light} className="w-10" alt="GitHub Logo" />

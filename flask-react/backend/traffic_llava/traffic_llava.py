@@ -38,9 +38,10 @@ class TrafficLLaVA:
 
     self.conv_mode = model_args["conv_mode"]
     
+    self.top_p = model_args["top_p"]
+    self.temperature = model_args["temperature"]
     self.system_prompt = system_prompt
     self.max_new_tokens = model_args["max_new_tokens"]
-    self.temperature = model_args["temperature"]
     self.debug = model_args["debug"]
 
   def process_image_text_pair(self, image_filepath, text_inputs="", conv=None, roles=None):
@@ -85,6 +86,7 @@ class TrafficLLaVA:
           input_ids,
           images=image_tensor,
           do_sample=True if self.temperature > 0 else False,
+          top_p=self.top_p,
           temperature=self.temperature,
           max_new_tokens=self.max_new_tokens,
           streamer=streamer,
@@ -135,17 +137,20 @@ class TrafficLLaVA:
     return image, image_tensor
 
 class PromptFramework:
-  def __init__(self, system_prompt, prompt_sequence, temperature):
+  def __init__(self,  top_p, temperature, system_prompt, prompt_sequence):
+    self.top_p = top_p
+    self.temperature = temperature
     self.system_prompt = system_prompt
     self.prompt_sequence = prompt_sequence
-    self.temperature = temperature
 
   def apply_on_image(self, model: TrafficLLaVA, image_input, save_path=None):
     original_prompt = model.system_prompt
     original_temperature = model.temperature
+    original_top_p = model.top_p
 
     model.system_prompt = self.system_prompt
     model.temperature = self.temperature
+    model.top_p = self.top_p
 
     results = []
 
@@ -190,6 +195,7 @@ class PromptFramework:
           
     model.system_prompt = original_prompt
     model.temperature = original_temperature
+    model.top_p = original_top_p
     return results
 
 def setup_model():
@@ -201,6 +207,7 @@ def setup_model():
       "conv_mode": None,
       "max_new_tokens": 512,
       "temperature": 0.2,
+      "top_p": 0.2,
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
@@ -216,10 +223,11 @@ def test_model():
       "device": "cuda",
       "conv_mode": None,
       "max_new_tokens": 512,
+      "temperature": 0.2,
+      "top_p": 0.2,
       "load_8bit": False,
       "load_4bit": True,
       "debug": True,
-      "temperature": 0.2,
   }
 
   prompt = "What do you see"

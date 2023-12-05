@@ -13,9 +13,11 @@ A chat between a curious human and an artificial intelligence assistant focused 
 The assistant is tasked with classifying traffic incidents (if any) in the given footage. The user will describe each section, and the assistant will analyse the image and output the variables in JSON format.
 `.trim().replace(/^\s+|\s+$/g, '');
 
-  const refDatasetName = useRef("extracted_frames");
-  const refVideoName = useRef("000000");
-  const refImageFilename = useRef("0.jpg");
+  const refDatasetName = useRef("");
+  const refVideoName = useRef("");
+  const refImageFilename = useRef("");
+
+  const refModelTopP = useRef(0.2);
   const refModelTemperature = useRef(0.2);
   const refResultsSavePath = useRef("/content/drive/MyDrive/Projects/FYP_Sunway/Results/test.txt");
  
@@ -72,6 +74,7 @@ incident_details:
     <>
       <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e : FormEvent) => {
         e.preventDefault();
+        console.log(refModelTopP.current);
         console.log(refModelTemperature.current);
         console.log(refSystemPrompt.current);
         console.log(promptFields);
@@ -81,6 +84,7 @@ incident_details:
             "system_prompt": refSystemPrompt.current,
             "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
             "temperature": Number(refModelTemperature.current),
+            "top_p": Number(refModelTopP.current),
           },
           "dataset_name": refDatasetName.current,
           "video_name": refVideoName.current,
@@ -122,6 +126,20 @@ incident_details:
         <InputWithLabel
           inputElem={(
             <TextField 
+              placeholder="Enter model top-p"
+              initialValue={0.2}
+              inputValueName="model-top-p"
+              refInputValue={refModelTopP}
+              dataType="number"
+            />
+          )}
+          label="Model Top P"
+          labelClassName="w-56 mb-auto"
+        />
+
+        <InputWithLabel
+          inputElem={(
+            <TextField 
               placeholder="Enter model temperature"
               initialValue={0.2}
               inputValueName="model-temperature"
@@ -132,7 +150,6 @@ incident_details:
           label="Model Temperature"
           labelClassName="w-56 mb-auto"
         />
-        
 
         <InputWithLabel
           inputElem={(

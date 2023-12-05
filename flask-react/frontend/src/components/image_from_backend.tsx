@@ -56,6 +56,7 @@ interface ImageSelectorProps {
   refImageFilename?: RefObject<string>;
   altText?: string,
   className?: string;
+  showImage?: boolean;
 }
 
 const ImageSelector: React.FC<ImageSelectorProps> = ({ 
@@ -64,6 +65,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
     refImageFilename=useRef("6.jpg"),
     altText="Image", 
     className="",
+    showImage=true,
   }) => {
   const [imagePath, setImagePath] = useState("");
  
@@ -122,7 +124,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
     <>
       <div className="flex space-x-8 py-4">
         { inputContextForm }
-        { refDatasetName.current && refVideoName.current && refImageFilename.current && (
+        { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
           <ImageFromBackend
             datasetName={refDatasetName.current}
             videoName={refVideoName.current}
