@@ -59,8 +59,7 @@ sections:
         is_multi_select: true
         options:
         - traffic_lights
-        - streetlights
-        - electric_poles
+        - poles
         - road_signs
         - pedestrian_crossing
         - overhead_bridge

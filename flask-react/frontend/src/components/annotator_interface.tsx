@@ -80,6 +80,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       },
       traffic_incident_details: {
         is_traffic_incident: formData["is_traffic_incident"],
+        incident_type: formData["incident_type"],
         single_vehicle_incident: formData["single_vehicle_incident"],
         multi_vehicle_incident: formData["multi_vehicle_incident"],
         incident_severity: formData["incident_severity"],
