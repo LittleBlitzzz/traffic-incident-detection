@@ -41,7 +41,46 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
-    console.log(new FormData(e.target))
+    const formData = Object.fromEntries(new FormData(e.target));
+    console.log(formData);
+    
+    const annotationData = {
+      environment_details: {
+        lighting: formData["lighting"],
+        road_surface_condition: formData["road_surface_condition"],
+        road_layout: formData["road_layout"],
+        road_type: formData["road_type"],
+        traffic_density: formData["traffic_density"],
+        traffic_speed: formData["traffic_speed"],
+        surroundings: formData["surroundings"],
+      },
+      road_user_details: {
+        volume_car: formData["volume_car"],
+        volume_large_vehicle: formData["volume_large_vehicle"],
+        volume_motorcycle: formData["volume_motorcycle"],
+        volume_cyclist: formData["volume_cyclist"],
+        volume_pedestrian: formData["volume_pedestrian"],
+      },
+      traffic_incident: {
+        is_traffic_incident: formData["is_traffic_incident"],
+        single_vehicle_incident: formData["single_vehicle_incident"],
+        multi_vehicle_incident: formData["multi_vehicle_incident"],
+        incident_severity: formData["incident_severity"],
+        road_users_involved: formData["road_users_involved"],
+        cause_of_incident: formData["cause_of_incident"],
+      },
+    };
+
+    fetch("/api/annotator/annotations/" + datasetName + "/" + videoName + "/" + imageFileName, {
+      method: "post",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "1",
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify({
+        annotations: annotationData
+      }),
+    })
   };
 
   return annotatorVariables === null ? (
@@ -54,7 +93,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
       { interfaceTitle && (<legend>{interfaceTitle}</legend>)}
 
       { annotatorVariables["sections"].map(section_details => 
-        (<fieldset id={section_details["section_id"]} className="border-4 p-4 rounded-lg border ring-blue-500">
+        (<fieldset id={section_details["section_id"]}>
           <legend>{section_details["section_title"]}</legend>
           {section_details["section_variables"].map(variable => variable["is_multi_select"] ? 
             (<InputWithLabel 

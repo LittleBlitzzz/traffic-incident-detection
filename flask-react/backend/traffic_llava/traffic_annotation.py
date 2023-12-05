@@ -37,34 +37,30 @@ class VideoAnnotation:
 class TrafficAnnotation:
   def __init__(self):
     self.annotations = AttrMap({
-      'environment_details': {
-        'road_details': {
-          'location': '',
-          'type_of_road': '',
-          'surroundings': [],
-          'road_layout': ''
-        },
-        'time_of_day': '',
-        'weather': '',
-        'lighting': '',
-        'traffic_density': ''
+      "environment_details": {
+        "lighting": "",
+        "road_surface_condition" : "",
+        "road_layout" : "",
+        "road_type" : "",
+        "traffic_density" : "",
+        "traffic_speed" : "",
+        "surroundings": []
       },
-      'traffic_participants': {
-        'volume_car': '',
-        'volume_large_vehicles': '',
-        'volume_motorcycles': '',
-        'volume_cyclists': '',
-        'volume_pedestrians': '',
+      'road_user_details': {
+        "volume_car" : "",
+        "volume_large_vehicle" : "",
+        "volume_motorcycle" : "",
+        "volume_cyclist" : "",
+        "volume_pedestrian" : "",
       },
       'traffic_incident': {
-        'incident_timing': '',
-        'incident_type': '',
-        'collision_type': '',
-        'collision_category': '',
+        "is_traffic_incident" : "",
+        "single_vehicle_incident": "",
+        "multi_vehicle_incident": "",
+        "incident_severity": "",
+        "road_users_involved": [],
+        "cause_of_incident": [],
       },
-      'analysis': {
-        'cause_of_incident': [],
-      }
     })
 
   def __str__(self):

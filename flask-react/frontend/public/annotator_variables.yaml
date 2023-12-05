@@ -12,7 +12,7 @@ sections:
           - artificial
 
       - label: Road Surface Condition
-        input_name: road-surface-condition
+        input_name: road_surface_condition
         is_multi_select: false
         options:
         - normal
@@ -22,7 +22,7 @@ sections:
         - roadworks
 
       - label: Road Layout
-        input_name: road-layout
+        input_name: road_layout
         is_multi_select: false
         options:
         - straight
@@ -31,7 +31,7 @@ sections:
         - others
 
       - label: Road Type
-        input_name: road-type
+        input_name: road_type
         is_multi_select: false
         options:
         - alley
@@ -40,7 +40,7 @@ sections:
         - others
 
       - label: Traffic Density
-        input_name: traffic-density
+        input_name: traffic_density
         is_multi_select: false
         options:
         - empty
@@ -48,7 +48,7 @@ sections:
         - congested
 
       - label: Traffic Speed
-        input_name: traffic-speed
+        input_name: traffic_speed
         is_multi_select: false
         options:
         - not_moving_or_slow
@@ -74,7 +74,7 @@ sections:
     section_id: road-user-details-fieldset
     section_variables:
       - label: Cars
-        input_name: volume-car
+        input_name: volume_car
         is_multi_select: false
         options:
         - none
@@ -82,7 +82,7 @@ sections:
         - many
         
       - label: Large Vehicles
-        input_name: volume-large-vehicle
+        input_name: volume_large_vehicle
         is_multi_select: false
         options:
         - none
@@ -90,7 +90,7 @@ sections:
         - many
         
       - label: Motorcycles
-        input_name: volume-motorcycles
+        input_name: volume_motorcycle
         is_multi_select: false
         options:
         - none
@@ -98,7 +98,7 @@ sections:
         - many
         
       - label: Cyclists
-        input_name: volume-cyclists
+        input_name: volume_cyclist
         is_multi_select: false
         options:
         - none
@@ -106,7 +106,7 @@ sections:
         - many
         
       - label: Pedestrians
-        input_name: volume-pedestrians
+        input_name: volume_pedestrian
         is_multi_select: false
         options:
         - none
@@ -117,14 +117,14 @@ sections:
     section_id: traffic-incident-details-fieldset
     section_variables:
       - label: Is there a traffic incident?
-        input_name: is-traffic-incident
+        input_name: is_traffic_incident
         is_multi_select: false
         options:
         - "true"
         - "false"
 
       - label: What type of incident?
-        input_name: incident-type
+        input_name: incident_type
         is_multi_select: false
         options:
         - none
@@ -133,7 +133,7 @@ sections:
         - others
 
       - label: What type of single vehicle incident?
-        input_name: single-vehicle-incident
+        input_name: single_vehicle_incident
         is_multi_select: false
         options:
         - none
@@ -144,7 +144,7 @@ sections:
         - others
 
       - label: What type of multi-vehicle incident?
-        input_name: multi-vehicle-incident
+        input_name: multi_vehicle_incident
         is_multi_select: false
         options:
         - none
@@ -154,8 +154,16 @@ sections:
         - multi_vehicle_pileup
         - others
 
+      - label: Incident Severity
+        input_name: incident_severity
+        is_multi_select: false
+        options:
+        - none
+        - light_injuries
+        - serious_injuries
+
       - label: Who are the road users involved?
-        input_name: road-users-involved
+        input_name: road_users_involved
         is_multi_select: true
         options:
         - car
@@ -164,16 +172,8 @@ sections:
         - cyclists
         - pedestrians
 
-      - label: Incident Severity
-        input_name: incident-severity
-        is_multi_select: false
-        options:
-        - none
-        - light_injuries
-        - serious_injuries
-
       - label: Cause of incident
-        input_name: cause-of-incident
+        input_name: cause_of_incident
         is_multi_select: true
         options:
         - human_behaviour
@@ -181,4 +181,5 @@ sections:
         - vehicle_malfunction
         - road_conditions
         - animals_crossing
+        - others
 

@@ -70,12 +70,12 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
   const [imagePath, setImagePath] = useState("");
  
   const inputContextForm = (
-    <form id="input-context-form" className="flex flex-col space-y-4 w-1/2" onSubmit={(e: FormEvent) => {
+    <form id="input-context-form" className="flex space-x-4" onSubmit={(e: FormEvent) => {
       e.preventDefault();
       setImagePath([ refDatasetName.current, refVideoName.current, refImageFilename.current].join("/"))
     }}>
-      <fieldset className="border-4 p-4 rounded-lg border ring-blue-500">
-        <legend>Input image</legend>
+      <fieldset className="flex flex-col space-y-4 w-1/2">
+        <legend>Input paths</legend>
         <InputWithLabel
           inputElem={(
             <TextField 
@@ -112,19 +112,15 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
             />
           )}
           label="Image Filename"
-          labelClassName="w-56 mb-auto"
+          labelClassName="w-56 mb-auto py-2"
         />
+
+        <button className="form-submit-btn self-end" type="submit">Update context</button>
       </fieldset>
-
-      <button className="form-submit-btn self-end" type="submit">Update context</button>
-    </form>
-  )
-
-  return (
-    <>
-      <div className="flex space-x-8 py-4">
-        { inputContextForm }
-        { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
+      
+      { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
+        <fieldset className="p-8 border rounded-lg">
+          <legend>Image from Server</legend>
           <ImageFromBackend
             datasetName={refDatasetName.current}
             videoName={refVideoName.current}
@@ -132,6 +128,27 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
             altText={imagePath}
             className={className}
           />
+        </fieldset>
+      )}
+
+    </form>
+  )
+
+  return inputContextForm;
+  return (
+    <>
+      <div className="flex space-x-8 py-4">
+        { inputContextForm }
+        { refDatasetName.current && refVideoName.current && refImageFilename.current && showImage && (
+          <div className="p-8 border rounded-lg">
+            <ImageFromBackend
+              datasetName={refDatasetName.current}
+              videoName={refVideoName.current}
+              imageFileName={refImageFilename.current}
+              altText={imagePath}
+              className={className}
+            />
+          </div>
         )}
       </div>
     </>

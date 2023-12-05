@@ -34,12 +34,11 @@ const TextField: React.FC<TextFieldProps> = ({
       refInputValue.current = newText;
     }
   };
-
+ 
   return (
     <>
       {rows !== null && rows > 1 ? (
         <textarea
-          className="w-full px-3 py-2 text-base border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           name={inputValueName}
           placeholder={placeholder}
           value={text}
@@ -48,8 +47,7 @@ const TextField: React.FC<TextFieldProps> = ({
         />
       ) : (
         <input
-          className="w-full px-3 py-2 text-base border border-gray-300 rounded focus:outline-none focus:border-blue-500"
-          type="text"
+          type={dataType}
           name={inputValueName}
           placeholder={placeholder}
           value={text}
