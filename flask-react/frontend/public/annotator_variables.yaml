@@ -140,6 +140,7 @@ sections:
         - rollover
         - collision_with_surroundings
         - collision_with_pedestrian
+        - vehicle_lost_control
         - others
 
       - label: What type of multi-vehicle incident?
