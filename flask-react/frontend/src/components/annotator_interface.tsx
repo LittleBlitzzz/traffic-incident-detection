@@ -49,12 +49,12 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
     })
     .then(response => response.json())
     .then(response_json => {
-      const annotationForCurrImage = response_json["existing_annotations"][imageFileName]["annotations"];
+      const annotationForCurrImage = response_json[imageFileName];
       setAnnotationData(annotationForCurrImage);
       console.log(annotationForCurrImage);
     })
     .catch(error => console.error('Error:', error));
-  }, []);
+  }, [imageFullPath]);
 
   const handleFormSubmission = (e: FormEvent) => {
     e.preventDefault();
@@ -134,7 +134,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                   <MultiSelectDropdown
                     options={variable.options}
                     inputValueName={variable.input_name}
-                    initialValue={annotationData[section_details.section_id][variable.input_name] || []}
+                    initialValue={annotationData[section_details.section_id][variable.input_name]}
                   />
                 )}
                 label={variable["label"]}
@@ -145,7 +145,14 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
                   <Dropdown
                     options={variable.options}
                     inputValueName={variable.input_name}
-                    initialValue={annotationData[section_details.section_id][variable.input_name] || variable.options[0]}
+                    stateOverride={[
+                      annotationData[section_details.section_id][variable.input_name], 
+                      (newValue) => {
+                        const newData = {...annotationData};
+                        newData[section_details.section_id][variable.input_name] = newValue;
+                        setAnnotationData(newData);
+                      },
+                    ]}
                   />
                 )}
                 label={variable["label"]}

@@ -9,6 +9,7 @@ interface DropdownProps {
   inputValueName?: string;
   refInputValue?: RefObject<string>;
   onOptionSelected?: (option: string) => void;
+  stateOverride? : [string, (value: string | ((prevState: string) => string)) => void]
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ 
@@ -18,23 +19,19 @@ const Dropdown: React.FC<DropdownProps> = ({
     inputValueName = "_dropdown",
     refInputValue = null,
     onOptionSelected = null,
+    stateOverride = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string>("");
-
-  if ( (title === null || title === undefined) && options.length > 0) {
-    initialValue = options[0];
-  }
+  const [selectedOption, setSelectedOption] = stateOverride || useState<string>("");
 
   useEffect(() => {
     if (initialValue !== null && initialValue !== undefined) {
       setSelectedOption(initialValue);
+    } else if ((title === null || title === undefined) && options.length > 0) {
+      setSelectedOption(options[0]);
     }
-  }, [initialValue])
+  }, [initialValue, title, options]);
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
@@ -48,17 +45,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const closeDropdown = () => {
-    setIsOpen(false);
-  }
+  const toggleDropdown = () => setIsOpen((prev) => !prev); 
+  const closeDropdown = () => setIsOpen(false); 
 
   return (
     <div className="inline-block text-left">
-      <button
-        type="button"
-        onClick={toggleDropdown}
-        className="dropdown-btn"
-      >
+      <button type="button" onClick={toggleDropdown} className="dropdown-btn">
         <p className="truncate">
           {selectedOption || title || "Select an Option"}
         </p>
@@ -94,7 +86,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           />
         </div>
       )}
-      <input type="hidden" name={inputValueName} value={selectedOption || ''} />
+      <input type="hidden" name={inputValueName} value={selectedOption} />
     </div>
   );
 };
@@ -106,6 +98,7 @@ interface MultiSelectDropdownProps {
   inputValueName?: string;
   refInputValue?: RefObject<string[]>;
   onOptionSelected?: (options: string[]) => void;
+  stateOverride? : [string[], (value: string[] | ((prevState: string[]) => string[])) => void]
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
@@ -115,19 +108,16 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     inputValueName = '_multiselect',
     refInputValue = null,
     onOptionSelected = null,
+    stateOverride = null,
   }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] =  stateOverride || useState<string[]>([]);
 
   useEffect(() => {
-    if (initialValue !== null && initialValue !== undefined) {
+    if (initialValue !== null && initialValue !== undefined && Array.isArray(initialValue)) {
       setSelectedOptions(initialValue);
     }
-  }, [initialValue])
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+  }, [initialValue]);
   
   const handleOptionClick = (selectedOption: string) => { 
     setSelectedOptions((prevOptions) => {
@@ -150,18 +140,13 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     });
   };
 
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
+  const toggleDropdown = () => setIsOpen((prev) => !prev); 
+  const closeDropdown = () => setIsOpen(false); 
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="inline-block text-left">
       <div>
-        <button
-          type="button"
-          onClick={toggleDropdown}
-          className="dropdown-btn"
-        >
+        <button type="button" onClick={toggleDropdown} className="dropdown-btn">
           <p className="truncate">
             {selectedOptions.length > 0
               ? selectedOptions.join(', ')

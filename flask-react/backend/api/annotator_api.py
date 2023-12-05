@@ -67,16 +67,19 @@ def annotations(dataset_name, video_name, image_filename):
   annotations_filepath = os.path.join(os.environ["annotations_path"], video_name + "_annotations.yaml")
 
   video_annotations = VideoAnnotation()
-  results["has_existing_annotations"] = video_annotations.read_from_file(annotations_filepath)
+  results["has_annotations_on_video"] = video_annotations.read_from_file(annotations_filepath)
+  results["has_annotations_on_frame"] = False
+
+  traffic_annotation = video_annotations.annotations.get(image_filename)
+  if traffic_annotation is None:
+    traffic_annotation = TrafficAnnotation()
+    video_annotations.annotations[image_filename] = traffic_annotation
+  else:
+    results["has_annotations_on_frame"] = True
 
   if request.method == "GET":
-    results["existing_annotations"] = video_annotations.annotations
+    results[image_filename] = traffic_annotation.annotations
   elif request.method == "POST":
-
-    traffic_annotation = video_annotations.annotations.get(image_filename)
-    if traffic_annotation is None:
-      traffic_annotation = TrafficAnnotation()
-      video_annotations.annotations[image_filename] = traffic_annotation
 
     # check inputs
     request_json = request.get_json()
