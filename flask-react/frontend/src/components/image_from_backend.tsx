@@ -19,7 +19,7 @@ const ImageFromBackend: React.FC<ImageFromBackendProps> = ({
   }) => {
   const [imageSrc, setImageSrc] = useState("");
 
-  let apiUrl = '/api/annotator/get-image/' + datasetName + '/' + videoName + '/' + imageFileName;
+  let apiUrl = ["/api/annotator/get-image", datasetName, videoName, imageFileName].join("/");
 
   useEffect(() => {
     fetch(apiUrl, {
@@ -57,6 +57,7 @@ interface ImageSelectorProps {
   altText?: string,
   className?: string;
   showImage?: boolean;
+  onImageUpdated? : (imagePath: string) => void;
 }
 
 const ImageSelector: React.FC<ImageSelectorProps> = ({ 
@@ -66,13 +67,19 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({
     altText="Image", 
     className="",
     showImage=true,
+    onImageUpdated=null,
   }) => {
   const [imagePath, setImagePath] = useState("");
  
   const inputContextForm = (
     <form id="input-context-form" className="flex space-x-4 justify-center" onSubmit={(e: FormEvent) => {
       e.preventDefault();
-      setImagePath([ refDatasetName.current, refVideoName.current, refImageFilename.current].join("/"))
+      const newImagePath = [ refDatasetName.current, refVideoName.current, refImageFilename.current].join("/");
+      setImagePath(newImagePath);
+
+      if (onImageUpdated) {
+        onImageUpdated(newImagePath);
+      }
     }}>
       <fieldset className="flex flex-col space-y-4 w-1/3 ">
         <legend>Input path</legend>

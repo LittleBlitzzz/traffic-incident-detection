@@ -79,6 +79,7 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
     </div>
   )
 
+  const [imagePath, setImagePath] = useState([datasetName, "000000", "0.jpg"].join("/"));
   const refDatasetName = useRef("extracted_frames");
   const refVideoName = useRef("000000");
   const refImageFilename = useRef("0.jpg");
@@ -89,12 +90,15 @@ const AnnotatorPage: React.FC<AnnotatorPageProps> = ({ datasetName }) => {
         refDatasetName={refDatasetName}
         refVideoName={refVideoName}
         refImageFilename={refImageFilename}
+        onImageUpdated={(newImagePath) => {
+          setImagePath(newImagePath);
+        }}
       />
       <div className="h-10"></div>
       <AnnotatorInterface
-        datasetName={datasetName}
-        videoName={currVideoName}
-        imageFileName={currImageFileName}
+        datasetName={imagePath.split("/")[0]}
+        videoName={imagePath.split("/")[1]}
+        imageFileName={imagePath.split("/")[2]}
         interfaceTitle="User Inputs"
       />
       <div className="h-10"></div>
