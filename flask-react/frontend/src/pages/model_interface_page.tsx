@@ -1,6 +1,6 @@
 
 import React, { useRef, useState, FormEvent } from 'react';
-import { TextField, InputWithLabel, ImageSelector } from '../components'
+import { TextField, InputWithLabel, ImageSelector, FetchButton } from '../components'
 
 interface ModelInterfacePageProps {
 }
@@ -19,7 +19,7 @@ The assistant is tasked with classifying traffic incidents (if any) in the given
 
   const refModelTopP = useRef(0.2);
   const refModelTemperature = useRef(0.2);
-  const refResultsSavePath = useRef("/content/drive/MyDrive/Projects/FYP_Sunway/Results/test.txt");
+  const refResultsSavePath = useRef("prompts/ultra_basic.txt");
  
   const refSystemPrompt = useRef(defaultSystemPrompt);
   const [promptFields, setPromptFields] = useState<[number, string, string][]>([
@@ -74,11 +74,6 @@ incident_details:
     <>
       <form id="prompt-Template-form" className="flex flex-col space-y-4 w-full" onSubmit={(e : FormEvent) => {
         e.preventDefault();
-        console.log(refModelTopP.current);
-        console.log(refModelTemperature.current);
-        console.log(refSystemPrompt.current);
-        console.log(promptFields);
-
         const requestBody = {
           "prompt_framework": {
             "system_prompt": refSystemPrompt.current,
@@ -91,6 +86,8 @@ incident_details:
           "image_filename": refImageFilename.current,
           "save_path_name": refResultsSavePath.current,
         };
+
+        console.log(requestBody)
 
         fetch('api/model/ask-llava', {
           method: "POST",
@@ -165,7 +162,8 @@ incident_details:
           labelClassName="w-56 mb-auto"
         />
         
-        {promptFields.map(([keyIndex, value, llavaOutput], index) => (
+        {promptFields.map(([keyIndex, value, llavaOutput], index) => {
+          return(
           <>
             <div className="flex space-x-4">
               <InputWithLabel
@@ -206,20 +204,56 @@ incident_details:
             </div>
             
             {llavaOutput !== null && llavaOutput !== "" &&(
-              <div className="flex space-x-4 self-end">
-                <p className="self-center">{llavaOutput.replace("\n\g", "<br />")}</p>
+              <div className="flex space-x-4 self-end w-full">
+                <p className="self-center" dangerouslySetInnerHTML={{ __html: llavaOutput.replace(/(\r\n|\n|\r)/gm, "<br>") }} ></p>
+                <div className="grow"></div>
                 <p className="p-1 bg-slate-100 rounded-md">LLaVA</p>
               </div>
             )}
           </>
-        ))}
+        )})}
 
         <div className="flex space-x-4 self-end">
           <button className="form-submit-btn" type="button" onClick={() => {
             setPromptFields([...promptFields, [promptKeyCounter, '', '' ]]);
             setPromptKeyCounter(promptKeyCounter + 1);
-          }}>Add prompt</button>
-          <button className="form-submit-btn" type="submit">Update prompt template</button>
+          }}>
+            Add prompt
+          </button>
+          
+          <button className="form-submit-btn" type="button" onClick={() => {
+            const requestBody = {
+              "prompt_framework": {
+                "system_prompt": refSystemPrompt.current,
+                "prompt_sequence": promptFields.map(([keyIndex, value, llavaOutput]) => value),
+                "temperature": Number(refModelTemperature.current),
+                "top_p": Number(refModelTopP.current),
+              },
+              "dataset_name": refDatasetName.current,
+              "save_path_name": "llava_test",
+              "annotation_path": "annotations_compiled_20231206122224.csv",
+            };
+
+            fetch('api/model/test-on-annotated-data', {
+              method: "POST",
+              headers: new Headers({
+                "ngrok-skip-browser-warning": "1",
+                "Content-Type": "application/json",
+              }),
+              body: JSON.stringify(requestBody),
+            })
+            .then(response => response.json())
+            .then(response_json => {
+              console.log(response_json);
+            });
+
+          }}>
+            Test prompt
+          </button>
+
+          <FetchButton className="form-submit-btn" type="submit">
+            Update prompt template
+          </FetchButton>
         </div>
 
       </form>

@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect, FormEvent } from 'react';
-import { Dropdown, MultiSelectDropdown, InputWithLabel } from './';
+import { Dropdown, MultiSelectDropdown, InputWithLabel, LoadingSpinner } from './';
 import * as yaml from 'js-yaml';
 
 interface AnnotatorInterfaceProps {
@@ -108,9 +108,7 @@ const AnnotatorInterface: React.FC<AnnotatorInterfaceProps> = ({
   };
 
   return annotatorVariables === null || annotationData === null ? (
-    <div className="flex justify-center items-center h-screen">
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
-    </div>
+    <LoadingSpinner />
   ) : 
   (<form className="flex flex-col space-y-8 place-content-center" onSubmit={handleFormSubmission} id="annotator_form">
     <fieldset className="flex space-x-8 self-center">

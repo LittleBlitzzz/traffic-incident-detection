@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 
-
 interface FooterProps {
   currentPage?: string;
   heightClass?: string;
