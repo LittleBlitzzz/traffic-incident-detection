@@ -13,9 +13,9 @@ A chat between a curious human and an artificial intelligence assistant focused 
 The assistant is tasked with classifying traffic incidents (if any) in the given footage. The user will describe each section, and the assistant will analyse the image and output the variables in JSON format.
 `.trim().replace(/^\s+|\s+$/g, '');
 
-  const refDatasetName = useRef("");
-  const refVideoName = useRef("");
-  const refImageFilename = useRef("");
+  const refDatasetName = useRef("extracted_frames");
+  const refVideoName = useRef("000000");
+  const refImageFilename = useRef("0.jpg");
 
   const refModelTopP = useRef(0.2);
   const refModelTemperature = useRef(0.2);

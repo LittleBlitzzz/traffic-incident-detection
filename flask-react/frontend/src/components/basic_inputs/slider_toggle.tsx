@@ -28,11 +28,11 @@ const SliderToggle: React.FC<SliderToggleProps> = ({
 
   return (
     <div
-      className={`relative w-16 h-8 rounded-full ${isToggled ? 'bg-green-500' : 'bg-gray-400'} p-1 cursor-pointer`}
+      className={`relative w-16 h-8 rounded-full self-center ${isToggled ? 'bg-green-500' : 'bg-gray-400'} p-1 cursor-pointer`}
       onClick={handleToggle}
     >
       <div
-        className={`absolute left-0 w-6 h-6 bg-white rounded-full shadow-md transform ${isToggled ? 'translate-x-full' : ''} transition-transform`}
+        className={`absolute left-1 w-6 h-6 bg-white rounded-full shadow-md transform ${isToggled ? 'translate-x-full' : ''} transition-transform`}
       ></div>
     </div>
   );

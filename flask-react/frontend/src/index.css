@@ -30,7 +30,7 @@ input, textarea {
 }
 
 .form-submit-btn {
-  @apply py-2 px-4 bg-slate-200 rounded-lg;
+  @apply py-2 px-4 rounded-lg bg-slate-200 hover:shadow-md hover:shadow-stone-400/50 active:shadow-lg active:shadow-stone-400/75
 }
 
 .dropdown-btn {
