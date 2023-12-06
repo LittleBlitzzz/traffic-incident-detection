@@ -62,7 +62,7 @@ def test_on_annotated_data():
     dataset_name = request_json.get("dataset_name", "extracted_frames")
     prompt_framework_args = request_json.get("prompt_framework", None)
     output_directory = os.path.join(os.environ["results_path"], request_json.get("save_directory", "llava_test"))
-    annotation_path = request_json.get("annotation_path", os.path.join(os.environ["results_path"], "annotations_compiled_20231206122224.csv"))
+    annotation_path = os.path.join(os.environ["results_path"], request_json.get("annotation_path", "annotations_compiled_20231206122224.csv"))
 
     annotation_df = pd.read_csv(annotation_path)
     annotated_image_filepaths = annotation_df["imagepath"]

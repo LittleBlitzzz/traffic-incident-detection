@@ -8,9 +8,8 @@ interface ModelInterfacePageProps {
 const ModelInterfacePage: React.FC = () => {
   const defaultSystemPrompt =
 `
-A chat between a curious human and an artificial intelligence assistant focused on traffic incident detection. The assistant gives helpful, detailed, polite and relevant answers to the human's questions.
-
-The assistant is tasked with classifying traffic incidents (if any) in the given footage. The user will describe each section, and the assistant will analyse the image and output the variables in JSON format.
+A chat between a curious human and an artificial intelligence assistant focused on traffic incident detection. The assistant gives helpful, detailed, polite and relevant answers to the human''s questions.
+Return the output in YAML format, and only use the options provided.
 `.trim().replace(/^\s+|\s+$/g, '');
 
   const refDatasetName = useRef("extracted_frames");
@@ -25,50 +24,61 @@ The assistant is tasked with classifying traffic incidents (if any) in the given
   const [promptFields, setPromptFields] = useState<[number, string, string][]>([
     [0, 
 `
-environment:
-  lighting: (day, night, dawn/dusk)
-  road_surface_condition: (dry, wet, icy, snowy, potholes)
-  road_layout: (straight, curved, intersection, roundabout)
-  road_type: (alley, street, dirt_road)
-  road_location: (urban, rural)
-  traffic_density: (empty, sparse, congested)
-  traffic_speed: (not_moving_or_slow, fast)
-  surroundings (multi-choice list): (traffic_lights, road_signs, pedestrian_crosswalk, sidewalk, overhead_bridge, bicycle_lanes, speed_bumps, construction_work, street_lights, electric_polls, trees/nature, animals_crossing, others)
+Answer this section about the traffic incident.
+
+is_traffic_incident:
+-options: (true, false)
+incident_type:
+-options: (none, single_vehicle, multi_vehicle, others)
+single_vehicle_incident: 
+-options: (none, run_off_road, rollover, collision_with_surroundings, collision_with_pedestrian, vehicle_lost_control, others)
+incident_severity
+-options: (none, light_injuries, serious_injuries)
 `.trim().replace(/^\s+|\s+$/g, ''),
     ""
     ],
     [1, 
 `
-road_users:
-  car: (none, at_least_one, a_few, many)
-  truck_or_large_vehicle: (none, at_least_one, a_few, many)
-  motorcycle: (none, at_least_one, a_few, many)
-  bicycle: (none, at_least_one, a_few, many)
-  pedestrian: (none, at_least_one, a_few, many)
-  other: (none, at_least_one, a_few, many)
+multi_vehicle_incident: 
+-options: (none, rear_end_collision, head_on_collision, side_collision, multi_vehicle_pileup, others)
 `.trim().replace(/^\s+|\s+$/g, ''),
     ""
     ],
     [2, 
 `
-incident_details:
-  is_traffic_incident: (true, false)
-  type_of_incident: (run_off_road, roll_over, single_car_collision, multicar_collision)
-  type_of_collision: (rear-end, side_impact, rollover, sideswipe, head-on, single_car, multiple_vehicle_pile-up)
-  types_of_road_users_involved: [car, truck_or_large_vehicle, motorcycle, bicycle, pedestrian]
-  severity_of_incident: (none, light_injuries, serious_injuries, fatal)
-  causes (multi-choice list):
-    human_behavior: (driver_error, impairment_or_distraction, behavior_or_inexperience, pedestrian_causes)
-    injudicious_actions: (jaywalking, speeding_red_light)
-    vehicle_defects
-    road_conditions
-    obstructed_vision
-    animals_crossing
+Answer this section about the road users are involved.
+
+cars_involved_in_incident:
+-options: (true, false)
+large_vehicles_involved_in_incident:
+-options: (true, false)
+motorcycles_involved_in_incident:
+-options: (true, false)
+cyclists_involved_in_incident:
+-options: (true, false)
+pedestrians_involved_in_incident:
+-options: (true, false)
+`.trim().replace(/^\s+|\s+$/g, ''),
+    ""
+    ],
+    [3, 
+`
+Answer this section about the potential cause of the incident.
+
+is_caused_by_human_behaviour:
+-options: (true, false)
+is_caused_by_injudicious_actions:
+-options: (true, false)
+is_caused_by_vehicle_malfunction
+-options: (true, false)
+is_caused_by_road_conditions
+-options: (true, false)
 `.trim().replace(/^\s+|\s+$/g, ''),
     ""
     ]
   ]);
-  const [promptKeyCounter, setPromptKeyCounter] = useState(3);
+
+  const [promptKeyCounter, setPromptKeyCounter] = useState(promptFields.length);
 
   const promptTemplateForm = (
     <>
