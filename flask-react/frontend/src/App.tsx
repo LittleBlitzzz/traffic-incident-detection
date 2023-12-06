@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className="justify-between">
         <NavBar />
-        <div id="main-body-content" className="mb-40">
+        <div id="main-body-content" className="min-h-[80vh]">
           <Routes>
             <Route path="/" element={
               <Homepage />

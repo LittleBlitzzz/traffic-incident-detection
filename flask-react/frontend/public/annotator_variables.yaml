@@ -9,6 +9,7 @@ sections:
           - dawn_or_dusk
           - day
           - night
+          - poor
           - artificial
 
       - label: Road Surface Condition

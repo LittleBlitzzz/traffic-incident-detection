@@ -12,7 +12,7 @@ const NavBar: React.FC<NavBarProps> = ({
   }) => {
   return (
     <>
-      <div id="nav-bar" className="sticky top-0 flex py-4 space-x-8 px-36 bg-slate-300 z-20 w-screen">
+      <div id="nav-bar" className="sticky top-0 flex py-4 space-x-8 px-36 bg-slate-300 z-20 w-screen h-[10vh]">
         <div className="flex-initial self-center">
           <p className="text-2xl">Traffic LLaVA</p>
         </div>
