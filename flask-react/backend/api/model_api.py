@@ -27,7 +27,7 @@ def ask_llava():
     image_filename = request_json.get("image_filename", None)
     prompt_framework_args = request_json.get("prompt_framework", None)
     single_text_prompt = request_json.get("single_text_prompt", None)
-    save_path_name = request_json.get("save_path_name", "/content/test.txt")
+    save_path_name = os.path.join(os.environ["results_path"], request_json.get("save_path_name", "test.txt"))
     
     if full_img_path is None:
       if dataset_name is not None and video_name is not None and image_filename is not None:

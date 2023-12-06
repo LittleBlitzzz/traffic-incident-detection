@@ -193,9 +193,9 @@ class PromptFramework:
         else:
           logger.debug("Directory to save prompt results does not exist!")
           
-    model.system_prompt = original_prompt
-    model.temperature = original_temperature
-    model.top_p = original_top_p
+    # model.system_prompt = original_prompt
+    # model.temperature = original_temperature
+    # model.top_p = original_top_p
     return results
 
 def setup_model():

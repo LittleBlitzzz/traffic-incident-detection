@@ -230,7 +230,7 @@ incident_details:
                 "top_p": Number(refModelTopP.current),
               },
               "dataset_name": refDatasetName.current,
-              "save_path_name": "llava_test",
+              "save_directory": "llava_test",
               "annotation_path": "annotations_compiled_20231206122224.csv",
             };
 
