@@ -79,7 +79,10 @@ def test_on_annotated_data():
         logger.debug("Ask LLaVA - image path : " + full_img_path)
 
         prompt_framework = PromptFramework(**prompt_framework_args)
-        model_output = prompt_framework.apply_on_image(model, full_img_path, os.path.join(output_directory, "results_" + str(index) + ".txt"))
+        save_path = os.path.join(output_directory, "results_" + str(index) + ".txt")
+        if os.path.exists(save_path):
+          continue
+        model_output = prompt_framework.apply_on_image(model, full_img_path, save_path)
         test_results.append(model_output)
 
         logger.debug("LLaVA replies : " + str(model_output))
