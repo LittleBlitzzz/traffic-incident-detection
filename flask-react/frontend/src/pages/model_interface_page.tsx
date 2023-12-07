@@ -240,7 +240,7 @@ is_caused_by_road_conditions
                 "top_p": Number(refModelTopP.current),
               },
               "dataset_name": refDatasetName.current,
-              "save_directory": "llava_test",
+              "save_directory": refResultsSavePath.current,
               "annotation_path": "annotations_compiled_20231206122224.csv",
             };
 
